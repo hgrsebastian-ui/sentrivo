@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentrivo — The Student AI Email Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --indigo: #4F46E5;
+      --indigo-dark: #3730A3;
+      --indigo-light: #818CF8;
+      --indigo-bg: #EEF2FF;
+      --green: #10B981;
+      --green-bg: #ECFDF5;
+      --red: #EF4444;
+      --red-bg: #FEF2F2;
+      --text: #0F172A;
+      --text-2: #475569;
+      --text-3: #94A3B8;
+      --bg: #F8FAFC;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 24px rgba(15,23,42,0.08);
+      --shadow-lg: 0 12px 48px rgba(79,70,229,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248,250,252,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 1.25rem;
+      color: var(--indigo); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--text-2); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn-primary {
+      background: var(--indigo); color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.9rem;
+      padding: 0.6rem 1.4rem; border-radius: 50px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .btn-primary:hover {
+      background: var(--indigo-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79,70,229,0.3);
+    }
+    .btn-outline {
+      background: transparent; color: var(--indigo);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.9rem;
+      padding: 0.6rem 1.4rem; border-radius: 50px;
+      border: 2px solid var(--indigo); cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--indigo); color: white; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      max-width: 760px; margin: 0 auto;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--indigo-bg); color: var(--indigo);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 0.35rem 1rem; border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800; line-height: 1.15;
+      color: var(--text); margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--indigo); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--text-2);
+      max-width: 520px; margin: 0 auto 2.5rem;
+    }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .hero-trust {
+      display: flex; justify-content: center;
+      gap: 2rem; flex-wrap: wrap;
+      margin-top: 3rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem; color: var(--text-3);
+    }
+    .hero-trust span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* FEATURES TABS */
+    .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; text-align: center; margin-bottom: 0.6rem;
+    }
+    .section-title span { color: var(--indigo); }
+    .section-sub {
+      text-align: center; color: var(--text-2);
+      font-size: 1rem; margin-bottom: 2.5rem;
+    }
+
+    .tabs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 2rem;
+    }
+    .tab-btn {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.2rem; border-radius: 50px;
+      border: 1.5px solid var(--border);
+      background: white; color: var(--text-2);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn:hover { border-color: var(--indigo); color: var(--indigo); }
+    .tab-btn.active {
+      background: var(--indigo); color: white;
+      border-color: var(--indigo);
+    }
+    .tab-btn svg { width: 16px; height: 16px; }
+
+    .tab-panel {
+      background: white; border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: none;
+      animation: fadeUp 0.3s ease both;
+    }
+    .tab-panel.active { display: block; }
+    .tab-panel-inner { display: flex; gap: 2rem; align-items: flex-start; }
+    .tab-icon-wrap {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .tab-panel h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .tab-panel p { color: var(--text-2); font-size: 0.95rem; margin-bottom: 1rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .pill {
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.3rem 0.75rem; border-radius: 50px;
+      border: 1.5px solid; display: flex; align-items: center; gap: 0.3rem;
+    }
+    .pill::before { content: "✓"; font-weight: 700; }
+
+    /* HOW IT WORKS */
+    .how-bg { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; margin-top: 2rem;
+    }
+    .step { text-align: center; padding: 1.5rem; }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--indigo-bg); color: var(--indigo);
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 0.85rem; letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .step h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .step p { font-size: 0.9rem; color: var(--text-2); }
+
+    /* PRIVACY */
+    .privacy-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 2rem;
+    }
+    .privacy-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .privacy-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--indigo-bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .privacy-card h4 {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .privacy-card p { font-size: 0.85rem; color: var(--text-2); }
+
+    /* FAQ */
+    .faq { max-width: 700px; margin: 0 auto; }
+    .faq-item {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; text-align: left;
+      padding: 1.1rem 1.5rem;
+      background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+      color: var(--text);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem;
+    }
+    .faq-q:hover { color: var(--indigo); }
+    .faq-chevron { transition: transform 0.25s; flex-shrink: 0; color: var(--text-3); }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 0.9rem; color: var(--text-2);
+      padding: 0 1.5rem;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.1rem; }
+
+    /* WAITLIST */
+    .waitlist-section {
+      background: var(--indigo); color: white;
+      padding: 5rem 2rem; text-align: center;
+    }
+    .waitlist-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; margin-bottom: 0.75rem;
+    }
+    .waitlist-section p { font-size: 1rem; opacity: 0.85; margin-bottom: 2.5rem; }
+    .waitlist-form {
+      max-width: 480px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .waitlist-form input {
+      width: 100%; padding: 0.85rem 1.25rem;
+      border-radius: 50px; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      background: rgba(255,255,255,0.15);
+      color: white; outline: none;
+      transition: background 0.2s;
+    }
+    .waitlist-form input::placeholder { color: rgba(255,255,255,0.6); }
+    .waitlist-form input:focus { background: rgba(255,255,255,0.25); }
+    .btn-white {
+      background: white; color: var(--indigo);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      padding: 0.85rem 2rem; border-radius: 50px;
+      border: none; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .form-success {
+      display: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: var(--radius); padding: 1.25rem;
+      font-size: 1rem; font-weight: 500;
+    }
+    .form-success.show { display: block; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2rem;
+      font-size: 0.82rem; color: var(--text-3);
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    footer a { color: var(--text-3); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.5rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .privacy-grid { grid-template-columns: 1fr; }
+      .tab-panel-inner { flex-direction: column; }
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Sentrivo</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="btn-primary" href="#waitlist">Join the waitlist</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    AI-Powered Email Intelligence
+  </div>
+  <h1>The Student AI<br><span>Email Assistant</span></h1>
+  <p class="hero-sub">Sentrivo organises your emails, drafts replies, and tracks deadlines automatically. Your inbox, handled.</p>
+  <div class="hero-cta">
+    <a class="btn-primary" href="#waitlist">Join the waitlist →</a>
+    <a class="btn-outline" href="#features">See features</a>
+  </div>
+  <div class="hero-trust">
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Connect via Google OAuth
+    </span>
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      You approve before sending
+    </span>
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+      Revoke access anytime
+    </span>
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Privacy-first
+    </span>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <h2 class="section-title">5 superpowers. <span>One inbox.</span></h2>
+  <p class="section-sub">Built for students juggling lectures, applications, and admin.</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="summarise">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h7M7 16h5"/></svg>
+      Summarise
+    </button>
+    <button class="tab-btn" data-tab="reply">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Reply
+    </button>
+    <button class="tab-btn" data-tab="mass">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      Mass Email
+    </button>
+    <button class="tab-btn" data-tab="network">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      Networking
+    </button>
+    <button class="tab-btn" data-tab="deadlines">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Deadlines
+    </button>
+  </div>
+
+  <div id="tab-summarise" class="tab-panel active">
+    <div class="tab-panel-inner">
+      <div class="tab-icon-wrap" style="background:var(--indigo-bg)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h7M7 16h5"/></svg>
+      </div>
+      <div>
+        <h3>Know what matters in seconds, without reading every email.</h3>
+        <p>Every email is automatically categorised into Urgent, To Reply, Actionables, Info, and Junk — with AI summaries and a suggested next action.</p>
+        <div class="pills">
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Daily digest</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Smart bucketing (Urgent / Reply / Info)</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Suggested next action</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Academic deadline detection</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-reply" class="tab-panel">
+    <div class="tab-panel-inner">
+      <div class="tab-icon-wrap" style="background:var(--indigo-bg)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <h3>Draft professional replies in one click, matched to your tone.</h3>
+        <p>Tell Sentrivo what you want to say — it writes the full reply. Short, normal, or formal. Edit and send, or batch-process your whole inbox at once.</p>
+        <div class="pills">
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">AI drafts for students</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Short / Normal / Formal variants</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Edit &amp; regenerate</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Batch reply queue</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-mass" class="tab-panel">
+    <div class="tab-panel-inner">
+      <div class="tab-icon-wrap" style="background:var(--indigo-bg)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </div>
+      <div>
+        <h3>Send personalised internship outreach at scale, not copy-paste.</h3>
+        <p>Upload a CSV or DOCX of companies and contacts. Sentrivo generates a personalised email for each recipient and sends them all in seconds.</p>
+        <div class="pills">
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Upload CSV / TXT / DOCX</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Template variables ({FirstName})</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Per-recipient personalisation</span>
+          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Duplicate checks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-network" class="tab-panel">
+    <div class="tab-panel-inner">
+      <div class="tab-icon-wrap" style="background:var(--green-bg)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div>
+        <h3>Track every professor, recruiter, and company you contact.</h3>
+        <p>Sentrivo automatically builds a contact record for everyone you email — with conversation history, follow-up reminders, and relationship status tracking.</p>
+        <div class="pills">
+          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Contact history</span>
+          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Reply tracking</span>
+          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Follow-up reminders</span>
+          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Outreach status</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-deadlines" class="tab-panel">
+    <div class="tab-panel-inner">
+      <div class="tab-icon-wrap" style="background:var(--red-bg)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div>
+        <h3>Never miss an application deadline, assignment, or scholarship date.</h3>
+        <p>As emails arrive, Sentrivo's AI scans for dates and commitments — automatically creating deadline cards so nothing slips through the cracks.</p>
+        <div class="pills">
+          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Auto-detected dates</span>
+          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Internship cutoffs</span>
+          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Assignment reminders</span>
+          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Scholarship alerts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="privacy">
+  <h2 class="section-title">Privacy &amp; control</h2>
+  <p class="section-sub">Connecting Gmail requires trust. Here's exactly how Sentrivo works.</p>
+  <div class="privacy-grid">
+    <div class="privacy-card">
+      <div class="privacy-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h4>Google OAuth connection</h4>
+        <p>We use Google's official OAuth flow. Your password is never shared with us.</p>
+      </div>
+    </div>
+    <div class="privacy-card">
+      <div class="privacy-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div>
+        <h4>Read-only by default</h4>
+        <p>Sentrivo reads your emails to summarise and organise. It never writes without your action.</p>
+      </div>
+    </div>
+    <div class="privacy-card">
+      <div class="privacy-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </div>
+      <div>
+        <h4>Nothing is sent without your approval</h4>
+        <p>Drafts are yours to review, edit, and approve before anything leaves your inbox.</p>
+      </div>
+    </div>
+    <div class="privacy-card">
+      <div class="privacy-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div>
+        <h4>Revoke access anytime</h4>
+        <p>Disconnect Sentrivo from your Google account in seconds from Google's security settings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="padding-top:0">
+  <h2 class="section-title" style="margin-bottom:0.5rem">Frequently asked questions</h2>
+  <p class="section-sub" style="margin-bottom:2rem">Everything you need to know.</p>
+  <div class="faq">
+    <div class="faq-item">
+      <button class="faq-q">
+        Is it safe to connect my Gmail?
+        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a">Yes. We use Google's official OAuth2 protocol — the same standard used by apps like Notion, Calendly, and Zoom. Your password is never shared with us, and you can revoke access anytime from your Google account security settings.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Will Sentrivo send emails on my behalf without asking?
+        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a">Never. Sentrivo drafts emails for you to review and approve. Nothing is sent without your explicit action. You're always in control.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        When do I get access?
+        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a">We're rolling out access in batches to waitlist members. Join the waitlist and you'll be among the first students to get early access — for free.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Is Sentrivo free?
+        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a">Early access is free for waitlist members. We'll offer a generous free tier when we launch publicly, with paid plans for power users who want unlimited AI features.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Does it work with Outlook or other email providers?
+        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a">Right now Sentrivo works with Gmail, including university Google Workspace accounts. Support for Outlook and other providers is on our roadmap.</div>
+    </div>
+  </div>
+</section>
+
+<section class="waitlist-section" id="waitlist">
+  <h2>Join the waitlist</h2>
+  <p>Be among the first students to get access.</p>
+  <div class="waitlist-form">
+    <input type="email" id="wl-email" placeholder="Email" autocomplete="email" />
+    <input type="text" id="wl-name" placeholder="Name (optional)" autocomplete="name" />
+    <button class="btn-white" onclick="submitWaitlist()">Join the waitlist →</button>
+    <div class="form-success" id="form-success">You're on the list! We'll be in touch soon.</div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Sentrivo. Built for students, by students.</div>
+  <div class="footer-links">
+    <a href="#">Privacy policy</a>
+    <a href="#">Terms of use</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  function submitWaitlist() {
+    const email = document.getElementById('wl-email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('wl-email').style.border = '2px solid rgba(255,100,100,0.8)';
+      return;
+    }
+    // Replace with your endpoint: fetch('YOUR_URL', { method:'POST', body: JSON.stringify({email}) })
+    document.querySelector('.waitlist-form').querySelectorAll('input, button').forEach(el => el.style.display = 'none');
+    document.getElementById('form-success').classList.add('show');
+  }
+
+  document.getElementById('wl-email').addEventListener('keypress', e => {
+    if (e.key === 'Enter') submitWaitlist();
+  });
+</script>
+</body>
+</html>
