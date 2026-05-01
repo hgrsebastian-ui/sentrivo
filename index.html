@@ -265,37 +265,6 @@
       font-weight: 800; margin-bottom: 0.75rem;
     }
     .waitlist-section p { font-size: 1rem; opacity: 0.85; margin-bottom: 2.5rem; }
-    .waitlist-form {
-      max-width: 480px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 0.75rem;
-    }
-    .waitlist-form input {
-      width: 100%; padding: 0.85rem 1.25rem;
-      border-radius: 50px; border: none;
-      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
-      background: rgba(255,255,255,0.15);
-      color: white; outline: none;
-      transition: background 0.2s;
-    }
-    .waitlist-form input::placeholder { color: rgba(255,255,255,0.6); }
-    .waitlist-form input:focus { background: rgba(255,255,255,0.25); }
-    .btn-white {
-      background: white; color: var(--indigo);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700; font-size: 1rem;
-      padding: 0.85rem 2rem; border-radius: 50px;
-      border: none; cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.2s;
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .form-success {
-      display: none;
-      background: rgba(255,255,255,0.15);
-      border-radius: var(--radius); padding: 1.25rem;
-      font-size: 1rem; font-weight: 500;
-    }
-    .form-success.show { display: block; }
 
     /* FOOTER */
     footer {
@@ -483,8 +452,6 @@
   </div>
 </section>
 
-
-
 <section class="section" id="privacy">
   <h2 class="section-title">Privacy &amp; control</h2>
   <p class="section-sub">Connecting Gmail requires trust. Here's exactly how Sentrivo works.</p>
@@ -570,14 +537,13 @@
   </div>
 </section>
 
+<!-- WAITLIST — powered by Tally -->
 <section class="waitlist-section" id="waitlist">
   <h2>Join the waitlist</h2>
   <p>Be among the first students to get access.</p>
-  <div class="waitlist-form">
-    <input type="email" id="wl-email" placeholder="Email" autocomplete="email" />
-    <input type="text" id="wl-name" placeholder="Name (optional)" autocomplete="name" />
-    <button class="btn-white" onclick="submitWaitlist()">Join the waitlist →</button>
-    <div class="form-success" id="form-success">You're on the list! We'll be in touch soon.</div>
+  <div style="max-width:480px; margin: 0 auto;">
+    <iframe data-tally-src="https://tally.so/embed/LZ5PKv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="Sentrivo Waiting List"></iframe>
+    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
   </div>
 </section>
 
@@ -606,21 +572,6 @@
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!wasOpen) item.classList.add('open');
     });
-  });
-
-  function submitWaitlist() {
-    const email = document.getElementById('wl-email').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('wl-email').style.border = '2px solid rgba(255,100,100,0.8)';
-      return;
-    }
-    // Replace with your endpoint: fetch('YOUR_URL', { method:'POST', body: JSON.stringify({email}) })
-    document.querySelector('.waitlist-form').querySelectorAll('input, button').forEach(el => el.style.display = 'none');
-    document.getElementById('form-success').classList.add('show');
-  }
-
-  document.getElementById('wl-email').addEventListener('keypress', e => {
-    if (e.key === 'Enter') submitWaitlist();
   });
 </script>
 </body>
