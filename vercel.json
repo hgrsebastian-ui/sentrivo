@@ -1,10 +1,9 @@
 {
-  "redirects": [
+  "headers": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "sentrivo-inbox.com" }],
-      "destination": "https://www.sentrivo-inbox.com/$1",
-      "permanent": true
+      "has": [{ "type": "host", "value": "sentrivo-rl1k.vercel.app" }],
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
     }
   ]
 }
