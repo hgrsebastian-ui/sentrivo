@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "sentrivo-inbox.com" }],
+      "destination": "https://www.sentrivo-inbox.com/$1",
+      "permanent": true
+    }
+  ]
+}
