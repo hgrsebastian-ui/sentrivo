@@ -3,462 +3,1072 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sentrivo — The Student AI Email Assistant</title>
+  <title>Sentrivo · 20 speculative applications a week. Without writing one.</title>
+  <meta name="description" content="Upload your CV, tell Sentrivo what you're looking for, and we send 20 personalised speculative applications a week to the orgs that fit you. Follow-ups handled automatically. Built for students." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --indigo: #4F46E5;
-      --indigo-dark: #3730A3;
-      --indigo-light: #818CF8;
-      --indigo-bg: #EEF2FF;
-      --green: #10B981;
-      --green-bg: #ECFDF5;
-      --red: #EF4444;
-      --red-bg: #FEF2F2;
-      --text: #0F172A;
-      --text-2: #475569;
-      --text-3: #94A3B8;
-      --bg: #F8FAFC;
+      /* App palette, sampled directly from the product UI */
+      --cream: #F2EDE0;
+      --cream-2: #EAE3D0;
+      --cream-3: #DCD3BE;
+      --forest: #0E3328;
+      --forest-2: #143E30;
+      --sage: #4F9D7C;
+      --sage-bright: #5FB592;
+      --sage-bg: #DCEDE2;
+      --ink: #0A1F18;
+      --ink-2: #3D4A43;
+      --ink-3: #7A857E;
       --white: #FFFFFF;
-      --border: #E2E8F0;
-      --radius: 14px;
-      --radius-sm: 8px;
-      --shadow: 0 4px 24px rgba(15,23,42,0.08);
-      --shadow-lg: 0 12px 48px rgba(79,70,229,0.15);
+      --border: #DCD3BE;
+      --border-soft: #E8E1CE;
+      --red: #C44141;
+      --red-bg: #F4D9D5;
+      --amber: #B07014;
+      --amber-bg: #F1E3C2;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 20px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* NAV */
+    .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.01em; }
+
+    /* ============ NAV ============ */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(248,250,252,0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(242,237,224,0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-soft);
       padding: 0 2rem;
-      height: 64px;
+      height: 68px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700; font-size: 1.25rem;
-      color: var(--indigo); text-decoration: none;
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--forest);
+      text-decoration: none;
+      letter-spacing: -0.02em;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
     .nav-links a {
-      font-size: 0.9rem; font-weight: 500;
-      color: var(--text-2); text-decoration: none;
+      font-size: 0.92rem; font-weight: 400;
+      color: var(--ink-2); text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--forest); }
+
     .btn-primary {
-      background: var(--indigo); color: white;
+      background: var(--forest); color: var(--cream);
       font-family: 'DM Sans', sans-serif;
-      font-weight: 600; font-size: 0.9rem;
-      padding: 0.6rem 1.4rem; border-radius: 50px;
-      border: none; cursor: pointer; text-decoration: none;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-weight: 500; font-size: 0.92rem;
+      padding: 0.65rem 1.4rem; border-radius: var(--radius-md);
+      border: 1px solid var(--forest);
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
     }
     .btn-primary:hover {
-      background: var(--indigo-dark);
+      background: var(--forest-2);
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(79,70,229,0.3);
     }
-    .btn-outline {
-      background: transparent; color: var(--indigo);
+    .btn-ghost {
+      background: transparent; color: var(--forest);
       font-family: 'DM Sans', sans-serif;
-      font-weight: 600; font-size: 0.9rem;
-      padding: 0.6rem 1.4rem; border-radius: 50px;
-      border: 2px solid var(--indigo); cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center;
+      font-weight: 500; font-size: 0.92rem;
+      padding: 0.65rem 1.4rem; border-radius: var(--radius-md);
+      border: 1px solid var(--cream-3); cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
       transition: all 0.2s;
     }
-    .btn-outline:hover { background: var(--indigo); color: white; }
+    .btn-ghost:hover { border-color: var(--forest); background: rgba(14,51,40,0.04); }
 
-    /* HERO */
+    /* ============ HERO ============ */
+    .hero-wrap { padding: 4rem 2rem 2rem; }
     .hero {
+      max-width: 1080px;
+      margin: 0 auto;
       text-align: center;
-      padding: 5rem 2rem 4rem;
-      max-width: 760px; margin: 0 auto;
-      animation: fadeUp 0.6s ease both;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--indigo-bg); color: var(--indigo);
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
-      padding: 0.35rem 1rem; border-radius: 50px;
+      background: var(--sage-bg); color: var(--forest);
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em;
+      padding: 0.4rem 0.95rem; border-radius: 50px;
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+    }
+    .hero-eyebrow svg { width: 12px; height: 12px; }
+    .hero h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      max-width: 14ch;
+      margin-left: auto; margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: italic; color: var(--sage);
+      font-weight: 400;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--ink-2);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.55;
+    }
+    .hero-cta {
+      display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+    .hero-cta .btn-primary { padding: 0.85rem 1.6rem; font-size: 0.95rem; }
+    .hero-cta .btn-ghost { padding: 0.85rem 1.6rem; font-size: 0.95rem; }
+
+    /* ============ APP MOCKUP (live HTML, no images) ============ */
+    .mockup-frame {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--cream-3);
+      overflow: hidden;
+      box-shadow:
+        0 1px 2px rgba(14,51,40,0.04),
+        0 20px 60px -20px rgba(14,51,40,0.18);
+      position: relative;
+    }
+    .mockup-titlebar {
+      background: #E8E1CE;
+      padding: 10px 14px;
+      display: flex; gap: 7px;
+      border-bottom: 1px solid var(--cream-3);
+    }
+    .mockup-titlebar span {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: #CFC4A8;
+    }
+    .mockup-titlebar span:nth-child(1) { background: #DC6D5C; }
+    .mockup-titlebar span:nth-child(2) { background: #D9B14E; }
+    .mockup-titlebar span:nth-child(3) { background: #62A668; }
+
+    .mockup-body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 460px;
+    }
+
+    /* Sidebar (matches app) */
+    .mock-sidebar {
+      background: var(--forest);
+      color: var(--cream);
+      padding: 1.25rem 0.75rem;
+      font-size: 0.83rem;
+    }
+    .mock-sidebar-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      padding: 0.25rem 0.6rem 1.25rem;
+      color: var(--cream);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .mock-sidebar-logo small {
+      font-size: 1rem; opacity: 0.45;
+    }
+    .mock-nav-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      color: rgba(242,237,224,0.78);
+      margin-bottom: 2px;
+      position: relative;
+    }
+    .mock-nav-item.new-email {
+      background: rgba(95,181,146,0.18);
+      color: var(--cream);
+    }
+    .mock-nav-item.active {
+      background: var(--sage-bright);
+      color: var(--white);
+    }
+    .mock-nav-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .mock-nav-item .badge {
+      margin-left: auto;
+      font-size: 0.7rem; padding: 1px 7px;
+      border-radius: 50px;
+      background: var(--red); color: white;
+      font-weight: 500;
+    }
+    .mock-nav-item .badge.amber { background: var(--amber); }
+    .mock-sidebar-divider {
+      height: 1px;
+      background: rgba(242,237,224,0.12);
+      margin: 0.75rem 0.5rem;
+    }
+
+    /* Content */
+    .mock-content {
+      padding: 1.5rem 1.75rem;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .mock-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
       margin-bottom: 1.5rem;
     }
-    .hero h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 800; line-height: 1.15;
-      color: var(--text); margin-bottom: 1rem;
+    .mock-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.45rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
     }
-    .hero h1 span { color: var(--indigo); }
-    .hero-sub {
-      font-size: 1.1rem; color: var(--text-2);
-      max-width: 520px; margin: 0 auto 2.5rem;
+    .mock-subtitle {
+      font-size: 0.82rem;
+      color: var(--ink-2);
     }
-    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .mock-new-btn {
+      background: var(--sage-bright);
+      color: white;
+      font-size: 0.78rem; font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      border: none;
+    }
 
-    .hero-trust {
+    .mock-app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    .mock-app-card {
+      background: var(--white);
+      border: 1px solid var(--cream-3);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+    }
+    .mock-app-card.featured {
+      border: 1.5px solid var(--sage-bright);
+    }
+    .mock-app-card h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .mock-tags { display: flex; gap: 0.3rem; margin-bottom: 0.85rem; }
+    .mock-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 50px;
+      background: var(--cream-2);
+      color: var(--ink-2);
+    }
+    .mock-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      text-align: center;
+    }
+    .mock-stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--forest);
+      line-height: 1;
+    }
+    .mock-stat-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* Hero trust strip */
+    .trust-strip {
+      max-width: 1080px;
+      margin: 1.75rem auto 0;
       display: flex; justify-content: center;
       gap: 2rem; flex-wrap: wrap;
-      margin-top: 3rem; padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.82rem; color: var(--text-3);
+      padding-top: 0;
+      font-size: 0.82rem; color: var(--ink-3);
     }
-    .hero-trust span { display: flex; align-items: center; gap: 0.4rem; }
+    .trust-strip span { display: flex; align-items: center; gap: 0.4rem; }
+    .trust-strip svg { width: 13px; height: 13px; }
 
-    /* FEATURES TABS */
-    .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
-    .section-title {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700; text-align: center; margin-bottom: 0.6rem;
-    }
-    .section-title span { color: var(--indigo); }
-    .section-sub {
-      text-align: center; color: var(--text-2);
-      font-size: 1rem; margin-bottom: 2.5rem;
-    }
+    /* ============ SECTIONS ============ */
+    .section { max-width: 1080px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-narrow { max-width: 760px; margin: 0 auto; padding: 6rem 2rem; }
 
-    .tabs {
-      display: flex; gap: 0.5rem; flex-wrap: wrap;
-      justify-content: center; margin-bottom: 2rem;
-    }
-    .tab-btn {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.55rem 1.2rem; border-radius: 50px;
-      border: 1.5px solid var(--border);
-      background: white; color: var(--text-2);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem; font-weight: 500;
-      cursor: pointer; transition: all 0.2s;
-    }
-    .tab-btn:hover { border-color: var(--indigo); color: var(--indigo); }
-    .tab-btn.active {
-      background: var(--indigo); color: white;
-      border-color: var(--indigo);
-    }
-    .tab-btn svg { width: 16px; height: 16px; }
-
-    .tab-panel {
-      background: white; border-radius: var(--radius);
-      border: 1.5px solid var(--border);
-      padding: 2rem 2.5rem;
-      display: none;
-      animation: fadeUp 0.3s ease both;
-    }
-    .tab-panel.active { display: block; }
-    .tab-panel-inner { display: flex; gap: 2rem; align-items: flex-start; }
-    .tab-icon-wrap {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .tab-panel h3 {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;
-    }
-    .tab-panel p { color: var(--text-2); font-size: 0.95rem; margin-bottom: 1rem; }
-    .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .pill {
-      font-size: 0.78rem; font-weight: 500;
-      padding: 0.3rem 0.75rem; border-radius: 50px;
-      border: 1.5px solid; display: flex; align-items: center; gap: 0.3rem;
-    }
-    .pill::before { content: "✓"; font-weight: 700; }
-
-    /* HOW IT WORKS */
-    .how-bg { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .steps {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2rem; margin-top: 2rem;
-    }
-    .step { text-align: center; padding: 1.5rem; }
-    .step-num {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--indigo-bg); color: var(--indigo);
-      font-family: 'Sora', sans-serif; font-weight: 700;
-      font-size: 0.85rem; letter-spacing: 0.04em;
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--sage); text-transform: uppercase;
       margin-bottom: 1rem;
     }
-    .step h3 {
-      font-family: 'Sora', sans-serif;
-      font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.85rem;
+      color: var(--ink);
     }
-    .step p { font-size: 0.9rem; color: var(--text-2); }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .section-sub {
+      color: var(--ink-2);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+    .section-head-center { text-align: center; }
+    .section-head-center .section-sub { margin-left: auto; margin-right: auto; }
 
-    /* PRIVACY */
+    /* ============ HOW IT WORKS · 4 STEPS ============ */
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .step {
+      background: var(--white);
+      border: 1px solid var(--cream-3);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .step:nth-child(even) {
+      grid-template-columns: 1.2fr 1fr;
+    }
+    .step:nth-child(even) .step-text { order: 2; }
+    .step:nth-child(even) .step-visual { order: 1; }
+    .step-num {
+      font-family: 'Fraunces', serif;
+      font-size: 0.85rem;
+      color: var(--sage);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+    .step h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 1.55rem;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+    .step p {
+      color: var(--ink-2);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .step-visual {
+      background: var(--cream);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border: 1px solid var(--border-soft);
+      font-size: 0.82rem;
+    }
+
+    /* Visual 1: Job brief input */
+    .v1-label { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.5rem; }
+    .v1-input {
+      background: var(--white); border: 1px solid var(--cream-3);
+      border-radius: 8px; padding: 0.75rem 0.9rem;
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem; color: var(--ink);
+      margin-bottom: 0.65rem;
+    }
+    .v1-chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .v1-chip {
+      background: var(--cream-2); color: var(--ink-2);
+      font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 50px;
+    }
+    .v1-chip.sage { background: var(--sage-bg); color: var(--forest); }
+    .v1-cv {
+      background: var(--white);
+      border: 1px solid var(--cream-3);
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 0.55rem;
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+    .v1-cv svg { width: 14px; height: 14px; color: var(--ink-3); flex-shrink: 0; }
+    .v1-cv-ok {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: var(--sage);
+      font-weight: 500;
+    }
+
+    /* Visual 2: Org table */
+    .v2-table {
+      width: 100%;
+      font-size: 0.78rem;
+      border-collapse: collapse;
+    }
+    .v2-table th {
+      text-align: left;
+      font-weight: 400;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      padding: 0.5rem 0.5rem 0.4rem;
+      border-bottom: 1px solid var(--cream-3);
+    }
+    .v2-table td {
+      padding: 0.55rem 0.5rem;
+      border-bottom: 1px solid var(--border-soft);
+      color: var(--ink-2);
+    }
+    .v2-table tr:last-child td { border-bottom: none; }
+    .v2-org { color: var(--forest); font-weight: 500; }
+    .v2-bar {
+      display: inline-block;
+      width: 50px; height: 5px;
+      background: var(--cream-3); border-radius: 3px;
+      margin-right: 6px; vertical-align: middle;
+      position: relative;
+      overflow: hidden;
+    }
+    .v2-bar::after {
+      content: ""; position: absolute;
+      left: 0; top: 0; height: 100%;
+      background: var(--sage-bright);
+      border-radius: 3px;
+    }
+    .v2-bar.b85::after { width: 85%; }
+    .v2-bar.b90::after { width: 90%; }
+    .v2-bar.b82::after { width: 82%; }
+    .v2-bar.b75::after { width: 75%; }
+
+    /* Visual 3: Cover letter validation */
+    .v3-card {
+      background: var(--white);
+      border: 1px solid var(--cream-3);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+    }
+    .v3-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 0.65rem;
+    }
+    .v3-head h5 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500; font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .v3-head small { font-size: 0.7rem; color: var(--ink-3); }
+    .v3-status {
+      display: inline-block;
+      background: var(--sage-bg); color: var(--forest);
+      font-size: 0.68rem; padding: 0.2rem 0.55rem;
+      border-radius: 50px; font-weight: 500;
+    }
+    .v3-checks { list-style: none; font-size: 0.78rem; color: var(--ink-2); }
+    .v3-checks li {
+      padding: 0.2rem 0;
+      display: flex; align-items: center; gap: 0.45rem;
+    }
+    .v3-checks li::before {
+      content: "✓"; color: var(--sage); font-weight: 600;
+    }
+
+    /* Visual 4: Nudge table (varied actions) */
+    .v4-visual { padding: 0.85rem; }
+    .v4-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    .v4-table th {
+      text-align: left;
+      font-weight: 400;
+      font-size: 0.62rem;
+      letter-spacing: 0.09em;
+      color: var(--ink-3);
+      text-transform: uppercase;
+      padding: 0.4rem 0.45rem;
+      border-bottom: 1px solid var(--cream-3);
+    }
+    .v4-table td {
+      padding: 0.6rem 0.45rem;
+      border-bottom: 1px solid var(--border-soft);
+      vertical-align: middle;
+    }
+    .v4-table tr:last-child td { border-bottom: none; }
+    .v4-org {
+      color: var(--forest);
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    .v4-status {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      background: var(--cream-2);
+      color: var(--ink-2);
+    }
+    .v4-status.status-replied {
+      background: var(--sage-bg);
+      color: var(--forest);
+    }
+    .v4-nudge {
+      display: inline-block;
+      padding: 0.22rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .v4-nudge.nudge-amber { background: var(--amber-bg); color: var(--amber); }
+    .v4-nudge.nudge-sage { background: var(--sage-bg); color: var(--forest); }
+    .v4-nudge.nudge-blue { background: #DCE7F1; color: #2C5A82; }
+    .v4-nudge.nudge-muted { color: var(--ink-3); background: var(--cream-2); }
+
+    /* ============ ALSO IN YOUR INBOX (secondary features) ============ */
+    .also-bg {
+      background: var(--white);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .feature-card {
+      background: var(--cream);
+      border: 1px solid var(--cream-3);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.5rem 1.4rem;
+    }
+    .feature-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--sage-bg);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.85rem;
+    }
+    .feature-icon svg { width: 18px; height: 18px; stroke: var(--forest); }
+    .feature-card.red .feature-icon { background: var(--red-bg); }
+    .feature-card.red .feature-icon svg { stroke: var(--red); }
+    .feature-card.amber .feature-icon { background: var(--amber-bg); }
+    .feature-card.amber .feature-icon svg { stroke: var(--amber); }
+    .feature-card h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+      color: var(--ink);
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    /* ============ PRIVACY ============ */
     .privacy-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin-top: 2rem;
+      gap: 0.85rem;
     }
     .privacy-card {
-      background: white; border: 1.5px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem;
+      background: var(--white); border: 1px solid var(--cream-3);
+      border-radius: var(--radius-md); padding: 1.5rem;
       display: flex; gap: 1rem; align-items: flex-start;
     }
     .privacy-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: var(--indigo-bg);
+      width: 38px; height: 38px; border-radius: 9px;
+      background: var(--sage-bg);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
+    .privacy-icon svg { width: 17px; height: 17px; stroke: var(--forest); }
     .privacy-card h4 {
-      font-family: 'Sora', sans-serif;
-      font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem;
+      font-family: 'Fraunces', serif;
+      font-weight: 500; font-size: 1.02rem;
+      margin-bottom: 0.25rem;
+      color: var(--ink);
     }
-    .privacy-card p { font-size: 0.85rem; color: var(--text-2); }
+    .privacy-card p { font-size: 0.87rem; color: var(--ink-2); line-height: 1.55; }
 
-    /* FAQ */
-    .faq { max-width: 700px; margin: 0 auto; }
+    /* ============ FAQ ============ */
+    .faq { max-width: 720px; margin: 0 auto; }
     .faq-item {
-      background: white; border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm); margin-bottom: 0.75rem;
+      background: var(--white); border: 1px solid var(--cream-3);
+      border-radius: var(--radius-md); margin-bottom: 0.6rem;
       overflow: hidden;
     }
     .faq-q {
       width: 100%; text-align: left;
-      padding: 1.1rem 1.5rem;
+      padding: 1.15rem 1.5rem;
       background: none; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
-      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.98rem; font-weight: 500;
+      color: var(--ink);
       display: flex; justify-content: space-between; align-items: center;
       gap: 1rem;
     }
-    .faq-q:hover { color: var(--indigo); }
-    .faq-chevron { transition: transform 0.25s; flex-shrink: 0; color: var(--text-3); }
+    .faq-q:hover { color: var(--forest); }
+    .faq-chevron {
+      transition: transform 0.25s;
+      flex-shrink: 0; color: var(--ink-3);
+      width: 16px; height: 16px;
+    }
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
     .faq-a {
       max-height: 0; overflow: hidden;
       transition: max-height 0.3s ease, padding 0.3s ease;
-      font-size: 0.9rem; color: var(--text-2);
+      font-size: 0.92rem; color: var(--ink-2);
       padding: 0 1.5rem;
+      line-height: 1.6;
     }
-    .faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.1rem; }
+    .faq-item.open .faq-a { max-height: 280px; padding: 0 1.5rem 1.2rem; }
 
-    /* WAITLIST */
+    /* ============ WAITLIST ============ */
     .waitlist-section {
-      background: var(--indigo); color: white;
-      padding: 5rem 2rem; text-align: center;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+    .waitlist-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(95,181,146,0.12), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(95,181,146,0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .waitlist-inner { position: relative; z-index: 1; max-width: 540px; margin: 0 auto; }
     .waitlist-section h2 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 800; margin-bottom: 0.75rem;
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.02em;
+      color: var(--cream);
     }
-    .waitlist-section p { font-size: 1rem; opacity: 0.85; margin-bottom: 2.5rem; }
+    .waitlist-section h2 em { font-style: italic; color: var(--sage-bright); }
+    .waitlist-section p {
+      font-size: 1.02rem; opacity: 0.78;
+      margin-bottom: 2.5rem;
+    }
+    .tally-wrap {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1rem 0.5rem;
+    }
 
-    /* FOOTER */
+    /* ============ FOOTER ============ */
     footer {
-      text-align: center; padding: 2rem;
-      font-size: 0.82rem; color: var(--text-3);
-      border-top: 1px solid var(--border);
-      background: var(--bg);
+      text-align: center; padding: 2.5rem 2rem;
+      font-size: 0.85rem; color: var(--ink-3);
+      background: var(--cream);
+      border-top: 1px solid var(--border-soft);
     }
-    footer a { color: var(--text-3); text-decoration: none; }
-    footer a:hover { color: var(--text); }
-    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.5rem; }
+    footer a { color: var(--ink-3); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--forest); }
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      color: var(--forest);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem;
+      justify-content: center;
+      margin-top: 0.75rem;
+    }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    .hero, .mockup-frame { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .mockup-frame { animation-delay: 0.15s; }
+
+    @media (max-width: 820px) {
+      .step { grid-template-columns: 1fr !important; gap: 1.5rem; padding: 1.75rem; }
+      .step:nth-child(even) .step-text { order: 1; }
+      .step:nth-child(even) .step-visual { order: 2; }
+      .mockup-body { grid-template-columns: 1fr; }
+      .mock-sidebar { display: none; }
+      .mock-app-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
-      .steps { grid-template-columns: 1fr; }
-      .privacy-grid { grid-template-columns: 1fr; }
-      .tab-panel-inner { flex-direction: column; }
-      .hero { padding: 3rem 1.5rem 2.5rem; }
+      .nav-logo { font-size: 1.3rem; }
+      .hero-wrap { padding: 2.5rem 1.25rem 1.5rem; }
+      .privacy-grid, .feature-grid { grid-template-columns: 1fr; }
+      .section, .section-narrow { padding: 4rem 1.25rem; }
+      .trust-strip { gap: 1rem; font-size: 0.78rem; }
+      .waitlist-section { padding: 4rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- =================== NAV =================== -->
 <nav>
   <a class="nav-logo" href="#">Sentrivo</a>
   <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
+    <li><a href="#applications">Applications</a></li>
+    <li><a href="#inbox">Inbox</a></li>
     <li><a href="#privacy">Privacy</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a class="btn-primary" href="#waitlist">Join the waitlist</a>
 </nav>
 
-<section class="hero">
-  <div class="hero-eyebrow">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    AI-Powered Email Intelligence
+<!-- =================== HERO =================== -->
+<section class="hero-wrap">
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      For students
+    </div>
+    <h1>20 speculative applications a week. <em>Without writing one.</em></h1>
+    <p class="hero-sub">Upload your CV, describe what you're looking for, and Sentrivo finds the best-fit organisations, writes a personalised cover letter for each, sends them, and follows up two weeks later.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#waitlist">Join the waitlist →</a>
+      <a class="btn-ghost" href="#applications">See how it works</a>
+    </div>
   </div>
-  <h1>The Student AI<br><span>Email Assistant</span></h1>
-  <p class="hero-sub">Sentrivo organises your emails, drafts replies, and tracks deadlines automatically. Your inbox, handled.</p>
-  <div class="hero-cta">
-    <a class="btn-primary" href="#waitlist">Join the waitlist →</a>
-    <a class="btn-outline" href="#features">See features</a>
+
+  <!-- LIVE APP MOCKUP (recreated in HTML, matches the real Applications dashboard) -->
+  <div class="mockup-frame" aria-hidden="true">
+    <div class="mockup-titlebar"><span></span><span></span><span></span></div>
+    <div class="mockup-body">
+      <aside class="mock-sidebar">
+        <div class="mock-sidebar-logo">Sentrivo <small>‹</small></div>
+        <div class="mock-nav-item new-email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          New email
+        </div>
+        <div class="mock-nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+          AI Assistant
+        </div>
+        <div class="mock-nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Inbox <span class="badge">13</span>
+        </div>
+        <div class="mock-nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Sent
+        </div>
+        <div class="mock-nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Deadlines <span class="badge">5</span>
+        </div>
+        <div class="mock-nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          Network
+        </div>
+        <div class="mock-nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          Projects <span class="badge amber">3</span>
+        </div>
+        <div class="mock-nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          Applications
+        </div>
+      </aside>
+
+      <main class="mock-content">
+        <div class="mock-header">
+          <div>
+            <div class="mock-title">Applications</div>
+            <div class="mock-subtitle">Tailor your CV, draft cover letters and track outreach, all in one place.</div>
+          </div>
+          <button class="mock-new-btn">+ New application</button>
+        </div>
+
+        <div class="mock-app-grid">
+          <div class="mock-app-card featured">
+            <h4>Summer internship: Economics and policy</h4>
+            <div class="mock-tags"><span class="mock-tag">london</span></div>
+            <div class="mock-stats">
+              <div><div class="mock-stat-num">5</div><div class="mock-stat-label">Speculative</div></div>
+              <div><div class="mock-stat-num">0</div><div class="mock-stat-label">Official</div></div>
+              <div><div class="mock-stat-num">0</div><div class="mock-stat-label">Future</div></div>
+            </div>
+          </div>
+          <div class="mock-app-card">
+            <h4>Economics Research Analyst, London Think Tank</h4>
+            <div class="mock-tags"><span class="mock-tag">intern</span><span class="mock-tag">London</span></div>
+            <div class="mock-stats">
+              <div><div class="mock-stat-num">6</div><div class="mock-stat-label">Speculative</div></div>
+              <div><div class="mock-stat-num">4</div><div class="mock-stat-label">Official</div></div>
+              <div><div class="mock-stat-num">0</div><div class="mock-stat-label">Future</div></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   </div>
-  <div class="hero-trust">
+
+  <div class="trust-strip">
     <span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       Connect via Google OAuth
     </span>
     <span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
       You approve before sending
     </span>
     <span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
       Revoke access anytime
     </span>
     <span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
       Privacy-first
     </span>
   </div>
 </section>
 
-<section class="section" id="features">
-  <h2 class="section-title">5 superpowers. <span>One inbox.</span></h2>
-  <p class="section-sub">Built for students juggling lectures, applications, and admin.</p>
-
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="summarise">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h7M7 16h5"/></svg>
-      Summarise
-    </button>
-    <button class="tab-btn" data-tab="reply">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      Reply
-    </button>
-    <button class="tab-btn" data-tab="mass">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      Mass Email
-    </button>
-    <button class="tab-btn" data-tab="network">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-      Networking
-    </button>
-    <button class="tab-btn" data-tab="deadlines">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Deadlines
-    </button>
+<!-- =================== HOW IT WORKS =================== -->
+<section class="section" id="applications">
+  <div class="section-head-center">
+    <span class="section-eyebrow">How it works</span>
+    <h2 class="section-title">From a single sentence to <em>50 personalised emails sent.</em></h2>
+    <p class="section-sub">Tell Sentrivo what you're looking for. It does the rest. Research, writing, sending, following up.</p>
   </div>
 
-  <div id="tab-summarise" class="tab-panel active">
-    <div class="tab-panel-inner">
-      <div class="tab-icon-wrap" style="background:var(--indigo-bg)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h7M7 16h5"/></svg>
+  <div class="steps">
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num">01 · Upload your CV. Tell us what you want.</div>
+        <h3>That's all the setup. One sentence and a PDF.</h3>
+        <p>From your CV and a single-line brief, Sentrivo runs the research, scores org-fit, finds the right contacts, drafts the letters, and queues everything for you to review. No forms, no templates, no copy-paste.</p>
       </div>
-      <div>
-        <h3>Know what matters in seconds, without reading every email.</h3>
-        <p>Every email is automatically categorised into Urgent, To Reply, Actionables, Info, and Junk — with AI summaries and a suggested next action.</p>
-        <div class="pills">
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Daily digest</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Smart bucketing (Urgent / Reply / Info)</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Suggested next action</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Academic deadline detection</span>
+      <div class="step-visual">
+        <div class="v1-label">Set up your search</div>
+        <div class="v1-cv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          CV_2026.pdf
+          <span class="v1-cv-ok">✓ Parsed</span>
+        </div>
+        <div class="v1-input">Summer internship: Economics and policy</div>
+        <div class="v1-chips">
+          <span class="v1-chip sage">london</span>
+          <span class="v1-chip">undergraduate</span>
+          <span class="v1-chip">summer 2026</span>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="tab-reply" class="tab-panel">
-    <div class="tab-panel-inner">
-      <div class="tab-icon-wrap" style="background:var(--indigo-bg)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num">02 · We find the best-fit orgs</div>
+        <h3>Ranked by how well they actually match your background.</h3>
+        <p>Sentrivo surfaces smaller organisations open to speculative outreach, scores each one on fit, and finds the right person to email, or the most-watched general inbox if no contact is public.</p>
       </div>
-      <div>
-        <h3>Draft professional replies in one click, matched to your tone.</h3>
-        <p>Tell Sentrivo what you want to say — it writes the full reply. Short, normal, or formal. Edit and send, or batch-process your whole inbox at once.</p>
-        <div class="pills">
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">AI drafts for students</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Short / Normal / Formal variants</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Edit &amp; regenerate</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Batch reply queue</span>
+      <div class="step-visual">
+        <table class="v2-table">
+          <thead>
+            <tr><th>Org</th><th>Fit</th><th>Contact</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="v2-org">Meridian Policy Lab</span></td>
+              <td><span class="v2-bar b90"></span>90%</td>
+              <td>hello@meridianlab…</td>
+            </tr>
+            <tr>
+              <td><span class="v2-org">Northbridge Foundation</span></td>
+              <td><span class="v2-bar b85"></span>85%</td>
+              <td>j.morris@northbridge…</td>
+            </tr>
+            <tr>
+              <td><span class="v2-org">Atlas Behavioural Group</span></td>
+              <td><span class="v2-bar b82"></span>82%</td>
+              <td>contact@atlasbg…</td>
+            </tr>
+            <tr>
+              <td><span class="v2-org">Verity Economics</span></td>
+              <td><span class="v2-bar b75"></span>75%</td>
+              <td>info@verityecon…</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num">03 · We write each cover letter</div>
+        <h3>Genuinely personalised. Not a template with the company name swapped in.</h3>
+        <p>From your CV and what we learn about each organisation, Sentrivo drafts a specific cover letter for every single application. Each one references concrete org details and connects your experience to their work. You review before anything sends.</p>
+      </div>
+      <div class="step-visual">
+        <div class="v3-card">
+          <div class="v3-head">
+            <div>
+              <h5>Meridian Policy Lab</h5>
+              <small>Cover letter · 410 words</small>
+            </div>
+            <span class="v3-status">Ready</span>
+          </div>
+          <ul class="v3-checks">
+            <li>References org specifics</li>
+            <li>Connects your experience</li>
+            <li>Word count 380–420</li>
+            <li>Tone appropriate</li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="tab-mass" class="tab-panel">
-    <div class="tab-panel-inner">
-      <div class="tab-icon-wrap" style="background:var(--indigo-bg)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-text">
+        <div class="step-num">04 · Send, then chase the conversation</div>
+        <h3>Sentrivo doesn't just send. It manages every reply.</h3>
+        <p>Two weeks after sending, Sentrivo nudges you to follow up. When orgs reply, it sorts each thread by what they need next: respond to an offer, send more info, schedule a call. So you never let a conversation go cold.</p>
       </div>
-      <div>
-        <h3>Send personalised internship outreach at scale, not copy-paste.</h3>
-        <p>Upload a CSV or DOCX of companies and contacts. Sentrivo generates a personalised email for each recipient and sends them all in seconds.</p>
-        <div class="pills">
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Upload CSV / TXT / DOCX</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Template variables ({FirstName})</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Per-recipient personalisation</span>
-          <span class="pill" style="color:var(--indigo);border-color:rgba(79,70,229,0.25);background:var(--indigo-bg)">Duplicate checks</span>
-        </div>
+      <div class="step-visual v4-visual">
+        <table class="v4-table">
+          <thead>
+            <tr>
+              <th>Org</th>
+              <th>Status</th>
+              <th>Nudge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="v4-org">Meridian Policy Lab</span></td>
+              <td><span class="v4-status status-sent">sent</span></td>
+              <td><span class="v4-nudge nudge-amber">Send follow-up</span></td>
+            </tr>
+            <tr>
+              <td><span class="v4-org">Northbridge Foundation</span></td>
+              <td><span class="v4-status status-replied">replied</span></td>
+              <td><span class="v4-nudge nudge-sage">Respond to offer</span></td>
+            </tr>
+            <tr>
+              <td><span class="v4-org">Atlas Behavioural Group</span></td>
+              <td><span class="v4-status status-replied">replied</span></td>
+              <td><span class="v4-nudge nudge-blue">Send more info</span></td>
+            </tr>
+            <tr>
+              <td><span class="v4-org">Verity Economics</span></td>
+              <td><span class="v4-status status-sent">sent</span></td>
+              <td><span class="v4-nudge nudge-muted">Waiting reply</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
 
-  <div id="tab-network" class="tab-panel">
-    <div class="tab-panel-inner">
-      <div class="tab-icon-wrap" style="background:var(--green-bg)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-      </div>
-      <div>
-        <h3>Track every professor, recruiter, and company you contact.</h3>
-        <p>Sentrivo automatically builds a contact record for everyone you email — with conversation history, follow-up reminders, and relationship status tracking.</p>
-        <div class="pills">
-          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Contact history</span>
-          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Reply tracking</span>
-          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Follow-up reminders</span>
-          <span class="pill" style="color:var(--green);border-color:rgba(16,185,129,0.25);background:var(--green-bg)">Outreach status</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="tab-deadlines" class="tab-panel">
-    <div class="tab-panel-inner">
-      <div class="tab-icon-wrap" style="background:var(--red-bg)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <div>
-        <h3>Never miss an application deadline, assignment, or scholarship date.</h3>
-        <p>As emails arrive, Sentrivo's AI scans for dates and commitments — automatically creating deadline cards so nothing slips through the cracks.</p>
-        <div class="pills">
-          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Auto-detected dates</span>
-          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Internship cutoffs</span>
-          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Assignment reminders</span>
-          <span class="pill" style="color:var(--red);border-color:rgba(239,68,68,0.25);background:var(--red-bg)">Scholarship alerts</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
+<!-- =================== ALSO IN YOUR INBOX =================== -->
+<div class="also-bg">
+  <section class="section" id="inbox">
+    <div class="section-head-center">
+      <span class="section-eyebrow">And everything else your inbox needs</span>
+      <h2 class="section-title">A full email assistant, <em>not just applications.</em></h2>
+      <p class="section-sub">Sentrivo handles the rest of your student inbox too, so admin doesn't eat your week.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h7M7 16h5"/></svg>
+        </div>
+        <h4>Smart inbox & summaries</h4>
+        <p>Every email auto-sorted into Urgent, To Reply, Actionables, Info, Junk, with a one-line summary and suggested next action.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h4>AI drafts and reply queue</h4>
+        <p>Tell Sentrivo what to say. It writes the reply. Batch-process your whole "To Reply" stack in one sitting.</p>
+      </div>
+      <div class="feature-card red">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4>Deadlines, detected automatically</h4>
+        <p>Sentrivo scans incoming email for dates, cutoffs, scholarship deadlines, and assignments, and adds them to a tracker.</p>
+      </div>
+      <div class="feature-card amber">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h4>A network that follows up for you</h4>
+        <p>Never miss a follow-up with a professor, recruiter, or contact. Sentrivo writes the next email so they remember who you are.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+        </div>
+        <h4>Calendar that schedules itself</h4>
+        <p>Sentrivo spots meeting requests and event invites in your inbox, proposes times, sends the calendar invites, and keeps every commitment in one place.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =================== PRIVACY =================== -->
 <section class="section" id="privacy">
-  <h2 class="section-title">Privacy &amp; control</h2>
-  <p class="section-sub">Connecting Gmail requires trust. Here's exactly how Sentrivo works.</p>
+  <div class="section-head-center">
+    <span class="section-eyebrow">Privacy & control</span>
+    <h2 class="section-title">Connecting Gmail requires trust. <em>Here's exactly how it works.</em></h2>
+  </div>
   <div class="privacy-grid">
     <div class="privacy-card">
       <div class="privacy-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
       <div>
         <h4>Google OAuth connection</h4>
@@ -467,25 +1077,25 @@
     </div>
     <div class="privacy-card">
       <div class="privacy-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       </div>
       <div>
         <h4>Read-only by default</h4>
-        <p>Sentrivo reads your emails to summarise and organise. It never writes without your action.</p>
+        <p>Sentrivo reads your emails to organise them. It never writes or sends without your action.</p>
       </div>
     </div>
     <div class="privacy-card">
       <div class="privacy-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </div>
       <div>
         <h4>Nothing is sent without your approval</h4>
-        <p>Drafts are yours to review, edit, and approve before anything leaves your inbox.</p>
+        <p>Every application draft is yours to review, edit, and approve before it leaves your inbox.</p>
       </div>
     </div>
     <div class="privacy-card">
       <div class="privacy-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
       </div>
       <div>
         <h4>Revoke access anytime</h4>
@@ -495,59 +1105,80 @@
   </div>
 </section>
 
-<section class="section" id="faq" style="padding-top:0">
-  <h2 class="section-title" style="margin-bottom:0.5rem">Frequently asked questions</h2>
-  <p class="section-sub" style="margin-bottom:2rem">Everything you need to know.</p>
+<!-- =================== FAQ =================== -->
+<section class="section-narrow" id="faq">
+  <div class="section-head-center">
+    <span class="section-eyebrow">FAQ</span>
+    <h2 class="section-title">Frequently asked <em>questions.</em></h2>
+  </div>
   <div class="faq">
     <div class="faq-item">
       <button class="faq-q">
-        Is it safe to connect my Gmail?
-        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        How does Sentrivo find organisations to apply to?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="faq-a">Yes. We use Google's official OAuth2 protocol — the same standard used by apps like Notion, Calendly, and Zoom. Your password is never shared with us, and you can revoke access anytime from your Google account security settings.</div>
+      <div class="faq-a">You describe what you're looking for in one sentence. Sentrivo searches across publicly available organisation data, scores each match on how well it fits your background and stated interests, and surfaces the orgs most open to speculative outreach: typically smaller research organisations, think tanks, and labs where a tailored email actually gets read.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">
-        Will Sentrivo send emails on my behalf without asking?
-        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        Are the cover letters actually personalised, or just templates?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="faq-a">Never. Sentrivo drafts emails for you to review and approve. Nothing is sent without your explicit action. You're always in control.</div>
+      <div class="faq-a">Genuinely personalised. Each letter pulls from your CV, references specific things about that organisation's work, and connects your experience to their mission. Every draft is validated against checks for org-specific detail, tone, and length before it's marked ready, and you review everything before anything sends.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Is it safe to connect my Gmail?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a">Yes. We use Google's official OAuth2 protocol, the same standard used by Notion, Calendly, and Zoom. Your password is never shared with us, and you can revoke access in seconds from your Google account security settings.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        Will Sentrivo send emails without asking?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a">Never. Sentrivo drafts everything in a queue for you to review. Applications, replies, and follow-ups all wait for your explicit click. You're always in control.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">
         When do I get access?
-        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="faq-a">We're rolling out access in batches to waitlist members. Join the waitlist and you'll be among the first students to get early access — for free.</div>
+      <div class="faq-a">We're rolling out in batches to waitlist members. Join the waitlist and you'll be among the first students to get early access, free of charge.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">
         Is Sentrivo free?
-        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="faq-a">Early access is free for waitlist members. We'll offer a generous free tier when we launch publicly, with paid plans for power users who want unlimited AI features.</div>
+      <div class="faq-a">Early access is free for waitlist members. We'll offer a generous free tier when we launch publicly, with paid plans for power users who want unlimited applications and AI features.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q">
-        Does it work with Outlook or other email providers?
-        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        Does it work with Outlook?
+        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="faq-a">Right now Sentrivo works with Gmail, including university Google Workspace accounts. Support for Outlook and other providers is on our roadmap.</div>
+      <div class="faq-a">Right now Sentrivo works with Gmail, including university Google Workspace accounts. Outlook support is on the roadmap.</div>
     </div>
   </div>
 </section>
 
-<!-- WAITLIST — powered by Tally -->
+<!-- =================== WAITLIST (Tally · UNCHANGED) =================== -->
 <section class="waitlist-section" id="waitlist">
-  <h2>Join the waitlist</h2>
-  <p>Be among the first students to get access.</p>
-  <div style="max-width:480px; margin: 0 auto;">
-    <iframe data-tally-src="https://tally.so/embed/LZ5PKv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="Sentrivo Waiting List"></iframe>
-    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+  <div class="waitlist-inner">
+    <h2>Join the <em>waitlist.</em></h2>
+    <p>Be among the first students to get access.</p>
+    <div class="tally-wrap">
+      <iframe data-tally-src="https://tally.so/embed/LZ5PKv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="Sentrivo Waiting List"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    </div>
   </div>
 </section>
 
+<!-- =================== FOOTER =================== -->
 <footer>
+  <span class="footer-logo">Sentrivo</span>
   <div>© 2026 Sentrivo. Built for students, by students.</div>
   <div class="footer-links">
     <a href="#">Privacy policy</a>
@@ -556,15 +1187,7 @@
 </footer>
 
 <script>
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-    });
-  });
-
+  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
