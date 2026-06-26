@@ -1,1312 +1,1570 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sentrivo · AI cover letters & speculative applications for students</title>
-  <meta name="description" content="Sentrivo is a free AI email assistant for university students. Upload your CV, describe what you want, and it sends up to 20 personalised speculative applications a week, then follows up automatically. Gmail only. Free beta with waitlist." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sentrivo · AI email assistant for students</title>
+<meta name="description" content="Sentrivo, the AI email assistant for university students. Now sends up to 20 personalised speculative applications a week, summarises your inbox, drafts every reply, tracks deadlines, and keeps your network warm. Gmail only. Free beta." />
+<link rel="canonical" href="https://www.sentrivo-inbox.com/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="google-site-verification" content="PASTE_YOUR_VERIFICATION_CODE_HERE" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Sentrivo" />
+<meta property="og:title" content="Sentrivo · AI email assistant for students" />
+<meta property="og:description" content="The AI email assistant that now sends up to 20 personalised speculative applications a week. Cuts email admin to 5 minutes a day. Free beta." />
+<meta property="og:url" content="https://www.sentrivo-inbox.com/" />
+<meta property="og:image" content="https://www.sentrivo-inbox.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sentrivo · AI email assistant for students" />
+<meta name="twitter:description" content="Sends 20 personalised speculative applications a week. Cuts email admin to 5 minutes a day. Free beta." />
+<meta name="twitter:image" content="https://www.sentrivo-inbox.com/og-image.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Sentrivo",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Email assistant",
+  "operatingSystem": "Web",
+  "url": "https://www.sentrivo-inbox.com/",
+  "description": "Sentrivo is a free AI email assistant for university students. It finds organisations that fit your profile, writes a personalised cover letter for each, sends up to 20 speculative applications per week, and follows up automatically after two weeks. It also summarises your inbox, drafts replies, tracks deadlines, manages your calendar, and reminds you to follow up with contacts. Works with Gmail only.",
+  "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
+  "featureList": [
+    "Finds best-fit organisations from a one-line brief",
+    "Writes a personalised cover letter for each organisation from your CV",
+    "Sends speculative applications by email",
+    "Automatic follow-up two weeks after sending",
+    "Smart inbox categorisation and AI summaries",
+    "AI reply drafting and batch reply queue",
+    "Automatic deadline detection from emails",
+    "Calendar scheduling and meeting setup",
+    "Contact and follow-up tracking"
+  ],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "availability": "https://schema.org/PreOrder", "description": "Free during beta. Access is currently waitlist-only." },
+  "softwareHelp": "https://www.sentrivo-inbox.com/#faq",
+  "isAccessibleForFree": true
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How does Sentrivo find organisations to apply to?", "acceptedAnswer": { "@type": "Answer", "text": "You describe what you're looking for in one sentence. Sentrivo searches publicly available organisation data, scores each match against your background, and surfaces orgs most open to speculative outreach." } },
+    { "@type": "Question", "name": "Are the cover letters actually personalised?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each letter pulls from your CV, references specific things about each organisation's work, and connects your experience to their mission. Every draft is validated before it's marked ready." } },
+    { "@type": "Question", "name": "Is it safe to connect my Gmail?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We use Google's OAuth2 protocol, the same standard as Notion, Calendly, and Zoom. Your password is never shared. Revoke access in seconds." } },
+    { "@type": "Question", "name": "Will Sentrivo send emails without asking?", "acceptedAnswer": { "@type": "Answer", "text": "Never. Everything queues for review. Every send is yours." } },
+    { "@type": "Question", "name": "Is Sentrivo free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Free during beta. Access is waitlist-only." } },
+    { "@type": "Question", "name": "Does it work with Outlook?", "acceptedAnswer": { "@type": "Answer", "text": "Not yet. Gmail and Google Workspace only. Outlook is on the roadmap." } }
+  ]
+}
+</script>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.sentrivo-inbox.com/" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Google Search Console verification: paste the content value Google gives you between the quotes -->
-  <meta name="google-site-verification" content="PASTE_YOUR_VERIFICATION_CODE_HERE" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff;
+  --bg-soft: #fafaf7;
+  --bg-section: #f6f5f0;
+  --ink: #0e1411;
+  --ink-2: #4b504d;
+  --ink-3: #898d8a;
+  --border: #e8e8e3;
+  --border-2: #f0f0ec;
+  --forest: #0e3328;
+  --forest-2: #143e30;
+  --sage: #5fb592;
+  --sage-bg: #e1f0e6;
+  --green: #1b7a50;
+  --green-bg: #ecf5ef;
+  --red: #c44141;
+  --amber: #a36812;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --max: 1180px;
 
-  <!-- Open Graph (link previews on LinkedIn, WhatsApp, Facebook) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Sentrivo" />
-  <meta property="og:title" content="Sentrivo · AI cover letters & speculative applications for students" />
-  <meta property="og:description" content="Free AI email assistant for students. Upload your CV, describe what you want, and Sentrivo sends up to 20 personalised speculative applications a week, then follows up automatically. Gmail only. Free beta." />
-  <meta property="og:url" content="https://www.sentrivo-inbox.com/" />
-  <meta property="og:image" content="https://www.sentrivo-inbox.com/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  /* App mockup palette */
+  --app-bg: #f3eee3;
+  --app-card: #ffffff;
+  --app-ink: #1f2924;
+  --app-ink-2: #5a635c;
+  --app-ink-3: #918c7c;
+  --app-border: #e6dfcc;
+  --app-border-2: #efeadc;
+  --app-sage: #5fb592;
+  --app-mint: #d8edd9;
+  --app-forest: #0e3328;
+  --app-urgent-bg: #f9dcd9;
+  --app-urgent-ink: #b34a3e;
+  --app-toreply-bg: #f3e6c8;
+  --app-toreply-ink: #8b6320;
+  --app-info-bg: #d9ebd9;
+  --app-info-ink: #3a6e4a;
+  --app-action-bg: #f3dbc8;
+  --app-action-ink: #985236;
+  --app-social-bg: #dde7f3;
+  --app-social-ink: #3a5a82;
+  --app-badge-red: #d44c4c;
+  --app-badge-amber: #d4a04a;
+}
 
-  <!-- Twitter / X card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sentrivo · AI cover letters & speculative applications for students" />
-  <meta name="twitter:description" content="Free AI email assistant for students. Sends up to 20 personalised speculative applications a week and follows up automatically. Gmail only. Free beta." />
-  <meta name="twitter:image" content="https://www.sentrivo-inbox.com/og-image.png" />
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  background: var(--bg); color: var(--ink); line-height: 1.55;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; font-size: 16px;
+}
+.serif-italic { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 400; }
+.mono { font-family: 'Geist Mono', ui-monospace, monospace; font-feature-settings: 'tnum'; letter-spacing: -0.01em; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+img { max-width: 100%; height: auto; display: block; }
 
-  <!-- Structured data: what Sentrivo is, for machines and AI tools -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Sentrivo",
-    "applicationCategory": "BusinessApplication",
-    "applicationSubCategory": "Email assistant",
-    "operatingSystem": "Web",
-    "url": "https://www.sentrivo-inbox.com/",
-    "description": "Sentrivo is a free AI email assistant for university students. It finds organisations that fit your profile, writes a personalised cover letter for each, sends up to 20 speculative applications per week, and follows up automatically after two weeks. It also summarises your inbox, drafts replies, tracks deadlines, manages your calendar, and reminds you to follow up with contacts. Works with Gmail only.",
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalRole": "student"
-    },
-    "featureList": [
-      "Finds best-fit organisations from a one-line brief",
-      "Writes a personalised cover letter for each organisation from your CV",
-      "Sends speculative applications by email",
-      "Automatic follow-up two weeks after sending",
-      "Smart inbox categorisation and AI summaries",
-      "AI reply drafting and batch reply queue",
-      "Automatic deadline detection from emails",
-      "Calendar scheduling and meeting setup",
-      "Contact and follow-up tracking"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "GBP",
-      "availability": "https://schema.org/PreOrder",
-      "description": "Free during beta. Access is currently waitlist-only."
-    },
-    "softwareHelp": "https://www.sentrivo-inbox.com/#faq",
-    "isAccessibleForFree": true
-  }
-  </script>
+/* ============ NAV ============ */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-2); height: 64px;
+}
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 2rem; height: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.nav-logo {
+  font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 1.45rem;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.025em;
+}
+.nav-logo:hover { color: var(--forest); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.9rem; color: var(--ink-2); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--ink); }
+.btn {
+  font-family: inherit; font-size: 0.9rem; font-weight: 500;
+  padding: 0.6rem 1.1rem; border-radius: var(--radius); cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  transition: all 0.15s; border: 1px solid transparent; line-height: 1;
+}
+.btn-primary { background: var(--ink); color: white; border-color: var(--ink); }
+.btn-primary:hover { background: var(--forest); border-color: var(--forest); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--border); }
+.btn-ghost:hover { border-color: var(--ink-2); }
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How does Sentrivo find organisations to apply to?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You describe what you are looking for in one sentence. Sentrivo searches across publicly available organisation data, scores each match on how well it fits your background and stated interests, and surfaces the organisations most open to speculative outreach, typically smaller research organisations, think tanks, and labs where a tailored email actually gets read."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are the cover letters actually personalised, or just templates?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Genuinely personalised. Each letter pulls from your CV, references specific things about that organisation's work, and connects your experience to their mission. Every draft is validated against checks for organisation-specific detail, tone, and length before it is marked ready, and you review everything before anything sends."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is it safe to connect my Gmail?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Sentrivo uses Google's official OAuth2 protocol, the same standard used by Notion, Calendly, and Zoom. Your password is never shared, and you can revoke access in seconds from your Google account security settings."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Will Sentrivo send emails without asking?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Never. Sentrivo drafts everything in a queue for you to review. Applications, replies, and follow-ups all wait for your explicit click. You are always in control."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is Sentrivo free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Sentrivo is completely free during its beta. Access is currently waitlist-only while it rolls out in batches to students."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Sentrivo work with Outlook?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not yet. Sentrivo currently works with Gmail only, including university Google Workspace accounts. Outlook support is on the roadmap."
-        }
-      }
-    ]
-  }
-  </script>
+/* ============ HERO ============ */
+.hero { padding: 4.5rem 0 4rem; text-align: center; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'Geist Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em;
+  color: var(--ink-2); text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.hero-title {
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 500; line-height: 1.02; letter-spacing: -0.03em;
+  max-width: 16ch; margin: 0 auto 1.25rem;
+}
+.hero-title .accent {
+  display: block; font-family: 'Newsreader', Georgia, serif;
+  font-style: italic; font-weight: 400; color: var(--forest); letter-spacing: -0.02em;
+}
+.hero-sub {
+  font-size: 1.1rem; color: var(--ink-2);
+  max-width: 620px; margin: 0 auto 2rem; line-height: 1.6;
+}
+.hero-sub strong { color: var(--ink); font-weight: 500; }
+.hero-cta { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.hero-cta .btn { padding: 0.8rem 1.5rem; font-size: 0.95rem; }
+.hero-meta { display: flex; gap: 1.75rem; flex-wrap: wrap; justify-content: center; font-size: 0.82rem; color: var(--ink-3); margin-bottom: 5rem; }
+.hero-meta span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.hero-meta svg { width: 13px; height: 13px; stroke: var(--ink-3); }
+.hero-image-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.hero-image { width: 100%; border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15,19,17,0.04), 0 30px 80px -20px rgba(15,19,17,0.18); }
+.hero-image img { width: 100%; height: auto; display: block; }
+.hero-caption { text-align: center; margin-top: 1.25rem; font-family: 'Geist Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink-3); text-transform: uppercase; }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ============ SECTIONS ============ */
+.section { padding: 7rem 0; }
+.section-head { margin-bottom: 3rem; max-width: 760px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-label { font-family: 'Geist Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em;
+  color: var(--green); text-transform: uppercase; margin-bottom: 0.85rem; }
+.section-title {
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  font-weight: 500; letter-spacing: -0.028em; line-height: 1.08;
+  color: var(--ink); margin-bottom: 0.85rem;
+}
+.section-title .accent { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 400; color: var(--forest); }
+.section-sub { color: var(--ink-2); font-size: 1.05rem; line-height: 1.55; max-width: 600px; }
+.section-head.center .section-sub { margin: 0 auto; }
 
-    :root {
-      /* App palette, sampled directly from the product UI */
-      --cream: #F2EDE0;
-      --cream-2: #EAE3D0;
-      --cream-3: #DCD3BE;
-      --forest: #0E3328;
-      --forest-2: #143E30;
-      --sage: #4F9D7C;
-      --sage-bright: #5FB592;
-      --sage-bg: #DCEDE2;
-      --ink: #0A1F18;
-      --ink-2: #3D4A43;
-      --ink-3: #7A857E;
-      --white: #FFFFFF;
-      --border: #DCD3BE;
-      --border-soft: #E8E1CE;
-      --red: #C44141;
-      --red-bg: #F4D9D5;
-      --amber: #B07014;
-      --amber-bg: #F1E3C2;
+/* ============ KILLER SECTION ============ */
+.killer-section { background: var(--bg-section); padding: 5rem 0 7rem;
+  border-top: 1px solid var(--border-2); border-bottom: 1px solid var(--border-2); }
+.killer-mockup-wrap .app-frame { max-height: none; }
+.killer-mockup-wrap { max-width: 1080px; margin: 0 auto;
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15,19,17,0.04), 0 24px 60px -20px rgba(15,19,17,0.12); }
+.killer-features {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; margin-top: 4rem; max-width: 1000px;
+  margin-left: auto; margin-right: auto;
+}
+.killer-feature h4 { font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem;
+  display: flex; align-items: center; gap: 0.5rem; }
+.killer-feature h4 .num { font-family: 'Geist Mono', monospace; font-size: 0.7rem;
+  color: var(--green); font-weight: 400; letter-spacing: 0.05em; }
+.killer-feature p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.55; }
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-      --radius-xl: 20px;
-    }
+/* ============ HOW IT WORKS ============ */
+.how-grid {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 0;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.how-col { padding: 2.5rem 2.5rem 2.5rem 0; }
+.how-col + .how-col { padding-left: 2.5rem; border-left: 1px solid var(--border); }
+.how-col-head { display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 1.75rem; gap: 1rem; }
+.how-col-head h3 { font-size: 1.05rem; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+.how-col-head .time { font-family: 'Geist Mono', monospace; font-size: 0.7rem; color: var(--ink-3);
+  letter-spacing: 0.04em; text-transform: uppercase; }
+.how-step { padding: 1.25rem 0; border-top: 1px dashed var(--border-2); }
+.how-step:first-of-type { border-top: none; padding-top: 0; }
+.how-step h4 { font-size: 0.98rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem;
+  display: flex; align-items: baseline; gap: 0.6rem; }
+.how-step h4 .n { font-family: 'Geist Mono', monospace; font-size: 0.7rem;
+  color: var(--green); font-weight: 400; letter-spacing: 0.04em; }
+.how-step p { font-size: 0.92rem; color: var(--ink-2); line-height: 1.6; }
 
-    html { scroll-behavior: smooth; }
+/* ============ FEATURE BLOCKS ============ */
+.feature-block { display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center; padding: 5rem 0; }
+.feature-block + .feature-block { border-top: 1px solid var(--border-2); }
+.feature-block.reverse .feature-text { order: 2; }
+.feature-block.reverse .feature-img-wrap { order: 1; }
+.feature-text .section-label { color: var(--green); }
+.feature-text h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500; letter-spacing: -0.025em; line-height: 1.15;
+  color: var(--ink); margin: 0.85rem 0 1rem;
+}
+.feature-text h3 .accent { font-family: 'Newsreader', Georgia, serif; font-style: italic; color: var(--forest); font-weight: 400; }
+.feature-text p { font-size: 1rem; color: var(--ink-2); line-height: 1.6; margin-bottom: 1rem; }
+.feature-text ul { list-style: none; }
+.feature-text ul li { font-size: 0.92rem; color: var(--ink-2); padding: 0.5rem 0 0.5rem 1.5rem; position: relative; }
+.feature-text ul li::before { content: ""; position: absolute; left: 0; top: 1.1rem; width: 14px; height: 1px; background: var(--green); }
+.feature-text ul li strong { color: var(--ink); font-weight: 500; }
+.feature-img-wrap {
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15,19,17,0.04), 0 16px 40px -16px rgba(15,19,17,0.14);
+}
 
-    body {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+.email-assistant-section { background: var(--bg-section);
+  border-top: 1px solid var(--border-2); border-bottom: 1px solid var(--border-2); }
+.email-assistant-section .feature-block + .feature-block { border-top: 1px solid var(--border); }
 
-    .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.01em; }
+/* ============ FOUNDER ============ */
+.founder-section { padding: 6rem 0; background: var(--bg-soft);
+  border-top: 1px solid var(--border-2); border-bottom: 1px solid var(--border-2); }
+.founder-inner {
+  max-width: 820px; margin: 0 auto; padding: 0 2rem;
+  display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center;
+}
+.founder-photo { width: 140px; height: 140px; border-radius: 50%; overflow: hidden;
+  background: var(--ink); flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(14,51,40,0.06), 0 12px 32px -12px rgba(14,51,40,0.18); }
+.founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+.founder-quote { font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(1.25rem, 1.9vw, 1.5rem); font-weight: 400; line-height: 1.45;
+  color: var(--ink); letter-spacing: -0.012em; margin: 0.5rem 0 1rem; }
+.founder-quote em { font-style: italic; color: var(--forest); }
+.founder-credit { font-size: 0.92rem; color: var(--ink-3); }
+.founder-credit strong { color: var(--ink); font-weight: 500; }
 
-    /* ============ NAV ============ */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(242,237,224,0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-soft);
-      padding: 0 2rem;
-      height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 500;
-      font-size: 1.5rem;
-      color: var(--forest);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.92rem; font-weight: 400;
-      color: var(--ink-2); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--forest); }
+/* ============ PRIVACY ============ */
+.privacy-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
+.privacy-item { padding: 1.5rem 0 0; border-top: 1px solid var(--ink); }
+.privacy-item .pnum { font-family: 'Geist Mono', monospace; font-size: 0.7rem; color: var(--ink-3);
+  letter-spacing: 0.05em; margin-bottom: 1rem; display: block; }
+.privacy-item h4 { font-size: 0.98rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
+.privacy-item p { font-size: 0.88rem; color: var(--ink-2); line-height: 1.55; }
 
-    .btn-primary {
-      background: var(--forest); color: var(--cream);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500; font-size: 0.92rem;
-      padding: 0.65rem 1.4rem; border-radius: var(--radius-md);
-      border: 1px solid var(--forest);
-      cursor: pointer; text-decoration: none;
-      transition: all 0.2s;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-    .btn-primary:hover {
-      background: var(--forest-2);
-      transform: translateY(-1px);
-    }
-    .btn-ghost {
-      background: transparent; color: var(--forest);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500; font-size: 0.92rem;
-      padding: 0.65rem 1.4rem; border-radius: var(--radius-md);
-      border: 1px solid var(--cream-3); cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: all 0.2s;
-    }
-    .btn-ghost:hover { border-color: var(--forest); background: rgba(14,51,40,0.04); }
+/* ============ FAQ ============ */
+.faq-wrapper { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q { width: 100%; text-align: left; padding: 1.25rem 0;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 1rem; font-weight: 500;
+  color: var(--ink); display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; letter-spacing: -0.005em; }
+.faq-q:hover { color: var(--forest); }
+.faq-chevron { transition: transform 0.2s; flex-shrink: 0; color: var(--ink-3); width: 14px; height: 14px; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 0.94rem; color: var(--ink-2); line-height: 1.6; }
+.faq-item.open .faq-a { max-height: 320px; padding: 0 0 1.4rem; }
 
-    /* ============ HERO ============ */
-    .hero-wrap { padding: 4rem 2rem 2rem; }
-    .hero {
-      max-width: 1080px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--sage-bg); color: var(--forest);
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em;
-      padding: 0.4rem 0.95rem; border-radius: 50px;
-      margin-bottom: 1.75rem;
-      text-transform: uppercase;
-    }
-    .hero-eyebrow svg { width: 12px; height: 12px; }
-    .hero h1 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.025em;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-      max-width: 14ch;
-      margin-left: auto; margin-right: auto;
-    }
-    .hero h1 em {
-      font-style: italic; color: var(--sage);
-      font-weight: 400;
-    }
-    .hero-sub {
-      font-size: 1.15rem;
-      color: var(--ink-2);
-      max-width: 580px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.55;
-    }
-    .hero-cta {
-      display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
-      margin-bottom: 4rem;
-    }
-    .hero-cta .btn-primary { padding: 0.85rem 1.6rem; font-size: 0.95rem; }
-    .hero-cta .btn-ghost { padding: 0.85rem 1.6rem; font-size: 0.95rem; }
+/* ============ WAITLIST ============ */
+.waitlist-section { background: var(--forest); color: white; padding: 6rem 2rem; }
+.waitlist-inner { max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.waitlist-section h2 { font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 500;
+  letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.85rem; color: white; }
+.waitlist-section h2 .accent { display: block; font-family: 'Newsreader', Georgia, serif;
+  font-style: italic; font-weight: 400; color: rgba(255,255,255,0.55); }
+.waitlist-copy p { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.6; max-width: 420px; }
+.waitlist-label { font-family: 'Geist Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.5);
+  text-transform: uppercase; margin-bottom: 1rem; display: block; }
+.tally-wrap { background: white; border-radius: var(--radius-lg); padding: 1.5rem 1.25rem 0.5rem; }
 
-    /* ============ APP MOCKUP (live HTML, no images) ============ */
-    .mockup-frame {
-      max-width: 1080px;
-      margin: 0 auto;
-      background: var(--white);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--cream-3);
-      overflow: hidden;
-      box-shadow:
-        0 1px 2px rgba(14,51,40,0.04),
-        0 20px 60px -20px rgba(14,51,40,0.18);
-      position: relative;
-    }
-    .mockup-titlebar {
-      background: #E8E1CE;
-      padding: 10px 14px;
-      display: flex; gap: 7px;
-      border-bottom: 1px solid var(--cream-3);
-    }
-    .mockup-titlebar span {
-      width: 11px; height: 11px; border-radius: 50%;
-      background: #CFC4A8;
-    }
-    .mockup-titlebar span:nth-child(1) { background: #DC6D5C; }
-    .mockup-titlebar span:nth-child(2) { background: #D9B14E; }
-    .mockup-titlebar span:nth-child(3) { background: #62A668; }
+/* ============ FOOTER ============ */
+footer { padding: 3rem 2rem; font-size: 0.85rem; color: var(--ink-3);
+  background: white; border-top: 1px solid var(--border-2); }
+.footer-inner { max-width: var(--max); margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 2rem; flex-wrap: wrap; }
+.footer-logo { font-family: 'Newsreader', Georgia, serif; font-size: 1.1rem; color: var(--ink); }
+.footer-links { display: flex; gap: 1.5rem; }
+footer a { color: var(--ink-3); text-decoration: none; transition: color 0.15s; }
+footer a:hover { color: var(--ink); }
 
-    .mockup-body {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      min-height: 460px;
-    }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.hero > .container > *, .hero-image-wrap { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-image-wrap { animation-delay: 0.15s; }
 
-    /* Sidebar (matches app) */
-    .mock-sidebar {
-      background: var(--forest);
-      color: var(--cream);
-      padding: 1.25rem 0.75rem;
-      font-size: 0.83rem;
-    }
-    .mock-sidebar-logo {
-      font-family: 'Fraunces', serif;
-      font-size: 1.35rem;
-      padding: 0.25rem 0.6rem 1.25rem;
-      color: var(--cream);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .mock-sidebar-logo small {
-      font-size: 1rem; opacity: 0.45;
-    }
-    .mock-nav-item {
-      display: flex; align-items: center; gap: 0.6rem;
-      padding: 0.5rem 0.7rem;
-      border-radius: 8px;
-      color: rgba(242,237,224,0.78);
-      margin-bottom: 2px;
-      position: relative;
-    }
-    .mock-nav-item.new-email {
-      background: rgba(95,181,146,0.18);
-      color: var(--cream);
-    }
-    .mock-nav-item.active {
-      background: var(--sage-bright);
-      color: var(--white);
-    }
-    .mock-nav-item svg { width: 14px; height: 14px; flex-shrink: 0; }
-    .mock-nav-item .badge {
-      margin-left: auto;
-      font-size: 0.7rem; padding: 1px 7px;
-      border-radius: 50px;
-      background: var(--red); color: white;
-      font-weight: 500;
-    }
-    .mock-nav-item .badge.amber { background: var(--amber); }
-    .mock-sidebar-divider {
-      height: 1px;
-      background: rgba(242,237,224,0.12);
-      margin: 0.75rem 0.5rem;
-    }
+/* ====================================================================
+   APP MOCKUP STYLES. Shared by all 8 mockups
+   ==================================================================== */
+.app-frame {
+  width: 100%;
+  background: var(--app-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 380px;
+  max-height: 460px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--app-ink);
+}
+.app-sb {
+  background: var(--app-forest);
+  padding: 0.9rem 0.55rem;
+  color: rgba(245, 240, 223, 0.78);
+  font-size: 0.78rem;
+}
+.app-sb-head { display: flex; justify-content: space-between; align-items: center;
+  padding: 0.3rem 0.6rem 1rem; }
+.app-sb-logo { font-family: 'Newsreader', serif; font-size: 1.1rem;
+  color: #f5f0df; letter-spacing: -0.02em; }
+.app-sb-new {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: rgba(95,181,146,0.15);
+  color: #f5f0df;
+  border: none;
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-family: inherit;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+.app-sb-new svg { width: 11px; height: 11px; }
+.app-sb-item {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  margin-bottom: 1px;
+  color: rgba(245, 240, 223, 0.65);
+  cursor: pointer;
+}
+.app-sb-item.active { background: var(--app-sage); color: white; }
+.app-sb-item svg { width: 11px; height: 11px; flex-shrink: 0; }
+.app-sb-badge {
+  margin-left: auto;
+  background: var(--app-badge-red);
+  color: white;
+  padding: 0 6px;
+  border-radius: 30px;
+  font-size: 0.6rem;
+  font-family: 'Geist Mono', monospace;
+  font-weight: 500;
+}
+.app-sb-badge.amber { background: var(--app-badge-amber); }
 
-    /* Content */
-    .mock-content {
-      padding: 1.5rem 1.75rem;
-      background: var(--cream);
-      overflow: hidden;
-    }
-    .mock-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 1.5rem;
-    }
-    .mock-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1.45rem;
-      color: var(--ink);
-      margin-bottom: 0.2rem;
-    }
-    .mock-subtitle {
-      font-size: 0.82rem;
-      color: var(--ink-2);
-    }
-    .mock-new-btn {
-      background: var(--sage-bright);
-      color: white;
-      font-size: 0.78rem; font-weight: 500;
-      padding: 0.45rem 0.9rem;
-      border-radius: 8px;
-      border: none;
-    }
+.app-main {
+  background: var(--app-bg);
+  padding: 1.25rem 1.5rem;
+  overflow: hidden;
+  font-size: 0.82rem;
+  color: var(--app-ink);
+}
 
-    .mock-app-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-    }
-    .mock-app-card {
-      background: var(--white);
-      border: 1px solid var(--cream-3);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.15rem;
-    }
-    .mock-app-card.featured {
-      border: 1.5px solid var(--sage-bright);
-    }
-    .mock-app-card h4 {
-      font-family: 'Fraunces', serif;
-      font-weight: 500;
-      font-size: 0.95rem;
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
-      color: var(--ink);
-    }
-    .mock-tags { display: flex; gap: 0.3rem; margin-bottom: 0.85rem; }
-    .mock-tag {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 50px;
-      background: var(--cream-2);
-      color: var(--ink-2);
-    }
-    .mock-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
-      text-align: center;
-    }
-    .mock-stat-num {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      color: var(--forest);
-      line-height: 1;
-    }
-    .mock-stat-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      color: var(--ink-3);
-      text-transform: uppercase;
-      margin-top: 0.3rem;
-    }
+/* ====================================================================
+   MOCKUP-SPECIFIC: APPLICATIONS
+   ==================================================================== */
+.apps-back { color: var(--app-sage); font-weight: 500; margin-bottom: 0.75rem; font-size: 0.78rem; }
+.apps-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+.apps-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.2rem; color: var(--app-ink); margin-bottom: 0.15rem; }
+.apps-sub { font-size: 0.75rem; color: var(--app-ink-2); }
+.apps-title-actions { display: flex; gap: 0.5rem; align-items: center; }
+.apps-tag { background: var(--app-card); border: 1px solid var(--app-border); border-radius: 30px;
+  padding: 0.15rem 0.6rem; font-size: 0.7rem; color: var(--app-ink-2); }
+.apps-delete { color: #b34a3e; border: 1px solid #e8c9c5; border-radius: 6px;
+  padding: 0.3rem 0.65rem; font-size: 0.72rem; }
+.apps-tabs { border-bottom: 1px solid var(--app-border-2); display: flex; gap: 1.2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; }
+.apps-tab { font-size: 0.78rem; color: var(--app-ink-2); padding-bottom: 0.5rem; }
+.apps-tab.active { color: var(--app-sage); border-bottom: 2px solid var(--app-sage); font-weight: 500; margin-bottom: -0.5rem; padding-bottom: 0.5rem; }
+.apps-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center;
+  background: var(--app-card); padding: 0.65rem; border-radius: 8px;
+  border: 1px solid var(--app-border-2); margin-bottom: 1rem; }
+.apps-btn { background: var(--app-bg); border: 1px solid var(--app-border); border-radius: 6px;
+  padding: 0.35rem 0.7rem; font-size: 0.7rem; color: var(--app-ink); cursor: pointer; }
+.apps-selected { margin-left: auto; font-size: 0.7rem; color: var(--app-ink-3); }
+.apps-section-head { display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 0.5rem; padding-top: 0.25rem; }
+.apps-section-title { font-weight: 500; font-size: 0.85rem; color: var(--app-ink); }
+.apps-section-sub { font-size: 0.7rem; color: var(--app-ink-3); }
+.apps-table { width: 100%; background: var(--app-card); border: 1px solid var(--app-border-2);
+  border-radius: 8px; border-collapse: separate; border-spacing: 0; overflow: hidden; font-size: 0.72rem; }
+.apps-table th { text-align: left; padding: 0.5rem 0.7rem; font-weight: 400; font-size: 0.62rem;
+  color: var(--app-ink-3); text-transform: uppercase; letter-spacing: 0.04em;
+  background: var(--app-bg); border-bottom: 1px solid var(--app-border-2); }
+.apps-table td { padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--app-border-2);
+  color: var(--app-ink-2); vertical-align: middle; }
+.apps-table tr:last-child td { border-bottom: none; }
+.apps-org { color: var(--app-forest); font-weight: 500; }
+.apps-listing { color: var(--app-ink-3); font-size: 0.7rem; }
+.apps-bar { display: inline-block; width: 40px; height: 4px; background: var(--app-border);
+  border-radius: 2px; overflow: hidden; margin-right: 0.4rem; vertical-align: middle; }
+.apps-bar span { display: block; height: 100%; background: var(--app-sage); }
+.apps-status { display: inline-block; padding: 1px 7px; border-radius: 30px; font-size: 0.65rem;
+  background: var(--app-border-2); color: var(--app-ink-2); }
+.apps-status.sent { background: var(--app-info-bg); color: var(--app-info-ink); }
+.apps-nudge { display: inline-block; padding: 1px 8px; border-radius: 30px; font-size: 0.65rem; font-weight: 500; }
+.apps-nudge.amber { background: var(--app-toreply-bg); color: var(--app-toreply-ink); }
+.apps-nudge.green { background: var(--app-info-bg); color: var(--app-info-ink); }
 
-    /* Hero trust strip */
-    .trust-strip {
-      max-width: 1080px;
-      margin: 1.75rem auto 0;
-      display: flex; justify-content: center;
-      gap: 2rem; flex-wrap: wrap;
-      padding-top: 0;
-      font-size: 0.82rem; color: var(--ink-3);
-    }
-    .trust-strip span { display: flex; align-items: center; gap: 0.4rem; }
-    .trust-strip svg { width: 13px; height: 13px; }
+/* ====================================================================
+   MOCKUP: INBOX
+   ==================================================================== */
+.inbox-search { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 30px;
+  padding: 0.55rem 0.9rem; margin-bottom: 0.75rem; color: var(--app-ink-3); }
+.inbox-search svg { width: 11px; height: 11px; }
+.inbox-pills { display: flex; gap: 0.3rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.75rem; }
+.inbox-pill { font-size: 0.72rem; padding: 0.28rem 0.7rem; border-radius: 30px;
+  border: 1px solid var(--app-border); background: var(--app-card); color: var(--app-ink-2); }
+.inbox-pill.active { background: var(--app-mint); border-color: var(--app-sage); color: var(--app-forest); font-weight: 500; }
+.inbox-pill.mint { background: var(--app-mint); border-color: var(--app-sage); color: var(--app-forest); }
+.inbox-pill.dashed { border-style: dashed; color: var(--app-ink-3); }
+.inbox-pill.read { margin-left: auto; border-color: var(--app-sage); color: var(--app-info-ink);
+  display: inline-flex; align-items: center; gap: 0.3rem; }
+.inbox-pill.read .ct { background: var(--app-mint); padding: 0 5px; border-radius: 20px; color: var(--app-forest); font-size: 0.65rem; }
+.inbox-list { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 8px; overflow: hidden; }
+.inbox-row { display: grid; grid-template-columns: 8px 160px 1fr auto 50px;
+  gap: 0.6rem; align-items: center; padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--app-border-2); font-size: 0.75rem; }
+.inbox-row:last-child { border-bottom: none; }
+.inbox-row.unread .inbox-dot { background: var(--app-sage); width: 6px; height: 6px; border-radius: 50%; }
+.inbox-row.unread .inbox-sender, .inbox-row.unread .inbox-subject { color: var(--app-ink); font-weight: 500; }
+.inbox-dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; }
+.inbox-sender { color: var(--app-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.inbox-subject { color: var(--app-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.inbox-label { font-size: 0.65rem; padding: 1px 8px; border-radius: 30px; font-weight: 500; white-space: nowrap; }
+.inbox-label.urgent { background: var(--app-urgent-bg); color: var(--app-urgent-ink); }
+.inbox-label.to-reply { background: var(--app-toreply-bg); color: var(--app-toreply-ink); }
+.inbox-label.info { background: var(--app-info-bg); color: var(--app-info-ink); }
+.inbox-label.action { background: var(--app-action-bg); color: var(--app-action-ink); }
+.inbox-label.social { background: var(--app-social-bg); color: var(--app-social-ink); }
+.inbox-time { font-family: 'Geist Mono', monospace; font-size: 0.68rem; color: var(--app-ink-3); text-align: right; }
 
-    /* ============ SECTIONS ============ */
-    .section { max-width: 1080px; margin: 0 auto; padding: 6rem 2rem; }
-    .section-narrow { max-width: 760px; margin: 0 auto; padding: 6rem 2rem; }
+/* ====================================================================
+   MOCKUP: SUMMARY MODE
+   ==================================================================== */
+.sm-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.sm-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.3rem; color: var(--app-ink); margin-bottom: 0.15rem; }
+.sm-sub { font-size: 0.75rem; color: var(--app-ink-2); }
+.sm-refresh { background: var(--app-card); border: 1px solid var(--app-border); border-radius: 6px;
+  padding: 0.35rem 0.7rem; font-size: 0.72rem; color: var(--app-ink-2); }
+.sm-overview { background: var(--app-mint); border: 1px solid var(--app-sage); border-radius: 8px;
+  padding: 1rem 1.1rem; margin-bottom: 1rem; }
+.sm-overview-label { font-size: 0.62rem; letter-spacing: 0.08em; color: var(--app-forest);
+  font-weight: 500; margin-bottom: 0.5rem; text-transform: uppercase; }
+.sm-overview-total { display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 0.5rem; border-bottom: 1px solid rgba(95,181,146,0.3); margin-bottom: 0.5rem;
+  font-weight: 500; color: var(--app-ink); }
+.sm-overview-num { font-size: 1.2rem; }
+.sm-overview-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto;
+  gap: 0.4rem 1rem; font-size: 0.72rem; color: var(--app-ink-2); align-items: baseline; }
+.sm-overview-grid strong { color: var(--app-ink); font-weight: 500; }
+.sm-num { font-weight: 500; color: var(--app-ink); }
+.sm-num.red { color: var(--app-urgent-ink); }
+.sm-num.amber { color: var(--app-toreply-ink); }
+.sm-section { margin-bottom: 0.85rem; }
+.sm-section-head { font-size: 0.65rem; letter-spacing: 0.07em; color: var(--app-ink-3);
+  text-transform: uppercase; margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
+.sm-section-count { font-family: 'Geist Mono', monospace; color: var(--app-urgent-ink); font-weight: 500; }
+.sm-section-count:not(.red) { color: var(--app-ink-2); }
+.sm-card { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 8px;
+  padding: 0.75rem 0.9rem; margin-bottom: 0.5rem; }
+.sm-card-title { font-weight: 500; font-size: 0.82rem; color: var(--app-ink); margin-bottom: 0.2rem; }
+.sm-card-from { font-size: 0.68rem; color: var(--app-ink-3); margin-bottom: 0.5rem; }
+.sm-card-summary { background: var(--app-mint); padding: 0.5rem 0.7rem; border-radius: 6px;
+  border-left: 3px solid var(--app-sage); font-size: 0.72rem; color: var(--app-ink); line-height: 1.45; }
+.sm-summary-label { display: block; font-size: 0.58rem; letter-spacing: 0.07em;
+  color: var(--app-forest); font-weight: 500; margin-bottom: 0.2rem; text-transform: uppercase; }
 
-    .section-eyebrow {
-      display: inline-block;
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
-      color: var(--sage); text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Fraunces', serif;
-      font-weight: 400;
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 0.85rem;
-      color: var(--ink);
-    }
-    .section-title em { font-style: italic; color: var(--sage); }
-    .section-sub {
-      color: var(--ink-2);
-      font-size: 1.05rem;
-      max-width: 580px;
-      margin-bottom: 3rem;
-    }
-    .section-head-center { text-align: center; }
-    .section-head-center .section-sub { margin-left: auto; margin-right: auto; }
+/* ====================================================================
+   MOCKUP: REPLY MODE
+   ==================================================================== */
+.rm-header { background: var(--app-mint); border: 1px solid var(--app-sage); border-radius: 8px;
+  padding: 0.9rem 1.1rem; margin-bottom: 0.85rem; }
+.rm-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.2rem;
+  color: var(--app-ink); margin-bottom: 0.2rem; }
+.rm-sub { font-size: 0.72rem; color: var(--app-ink-2); margin-bottom: 0.5rem; }
+.rm-stats { font-size: 0.72rem; color: var(--app-ink-2); display: flex; gap: 1.25rem; }
+.rm-green { color: var(--app-info-ink); }
+.rm-amber { color: var(--app-toreply-ink); }
+.rm-card { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 8px;
+  padding: 0.9rem 1rem; margin-bottom: 0.6rem; }
+.rm-card.needs-review { border-left: 3px solid var(--app-toreply-ink); }
+.rm-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.35rem; gap: 0.5rem; }
+.rm-card-title { font-weight: 500; font-size: 0.85rem; color: var(--app-ink); margin-right: 0.4rem; }
+.rm-status { display: inline-block; padding: 1px 7px; border-radius: 30px; font-size: 0.62rem; font-weight: 500; }
+.rm-status.ready { background: var(--app-mint); color: var(--app-forest); }
+.rm-status.review { background: var(--app-toreply-bg); color: var(--app-toreply-ink); }
+.rm-card-actions { display: flex; gap: 0.35rem; flex-shrink: 0; }
+.rm-send { background: var(--app-sage); border: none; color: white; padding: 0.3rem 0.7rem;
+  border-radius: 5px; font-size: 0.7rem; font-weight: 500; cursor: pointer; }
+.rm-discard { background: var(--app-card); border: 1px solid #e8c9c5; color: #b34a3e;
+  padding: 0.3rem 0.7rem; border-radius: 5px; font-size: 0.7rem; cursor: pointer; }
+.rm-card-from { font-size: 0.68rem; color: var(--app-ink-3); margin-bottom: 0.4rem; }
+.rm-show-orig { color: var(--app-sage); font-size: 0.68rem; cursor: pointer; margin-bottom: 0.6rem; }
+.rm-draft-label { font-size: 0.6rem; letter-spacing: 0.07em; color: var(--app-forest);
+  font-weight: 500; margin-bottom: 0.35rem; text-transform: uppercase; }
+.rm-draft-body { background: var(--app-bg); padding: 0.7rem 0.9rem; border-radius: 5px;
+  font-size: 0.74rem; color: var(--app-ink); line-height: 1.5; }
+.rm-draft-body p { margin-bottom: 0.4rem; }
+.rm-draft-body p:last-child { margin-bottom: 0; }
+.rm-draft-body.short p:last-child::after { content: "…"; }
+.rm-ai-row { display: flex; gap: 0.35rem; margin-top: 0.6rem; align-items: center; }
+.rm-ai-input { flex: 1; padding: 0.4rem 0.7rem; border-radius: 5px;
+  border: 1px solid var(--app-border); background: var(--app-bg);
+  font-size: 0.7rem; font-family: inherit; color: var(--app-ink); }
+.rm-modify { background: var(--app-sage); border: none; color: white;
+  padding: 0.4rem 0.7rem; border-radius: 5px; font-size: 0.68rem; font-weight: 500; }
+.rm-generate, .rm-regenerate { background: var(--app-card); border: 1px solid var(--app-border);
+  padding: 0.4rem 0.7rem; border-radius: 5px; font-size: 0.68rem; color: var(--app-ink-2); }
+.rm-tip { font-size: 0.65rem; color: var(--app-ink-3); margin-top: 0.5rem; }
 
-    /* ============ HOW IT WORKS · 4 STEPS ============ */
-    .steps {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-    .step {
-      background: var(--white);
-      border: 1px solid var(--cream-3);
-      border-radius: var(--radius-lg);
-      padding: 2rem 2.25rem;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-    .step:nth-child(even) {
-      grid-template-columns: 1.2fr 1fr;
-    }
-    .step:nth-child(even) .step-text { order: 2; }
-    .step:nth-child(even) .step-visual { order: 1; }
-    .step-num {
-      font-family: 'Fraunces', serif;
-      font-size: 0.85rem;
-      color: var(--sage);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.6rem;
-    }
-    .step h3 {
-      font-family: 'Fraunces', serif;
-      font-weight: 500;
-      font-size: 1.55rem;
-      letter-spacing: -0.015em;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
-      color: var(--ink);
-    }
-    .step p {
-      color: var(--ink-2);
-      font-size: 0.98rem;
-      line-height: 1.6;
-    }
-    .step-visual {
-      background: var(--cream);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-      border: 1px solid var(--border-soft);
-      font-size: 0.82rem;
-    }
+/* ====================================================================
+   MOCKUP: DEADLINES
+   ==================================================================== */
+.dl-header { margin-bottom: 1rem; }
+.dl-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.3rem; color: var(--app-ink); margin-bottom: 0.15rem; }
+.dl-sub { font-size: 0.74rem; color: var(--app-ink-2); }
+.dl-counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+.dl-counter { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 8px;
+  padding: 0.7rem 0.9rem; display: flex; align-items: baseline; gap: 0.6rem; }
+.dl-num { font-family: 'Newsreader', serif; font-size: 1.5rem; font-weight: 500; }
+.dl-num.red { color: var(--app-urgent-ink); }
+.dl-num.amber { color: var(--app-toreply-ink); }
+.dl-num.green { color: var(--app-sage); }
+.dl-label { font-size: 0.72rem; color: var(--app-ink-2); }
+.dl-filters { display: flex; gap: 0.35rem; align-items: center; margin-bottom: 1rem; }
+.dl-pill { font-size: 0.72rem; padding: 0.3rem 0.75rem; border-radius: 30px;
+  border: 1px solid var(--app-border); background: var(--app-card); color: var(--app-ink-2); }
+.dl-pill.active { background: var(--app-sage); border-color: var(--app-sage); color: white; font-weight: 500; }
+.dl-add { margin-left: auto; background: var(--app-sage); border: none; color: white;
+  padding: 0.4rem 0.85rem; border-radius: 5px; font-size: 0.72rem; font-weight: 500; }
+.dl-section-label { font-size: 0.6rem; letter-spacing: 0.08em; color: var(--app-ink-3);
+  text-transform: uppercase; margin-bottom: 0.5rem; }
+.dl-item { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 8px;
+  padding: 0.65rem 0.85rem; margin-bottom: 0.4rem;
+  display: flex; align-items: center; gap: 0.75rem; }
+.dl-check { width: 18px; height: 18px; border-radius: 50%; background: var(--app-sage);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.dl-check::before { content: "✓"; color: white; font-size: 0.62rem; font-weight: 700; }
+.dl-content { flex: 1; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.dl-item-title { font-weight: 500; font-size: 0.78rem; color: var(--app-ink); }
+.dl-item-date { font-size: 0.7rem; color: var(--app-ink-2); }
+.dl-tag { display: inline-block; padding: 1px 8px; border-radius: 30px; font-size: 0.62rem; font-weight: 500; }
+.dl-tag.amber { background: var(--app-toreply-bg); color: var(--app-toreply-ink); }
+.dl-tag.purple { background: #e6e0f3; color: #6a4ea6; }
+.dl-tag.blue { background: var(--app-social-bg); color: var(--app-social-ink); }
+.dl-dismiss { font-size: 0.7rem; color: var(--app-ink-3); }
 
-    /* Visual 1: Job brief input */
-    .v1-label { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.5rem; }
-    .v1-input {
-      background: var(--white); border: 1px solid var(--cream-3);
-      border-radius: 8px; padding: 0.75rem 0.9rem;
-      font-family: 'Fraunces', serif;
-      font-size: 0.95rem; color: var(--ink);
-      margin-bottom: 0.65rem;
-    }
-    .v1-chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-    .v1-chip {
-      background: var(--cream-2); color: var(--ink-2);
-      font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 50px;
-    }
-    .v1-chip.sage { background: var(--sage-bg); color: var(--forest); }
-    .v1-cv {
-      background: var(--white);
-      border: 1px solid var(--cream-3);
-      border-radius: 8px;
-      padding: 0.55rem 0.75rem;
-      margin-bottom: 0.55rem;
-      display: flex; align-items: center; gap: 0.5rem;
-      font-size: 0.82rem;
-      color: var(--ink);
-    }
-    .v1-cv svg { width: 14px; height: 14px; color: var(--ink-3); flex-shrink: 0; }
-    .v1-cv-ok {
-      margin-left: auto;
-      font-size: 0.7rem;
-      color: var(--sage);
-      font-weight: 500;
-    }
+/* ====================================================================
+   MOCKUP: NETWORK
+   ==================================================================== */
+.nw-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.nw-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.3rem; color: var(--app-ink); margin-bottom: 0.15rem; }
+.nw-sub { font-size: 0.74rem; color: var(--app-ink-2); }
+.nw-add { background: var(--app-sage); border: none; color: white;
+  padding: 0.4rem 0.85rem; border-radius: 5px; font-size: 0.72rem; font-weight: 500; }
+.nw-search { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 30px;
+  padding: 0.4rem 0.85rem; margin-bottom: 0.75rem; display: flex; gap: 0.5rem; align-items: center;
+  color: var(--app-ink-3); }
+.nw-search svg { width: 11px; height: 11px; }
+.nw-search input { border: none; background: transparent; outline: none; flex: 1;
+  font-family: inherit; font-size: 0.74rem; color: var(--app-ink-3); }
+.nw-filters { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+.nw-pill { font-size: 0.72rem; padding: 0.3rem 0.75rem; border-radius: 30px;
+  border: 1px solid var(--app-border); background: var(--app-card); color: var(--app-ink-2);
+  display: inline-flex; align-items: center; gap: 0.35rem; }
+.nw-pill.active { background: var(--app-sage); border-color: var(--app-sage); color: white; font-weight: 500; }
+.nw-bdg { background: var(--app-badge-red); color: white; padding: 0 5px;
+  border-radius: 20px; font-size: 0.6rem; font-family: 'Geist Mono', monospace; }
+.nw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.nw-card { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 8px;
+  padding: 0.75rem 0.9rem; }
+.nw-card-top { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.6rem; }
+.nw-avatar { width: 32px; height: 32px; border-radius: 50%;
+  background: var(--app-sage); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 600; flex-shrink: 0; }
+.nw-name { font-size: 0.78rem; font-weight: 500; color: var(--app-ink);
+  display: flex; align-items: center; gap: 0.35rem; }
+.nw-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--app-urgent-ink); }
+.nw-role { font-size: 0.66rem; color: var(--app-ink-3); }
+.nw-email { font-size: 0.7rem; color: var(--app-ink-2); margin-bottom: 0.35rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nw-tag { display: inline-block; font-size: 0.62rem; padding: 1px 7px;
+  border-radius: 30px; background: var(--app-mint); color: var(--app-forest);
+  margin-bottom: 0.35rem; }
+.nw-last { font-size: 0.65rem; color: var(--app-ink-3); }
 
-    /* Visual 2: Org table */
-    .v2-table {
-      width: 100%;
-      font-size: 0.78rem;
-      border-collapse: collapse;
-    }
-    .v2-table th {
-      text-align: left;
-      font-weight: 400;
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      color: var(--ink-3);
-      text-transform: uppercase;
-      padding: 0.5rem 0.5rem 0.4rem;
-      border-bottom: 1px solid var(--cream-3);
-    }
-    .v2-table td {
-      padding: 0.55rem 0.5rem;
-      border-bottom: 1px solid var(--border-soft);
-      color: var(--ink-2);
-    }
-    .v2-table tr:last-child td { border-bottom: none; }
-    .v2-org { color: var(--forest); font-weight: 500; }
-    .v2-bar {
-      display: inline-block;
-      width: 50px; height: 5px;
-      background: var(--cream-3); border-radius: 3px;
-      margin-right: 6px; vertical-align: middle;
-      position: relative;
-      overflow: hidden;
-    }
-    .v2-bar::after {
-      content: ""; position: absolute;
-      left: 0; top: 0; height: 100%;
-      background: var(--sage-bright);
-      border-radius: 3px;
-    }
-    .v2-bar.b85::after { width: 85%; }
-    .v2-bar.b90::after { width: 90%; }
-    .v2-bar.b82::after { width: 82%; }
-    .v2-bar.b75::after { width: 75%; }
+/* ====================================================================
+   MOCKUP: PROJECTS
+   ==================================================================== */
+.pj-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+.pj-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.3rem; color: var(--app-ink); margin-bottom: 0.15rem; }
+.pj-sub { font-size: 0.74rem; color: var(--app-ink-2); }
+.pj-add { background: var(--app-sage); border: none; color: white;
+  padding: 0.4rem 0.85rem; border-radius: 5px; font-size: 0.72rem; font-weight: 500; }
+.pj-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+.pj-card { background: var(--app-card); border: 1px solid var(--app-border-2); border-radius: 8px;
+  padding: 0.85rem 1rem; }
+.pj-card.active { border-color: var(--app-sage); border-width: 1.5px; }
+.pj-card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.35rem; }
+.pj-card-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 0.95rem; color: var(--app-ink); }
+.pj-status { font-size: 0.65rem; padding: 1px 7px; border-radius: 30px;
+  background: var(--app-mint); color: var(--app-forest); font-weight: 500; }
+.pj-card-desc { font-size: 0.72rem; color: var(--app-ink-2); line-height: 1.45; margin-bottom: 0.4rem; }
+.pj-card-meta { font-size: 0.65rem; color: var(--app-ink-3); font-family: 'Geist Mono', monospace; }
 
-    /* Visual 3: Cover letter validation */
-    .v3-card {
-      background: var(--white);
-      border: 1px solid var(--cream-3);
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-    }
-    .v3-head {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 0.65rem;
-    }
-    .v3-head h5 {
-      font-family: 'Fraunces', serif;
-      font-weight: 500; font-size: 0.95rem;
-      color: var(--ink);
-    }
-    .v3-head small { font-size: 0.7rem; color: var(--ink-3); }
-    .v3-status {
-      display: inline-block;
-      background: var(--sage-bg); color: var(--forest);
-      font-size: 0.68rem; padding: 0.2rem 0.55rem;
-      border-radius: 50px; font-weight: 500;
-    }
-    .v3-checks { list-style: none; font-size: 0.78rem; color: var(--ink-2); }
-    .v3-checks li {
-      padding: 0.2rem 0;
-      display: flex; align-items: center; gap: 0.45rem;
-    }
-    .v3-checks li::before {
-      content: "✓"; color: var(--sage); font-weight: 600;
-    }
+/* ====================================================================
+   MOCKUP: CALENDAR
+   ==================================================================== */
+.cal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.85rem; }
+.cal-title { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.3rem; color: var(--app-ink); margin-bottom: 0.15rem; }
+.cal-sub { font-size: 0.7rem; color: var(--app-ink-2); }
+.cal-open { background: var(--app-card); border: 1px solid var(--app-border); border-radius: 6px;
+  padding: 0.35rem 0.65rem; font-size: 0.68rem; color: var(--app-ink-2); }
+.cal-toolbar { display: flex; gap: 0.5rem; align-items: center; padding-bottom: 0.5rem; font-size: 0.72rem; }
+.cal-today-btn { background: var(--app-card); border: 1px solid var(--app-border); border-radius: 20px;
+  padding: 0.3rem 0.8rem; font-size: 0.7rem; }
+.cal-nav { background: transparent; border: none; color: var(--app-ink-2);
+  padding: 0.2rem 0.5rem; font-size: 0.9rem; cursor: pointer; }
+.cal-month { color: var(--app-ink); font-weight: 500; font-size: 0.85rem; }
+.cal-week { margin-left: auto; color: var(--app-ink-2); }
+.cal-grid { display: grid; grid-template-columns: 38px repeat(7, 1fr);
+  background: var(--app-card); border: 1px solid var(--app-border-2);
+  border-radius: 8px; overflow: hidden; min-height: 300px; }
+.cal-day-col { border-right: 1px solid var(--app-border-2); position: relative; }
+.cal-day-col:last-child { border-right: none; }
+.cal-time-col { background: var(--app-bg); }
+.cal-day-head { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--app-border-2);
+  text-align: center; }
+.cal-day-name { font-size: 0.58rem; color: var(--app-ink-3); letter-spacing: 0.05em;
+  text-transform: uppercase; font-weight: 500; margin-bottom: 0.2rem; }
+.cal-day-num { font-family: 'Newsreader', serif; font-size: 1.1rem; color: var(--app-ink); font-weight: 500; }
+.cal-day-num.today-num { background: #3a7bd5; color: white; border-radius: 50%;
+  display: inline-block; width: 26px; height: 26px; line-height: 26px; }
+.cal-time-row { padding: 0.35rem 0.4rem; font-size: 0.58rem; color: var(--app-ink-3);
+  border-bottom: 1px solid var(--app-border-2); height: 30px; }
+.cal-time-row:last-child { border-bottom: none; }
+.cal-day-body { position: relative; height: 270px; }
+.cal-event { position: absolute; left: 2px; right: 2px;
+  padding: 0.2rem 0.35rem; border-radius: 3px; font-size: 0.58rem;
+  color: white; height: 28px; overflow: hidden; }
+.cal-event.gray { background: #5a635c; }
+.cal-event.orange { background: #d97441; }
+.cal-event.purple { background: #8a9ed8; }
+.cal-event-title { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-event-time { font-size: 0.52rem; opacity: 0.85; }
 
-    /* Visual 4: Nudge table (varied actions) */
-    .v4-visual { padding: 0.85rem; }
-    .v4-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.78rem;
-    }
-    .v4-table th {
-      text-align: left;
-      font-weight: 400;
-      font-size: 0.62rem;
-      letter-spacing: 0.09em;
-      color: var(--ink-3);
-      text-transform: uppercase;
-      padding: 0.4rem 0.45rem;
-      border-bottom: 1px solid var(--cream-3);
-    }
-    .v4-table td {
-      padding: 0.6rem 0.45rem;
-      border-bottom: 1px solid var(--border-soft);
-      vertical-align: middle;
-    }
-    .v4-table tr:last-child td { border-bottom: none; }
-    .v4-org {
-      color: var(--forest);
-      font-weight: 500;
-      font-size: 0.8rem;
-    }
-    .v4-status {
-      display: inline-block;
-      padding: 0.18rem 0.55rem;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      background: var(--cream-2);
-      color: var(--ink-2);
-    }
-    .v4-status.status-replied {
-      background: var(--sage-bg);
-      color: var(--forest);
-    }
-    .v4-nudge {
-      display: inline-block;
-      padding: 0.22rem 0.6rem;
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .v4-nudge.nudge-amber { background: var(--amber-bg); color: var(--amber); }
-    .v4-nudge.nudge-sage { background: var(--sage-bg); color: var(--forest); }
-    .v4-nudge.nudge-blue { background: #DCE7F1; color: #2C5A82; }
-    .v4-nudge.nudge-muted { color: var(--ink-3); background: var(--cream-2); }
-
-    /* ============ ALSO IN YOUR INBOX (secondary features) ============ */
-    .also-bg {
-      background: var(--white);
-      border-top: 1px solid var(--border-soft);
-      border-bottom: 1px solid var(--border-soft);
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .feature-card {
-      background: var(--cream);
-      border: 1px solid var(--cream-3);
-      border-radius: var(--radius-md);
-      padding: 1.5rem 1.5rem 1.4rem;
-    }
-    .feature-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: var(--sage-bg);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.85rem;
-    }
-    .feature-icon svg { width: 18px; height: 18px; stroke: var(--forest); }
-    .feature-card.red .feature-icon { background: var(--red-bg); }
-    .feature-card.red .feature-icon svg { stroke: var(--red); }
-    .feature-card.amber .feature-icon { background: var(--amber-bg); }
-    .feature-card.amber .feature-icon svg { stroke: var(--amber); }
-    .feature-card h4 {
-      font-family: 'Fraunces', serif;
-      font-weight: 500;
-      font-size: 1.05rem;
-      margin-bottom: 0.35rem;
-      color: var(--ink);
-    }
-    .feature-card p {
-      font-size: 0.88rem;
-      color: var(--ink-2);
-      line-height: 1.55;
-    }
-
-    /* ============ PRIVACY ============ */
-    .privacy-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-    }
-    .privacy-card {
-      background: var(--white); border: 1px solid var(--cream-3);
-      border-radius: var(--radius-md); padding: 1.5rem;
-      display: flex; gap: 1rem; align-items: flex-start;
-    }
-    .privacy-icon {
-      width: 38px; height: 38px; border-radius: 9px;
-      background: var(--sage-bg);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .privacy-icon svg { width: 17px; height: 17px; stroke: var(--forest); }
-    .privacy-card h4 {
-      font-family: 'Fraunces', serif;
-      font-weight: 500; font-size: 1.02rem;
-      margin-bottom: 0.25rem;
-      color: var(--ink);
-    }
-    .privacy-card p { font-size: 0.87rem; color: var(--ink-2); line-height: 1.55; }
-
-    /* ============ FAQ ============ */
-    .faq { max-width: 720px; margin: 0 auto; }
-    .faq-item {
-      background: var(--white); border: 1px solid var(--cream-3);
-      border-radius: var(--radius-md); margin-bottom: 0.6rem;
-      overflow: hidden;
-    }
-    .faq-q {
-      width: 100%; text-align: left;
-      padding: 1.15rem 1.5rem;
-      background: none; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.98rem; font-weight: 500;
-      color: var(--ink);
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 1rem;
-    }
-    .faq-q:hover { color: var(--forest); }
-    .faq-chevron {
-      transition: transform 0.25s;
-      flex-shrink: 0; color: var(--ink-3);
-      width: 16px; height: 16px;
-    }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      font-size: 0.92rem; color: var(--ink-2);
-      padding: 0 1.5rem;
-      line-height: 1.6;
-    }
-    .faq-item.open .faq-a { max-height: 280px; padding: 0 1.5rem 1.2rem; }
-
-    /* ============ WAITLIST ============ */
-    .waitlist-section {
-      background: var(--forest);
-      color: var(--cream);
-      padding: 6rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .waitlist-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(95,181,146,0.12), transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(95,181,146,0.08), transparent 50%);
-      pointer-events: none;
-    }
-    .waitlist-inner { position: relative; z-index: 1; max-width: 540px; margin: 0 auto; }
-    .waitlist-section h2 {
-      font-family: 'Fraunces', serif;
-      font-weight: 400;
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      margin-bottom: 0.85rem;
-      letter-spacing: -0.02em;
-      color: var(--cream);
-    }
-    .waitlist-section h2 em { font-style: italic; color: var(--sage-bright); }
-    .waitlist-section p {
-      font-size: 1.02rem; opacity: 0.78;
-      margin-bottom: 2.5rem;
-    }
-    .tally-wrap {
-      background: var(--cream);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem 1rem 0.5rem;
-    }
-
-    /* ============ FOOTER ============ */
-    footer {
-      text-align: center; padding: 2.5rem 2rem;
-      font-size: 0.85rem; color: var(--ink-3);
-      background: var(--cream);
-      border-top: 1px solid var(--border-soft);
-    }
-    footer a { color: var(--ink-3); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--forest); }
-    .footer-logo {
-      font-family: 'Fraunces', serif;
-      font-size: 1.15rem;
-      color: var(--forest);
-      margin-bottom: 0.6rem;
-      display: block;
-    }
-    .footer-links {
-      display: flex; gap: 1.5rem;
-      justify-content: center;
-      margin-top: 0.75rem;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero, .mockup-frame { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
-    .mockup-frame { animation-delay: 0.15s; }
-
-    @media (max-width: 820px) {
-      .step { grid-template-columns: 1fr !important; gap: 1.5rem; padding: 1.75rem; }
-      .step:nth-child(even) .step-text { order: 1; }
-      .step:nth-child(even) .step-visual { order: 2; }
-      .mockup-body { grid-template-columns: 1fr; }
-      .mock-sidebar { display: none; }
-      .mock-app-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      nav { padding: 0 1.25rem; }
-      .nav-links { display: none; }
-      .nav-logo { font-size: 1.3rem; }
-      .hero-wrap { padding: 2.5rem 1.25rem 1.5rem; }
-      .privacy-grid, .feature-grid { grid-template-columns: 1fr; }
-      .section, .section-narrow { padding: 4rem 1.25rem; }
-      .trust-strip { gap: 1rem; font-size: 0.78rem; }
-      .waitlist-section { padding: 4rem 1.25rem; }
-    }
-  </style>
+/* ============ RESPONSIVE ============ */
+@media (max-width: 940px) {
+  .killer-features { grid-template-columns: 1fr; gap: 1.5rem; }
+  .how-grid { grid-template-columns: 1fr; }
+  .how-col { padding: 2rem 0; }
+  .how-col + .how-col { padding-left: 0; border-left: none; border-top: 1px solid var(--border); }
+  .feature-block { grid-template-columns: 1fr; gap: 2rem; }
+  .feature-block.reverse .feature-text { order: 1; }
+  .feature-block.reverse .feature-img-wrap { order: 2; }
+  .privacy-grid { grid-template-columns: 1fr 1fr; }
+  .waitlist-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .founder-inner { grid-template-columns: 1fr; text-align: left; gap: 1.5rem; }
+  .founder-photo { width: 100px; height: 100px; }
+  .app-frame { grid-template-columns: 1fr; min-height: 0; }
+  .app-sb { display: none; }
+  .nw-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 1.25rem; }
+  .nav-inner { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 1.2rem; }
+  .hero { padding: 3rem 0 0; }
+  .hero-image-wrap { padding: 0 1.25rem; }
+  .section, .killer-section, .founder-section, .email-assistant-section { padding: 4rem 0; }
+  .privacy-grid { grid-template-columns: 1fr; }
+  .waitlist-section { padding: 4rem 1.25rem; }
+  footer { padding: 2.5rem 1.25rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  .apps-table { font-size: 0.65rem; }
+  .apps-table th, .apps-table td { padding: 0.4rem 0.5rem; }
+  .inbox-row { grid-template-columns: 8px 1fr auto;
+    grid-template-areas: "dot sender label" "dot subject label"; }
+  .inbox-row > .inbox-sender { grid-area: sender; }
+  .inbox-row > .inbox-subject { grid-area: subject; }
+  .inbox-row > .inbox-time { display: none; }
+  .cal-grid { font-size: 0.55rem; }
+}
+</style>
 </head>
-<body>
 
+<body>
 <!-- =================== NAV =================== -->
 <nav>
-  <a class="nav-logo" href="#">Sentrivo</a>
-  <ul class="nav-links">
-    <li><a href="#applications">Applications</a></li>
-    <li><a href="#inbox">Inbox</a></li>
-    <li><a href="#privacy">Privacy</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-  <a class="btn-primary" href="#waitlist">Join the waitlist</a>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Sentrivo</a>
+    <ul class="nav-links">
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#inbox">Inbox</a></li>
+      <li><a href="#assistant">Assistant</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+  </div>
 </nav>
 
 <!-- =================== HERO =================== -->
-<section class="hero-wrap">
-  <div class="hero">
-    <div class="hero-eyebrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      For students
-    </div>
-    <h1>20 speculative applications a week. <em>Without writing one.</em></h1>
-    <p class="hero-sub">Upload your CV, describe what you're looking for, and Sentrivo finds the best-fit organisations, writes a personalised cover letter for each, sends them, and follows up two weeks later.</p>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>For students · Free during beta</div>
+    <h1 class="hero-title">
+      20 speculative applications a week.
+      <span class="accent">Without writing one.</span>
+    </h1>
+    <p class="hero-sub">Sentrivo, the AI email assistant that <strong>now reaches out to dozens of organisations in your field</strong> for you. Upload your CV, describe what you want, and Sentrivo finds the best-fit orgs, drafts personalised cover letters, and makes sure you never miss a follow-up.</p>
     <div class="hero-cta">
-      <a class="btn-primary" href="#waitlist">Join the waitlist →</a>
-      <a class="btn-ghost" href="#applications">See how it works</a>
+      <a class="btn btn-primary" href="#waitlist">Join the waitlist →</a>
+      <a class="btn btn-ghost" href="#applications">See how it works</a>
     </div>
-  </div>
-
-  <!-- LIVE APP MOCKUP (recreated in HTML, matches the real Applications dashboard) -->
-  <div class="mockup-frame" aria-hidden="true">
-    <div class="mockup-titlebar"><span></span><span></span><span></span></div>
-    <div class="mockup-body">
-      <aside class="mock-sidebar">
-        <div class="mock-sidebar-logo">Sentrivo <small>‹</small></div>
-        <div class="mock-nav-item new-email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          New email
-        </div>
-        <div class="mock-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
-          AI Assistant
-        </div>
-        <div class="mock-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Inbox <span class="badge">13</span>
-        </div>
-        <div class="mock-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Sent
-        </div>
-        <div class="mock-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Deadlines <span class="badge">5</span>
-        </div>
-        <div class="mock-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-          Network
-        </div>
-        <div class="mock-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
-          Projects <span class="badge amber">3</span>
-        </div>
-        <div class="mock-nav-item active">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-          Applications
-        </div>
-      </aside>
-
-      <main class="mock-content">
-        <div class="mock-header">
-          <div>
-            <div class="mock-title">Applications</div>
-            <div class="mock-subtitle">Tailor your CV, draft cover letters and track outreach, all in one place.</div>
-          </div>
-          <button class="mock-new-btn">+ New application</button>
-        </div>
-
-        <div class="mock-app-grid">
-          <div class="mock-app-card featured">
-            <h4>Summer internship: Economics and policy</h4>
-            <div class="mock-tags"><span class="mock-tag">london</span></div>
-            <div class="mock-stats">
-              <div><div class="mock-stat-num">5</div><div class="mock-stat-label">Speculative</div></div>
-              <div><div class="mock-stat-num">0</div><div class="mock-stat-label">Official</div></div>
-              <div><div class="mock-stat-num">0</div><div class="mock-stat-label">Future</div></div>
-            </div>
-          </div>
-          <div class="mock-app-card">
-            <h4>Economics Research Analyst, London Think Tank</h4>
-            <div class="mock-tags"><span class="mock-tag">intern</span><span class="mock-tag">London</span></div>
-            <div class="mock-stats">
-              <div><div class="mock-stat-num">6</div><div class="mock-stat-label">Speculative</div></div>
-              <div><div class="mock-stat-num">4</div><div class="mock-stat-label">Official</div></div>
-              <div><div class="mock-stat-num">0</div><div class="mock-stat-label">Future</div></div>
-            </div>
-          </div>
-        </div>
-      </main>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Google OAuth</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><polyline points="20 6 9 17 4 12"/></svg>You approve every send</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Revoke anytime</span>
     </div>
-  </div>
-
-  <div class="trust-strip">
-    <span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Connect via Google OAuth
-    </span>
-    <span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      You approve before sending
-    </span>
-    <span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
-      Revoke access anytime
-    </span>
-    <span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      Privacy-first
-    </span>
   </div>
 </section>
 
-<!-- =================== HOW IT WORKS =================== -->
-<section class="section" id="applications">
-  <div class="section-head-center">
-    <span class="section-eyebrow">How it works</span>
-    <h2 class="section-title">From a single sentence to <em>20 personalised emails sent.</em></h2>
-    <p class="section-sub">Tell Sentrivo what you're looking for. It does the rest. Research, writing, sending, following up.</p>
-  </div>
-
-  <div class="steps">
-
-    <!-- Step 1 -->
-    <div class="step">
-      <div class="step-text">
-        <div class="step-num">01 · Upload your CV. Tell us what you want.</div>
-        <h3>That's all the setup. One sentence and a PDF.</h3>
-        <p>From your CV and a single-line brief, Sentrivo runs the research, scores org-fit, finds the right contacts, drafts the letters, and queues everything for you to review. No forms, no templates, no copy-paste.</p>
-      </div>
-      <div class="step-visual">
-        <div class="v1-label">Set up your search</div>
-        <div class="v1-cv">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          CV_2026.pdf
-          <span class="v1-cv-ok">✓ Parsed</span>
-        </div>
-        <div class="v1-input">Summer internship: Economics and policy</div>
-        <div class="v1-chips">
-          <span class="v1-chip sage">london</span>
-          <span class="v1-chip">undergraduate</span>
-          <span class="v1-chip">summer 2026</span>
-        </div>
-      </div>
+<!-- =================== SECTION 1: SPECULATIVE APPLICATIONS =================== -->
+<section class="killer-section" id="applications">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-label">The new headline feature</div>
+      <h2 class="section-title">From a one-line brief to <span class="accent">20 personalised letters sent.</span></h2>
+      <p class="section-sub">You describe what you're looking for in a sentence. Sentrivo finds the right organisations, drafts a specific cover letter for each, and queues everything for your review.</p>
     </div>
-
-    <!-- Step 2 -->
-    <div class="step">
-      <div class="step-text">
-        <div class="step-num">02 · We find the best-fit orgs</div>
-        <h3>Ranked by how well they actually match your background.</h3>
-        <p>Sentrivo surfaces smaller organisations open to speculative outreach, scores each one on fit, and finds the right person to email, or the most-watched general inbox if no contact is public.</p>
-      </div>
-      <div class="step-visual">
-        <table class="v2-table">
-          <thead>
-            <tr><th>Org</th><th>Fit</th><th>Contact</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="v2-org">Meridian Policy Lab</span></td>
-              <td><span class="v2-bar b90"></span>90%</td>
-              <td>hello@meridianlab…</td>
-            </tr>
-            <tr>
-              <td><span class="v2-org">Northbridge Foundation</span></td>
-              <td><span class="v2-bar b85"></span>85%</td>
-              <td>j.morris@northbridge…</td>
-            </tr>
-            <tr>
-              <td><span class="v2-org">Atlas Behavioural Group</span></td>
-              <td><span class="v2-bar b82"></span>82%</td>
-              <td>contact@atlasbg…</td>
-            </tr>
-            <tr>
-              <td><span class="v2-org">Verity Economics</span></td>
-              <td><span class="v2-bar b75"></span>75%</td>
-              <td>info@verityecon…</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="step">
-      <div class="step-text">
-        <div class="step-num">03 · We write each cover letter</div>
-        <h3>Genuinely personalised. Not a template with the company name swapped in.</h3>
-        <p>From your CV and what we learn about each organisation, Sentrivo drafts a specific cover letter for every single application. Each one references concrete org details and connects your experience to their work. You review before anything sends.</p>
-      </div>
-      <div class="step-visual">
-        <div class="v3-card">
-          <div class="v3-head">
+    <div class="killer-mockup-wrap">
+      
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        New email
+    </button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="apps-back">← All applications</div>
+        <div class="apps-title-row">
             <div>
-              <h5>Meridian Policy Lab</h5>
-              <small>Cover letter · 410 words</small>
+                <h3 class="apps-title">Summer internship: Economics &amp; policy</h3>
+                <p class="apps-sub">Summer internship</p>
             </div>
-            <span class="v3-status">Ready</span>
-          </div>
-          <ul class="v3-checks">
-            <li>References org specifics</li>
-            <li>Connects your experience</li>
-            <li>Word count 380–420</li>
-            <li>Tone appropriate</li>
-          </ul>
+            <div class="apps-title-actions">
+                <span class="apps-tag">london</span>
+                <span class="apps-delete">Delete application</span>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="step">
-      <div class="step-text">
-        <div class="step-num">04 · Send, then chase the conversation</div>
-        <h3>Sentrivo doesn't just send. It manages every reply.</h3>
-        <p>Two weeks after sending, Sentrivo nudges you to follow up. When orgs reply, it sorts each thread by what they need next: respond to an offer, send more info, schedule a call. So you never let a conversation go cold.</p>
-      </div>
-      <div class="step-visual v4-visual">
-        <table class="v4-table">
-          <thead>
-            <tr>
-              <th>Org</th>
-              <th>Status</th>
-              <th>Nudge</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="v4-org">Meridian Policy Lab</span></td>
-              <td><span class="v4-status status-sent">sent</span></td>
-              <td><span class="v4-nudge nudge-amber">Send follow-up</span></td>
-            </tr>
-            <tr>
-              <td><span class="v4-org">Northbridge Foundation</span></td>
-              <td><span class="v4-status status-replied">replied</span></td>
-              <td><span class="v4-nudge nudge-sage">Respond to offer</span></td>
-            </tr>
-            <tr>
-              <td><span class="v4-org">Atlas Behavioural Group</span></td>
-              <td><span class="v4-status status-replied">replied</span></td>
-              <td><span class="v4-nudge nudge-blue">Send more info</span></td>
-            </tr>
-            <tr>
-              <td><span class="v4-org">Verity Economics</span></td>
-              <td><span class="v4-status status-sent">sent</span></td>
-              <td><span class="v4-nudge nudge-muted">Waiting reply</span></td>
-            </tr>
-          </tbody>
+        <div class="apps-tabs">
+            <span class="apps-tab active">Organisations</span>
+            <span class="apps-tab">Documents</span>
+            <span class="apps-tab">Drafts</span>
+        </div>
+        <div class="apps-actions">
+            <button class="apps-btn">Select all</button>
+            <button class="apps-btn">Clear</button>
+            <button class="apps-btn">Draft speculative applications</button>
+            <button class="apps-btn">Make cover letters</button>
+            <button class="apps-btn">Export CSV</button>
+            <button class="apps-btn">Discover orgs</button>
+            <span class="apps-selected">0 selected</span>
+        </div>
+        <div class="apps-section-head">
+            <span class="apps-section-title">Speculative outreach</span>
+            <span class="apps-section-sub">5 orgs · sorted by speculative-friendliness</span>
+        </div>
+        <table class="apps-table">
+            <thead>
+                <tr><th>Org</th><th>Listing</th><th>Fit</th><th>Status</th><th>Contact</th><th>Nudge</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="apps-org">Meridian Policy Lab</td>
+                    <td class="apps-listing">Speculative · view careers ↗</td>
+                    <td><span class="apps-bar"><span style="width:90%"></span></span> 90%</td>
+                    <td><span class="apps-status sent">sent</span></td>
+                    <td>contact@meridianlab.org</td>
+                    <td><span class="apps-nudge amber">Send follow-up</span></td>
+                </tr>
+                <tr>
+                    <td class="apps-org">Northbridge Foundation</td>
+                    <td class="apps-listing">No current opening</td>
+                    <td><span class="apps-bar"><span style="width:85%"></span></span> 85%</td>
+                    <td><span class="apps-status">not-sent</span></td>
+                    <td>j.morris@northbridge.org</td>
+                    <td>·</td>
+                </tr>
+                <tr>
+                    <td class="apps-org">Atlas Behavioural Group</td>
+                    <td class="apps-listing">No current opening</td>
+                    <td><span class="apps-bar"><span style="width:82%"></span></span> 82%</td>
+                    <td><span class="apps-status">not-sent</span></td>
+                    <td>hello@atlasbg.co.uk</td>
+                    <td>·</td>
+                </tr>
+                <tr>
+                    <td class="apps-org">Verity Economics</td>
+                    <td class="apps-listing">Speculative · view careers ↗</td>
+                    <td><span class="apps-bar"><span style="width:78%"></span></span> 78%</td>
+                    <td><span class="apps-status sent">sent</span></td>
+                    <td>research@verityecon.org</td>
+                    <td><span class="apps-nudge green">Respond to offer</span></td>
+                </tr>
+                <tr>
+                    <td class="apps-org">Westwood Research Centre</td>
+                    <td class="apps-listing">No current opening</td>
+                    <td><span class="apps-bar"><span style="width:72%"></span></span> 72%</td>
+                    <td><span class="apps-status">not-sent</span></td>
+                    <td>info@westwood-research.org</td>
+                    <td>·</td>
+                </tr>
+            </tbody>
         </table>
+    </main>
+</div>
+
+    </div>
+    <div class="killer-features">
+      <div class="killer-feature">
+        <h4><span class="num">01</span> Discover orgs</h4>
+        <p>Sentrivo ranks organisations by how well they fit your CV and brief, surfacing labs, think tanks, and research groups open to speculative outreach.</p>
+      </div>
+      <div class="killer-feature">
+        <h4><span class="num">02</span> Draft cover letters</h4>
+        <p>A tailored letter for each org, referencing concrete details about their work and connecting them to your experience.</p>
+      </div>
+      <div class="killer-feature">
+        <h4><span class="num">03</span> Track every thread</h4>
+        <p>Letters queue for your review. Sentrivo tracks responses and chases follow-ups automatically.</p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- =================== ALSO IN YOUR INBOX =================== -->
-<div class="also-bg">
-  <section class="section" id="inbox">
-    <div class="section-head-center">
-      <span class="section-eyebrow">And everything else your inbox needs</span>
-      <h2 class="section-title">A full email assistant, <em>not just applications.</em></h2>
-      <p class="section-sub">Sentrivo handles the rest of your student inbox too, so admin doesn't eat your week.</p>
+<!-- =================== SECTION 2: HOW IT WORKS =================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">You spend thirty seconds. <span class="accent">Sentrivo spends the rest of the week.</span></h2>
+      <p class="section-sub">The parts that take hours: research, finding the right contact, writing a specific letter for each, tracking the threads, following up. Sentrivo does all of that in the background.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-col">
+        <div class="how-col-head">
+          <h3>What you do</h3>
+          <span class="time">≈ 30 seconds</span>
+        </div>
+        <div class="how-step">
+          <h4><span class="n">01</span> Upload your CV</h4>
+          <p>A PDF is fine. Sentrivo parses your background, experience, and skills.</p>
+        </div>
+        <div class="how-step">
+          <h4><span class="n">02</span> Write one sentence</h4>
+          <p>"Summer internship in policy research, London." That's the brief.</p>
+        </div>
+        <div class="how-step">
+          <h4><span class="n">03</span> Review and approve</h4>
+          <p>Each draft sits in a queue for you to read. Edit anything. Hit send when ready.</p>
+        </div>
+      </div>
+      <div class="how-col">
+        <div class="how-col-head">
+          <h3>What Sentrivo does</h3>
+          <span class="time">All week, in the background</span>
+        </div>
+        <div class="how-step">
+          <h4><span class="n">04</span> Finds 20 best-fit organisations</h4>
+          <p>Scores each match against your CV and brief. Finds the right contact email, or the most-watched general inbox if no contact is public.</p>
+        </div>
+        <div class="how-step">
+          <h4><span class="n">05</span> Writes a specific cover letter for each</h4>
+          <p>Not a template with the org name swapped in. Every draft references concrete details about that organisation and connects your experience to their work.</p>
+        </div>
+        <div class="how-step">
+          <h4><span class="n">06</span> Follows up after two weeks</h4>
+          <p>If they didn't reply, Sentrivo drafts a follow-up. If they did, it sorts the thread by what's needed next.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SECTION 3: EMAIL ASSISTANT =================== -->
+<section class="section email-assistant-section" id="inbox">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-label">A comprehensive email assistant</div>
+      <h2 class="section-title">Cuts email admin to <span class="accent">5 minutes a day.</span></h2>
+      <p class="section-sub">Speculative applications are the headline feature, but Sentrivo is a full email assistant. What used to take days takes minutes.</p>
     </div>
 
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h7M7 16h5"/></svg>
-        </div>
-        <h4>Smart inbox & summaries</h4>
-        <p>Every email auto-sorted into Urgent, To Reply, Actionables, Info, Junk, with a one-line summary and suggested next action.</p>
+    <div class="feature-block">
+      <div class="feature-text">
+        <span class="section-label">Smart inbox</span>
+        <h3>Every email <span class="accent">sorted automatically.</span></h3>
+        <p>Sentrivo categorises every incoming email into Urgent, Actionables, To Reply, Info, Social, or Junk. The only thing in your inbox is the thing you actually need to do.</p>
+        <ul>
+          <li><strong>Auto-categorisation</strong> across six labels</li>
+          <li><strong>Custom labels</strong> for your own filters</li>
+          <li><strong>Read counter</strong> at the top, to clear the queue</li>
+        </ul>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <div class="feature-img-wrap">
+        
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        New email
+    </button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="inbox-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-        <h4>AI drafts and reply queue</h4>
-        <p>Tell Sentrivo what to say. It writes the reply. Batch-process your whole "To Reply" stack in one sitting.</p>
-      </div>
-      <div class="feature-card red">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div class="inbox-pills">
+            <span class="inbox-pill active">All</span>
+            <span class="inbox-pill">Urgent</span>
+            <span class="inbox-pill">Actionables</span>
+            <span class="inbox-pill">To Reply</span>
+            <span class="inbox-pill">Info</span>
+            <span class="inbox-pill">Social</span>
+            <span class="inbox-pill">Junk</span>
+            <span class="inbox-pill mint">LSE ✕</span>
+            <span class="inbox-pill dashed">+ Add label</span>
+            <span class="inbox-pill read">👁 Read <span class="ct">0</span></span>
         </div>
-        <h4>Deadlines, detected automatically</h4>
-        <p>Sentrivo scans incoming email for dates, cutoffs, scholarship deadlines, and assignments, and adds them to a tracker.</p>
-      </div>
-      <div class="feature-card amber">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <div class="inbox-list">
+            <div class="inbox-row unread">
+                <span class="inbox-dot"></span>
+                <span class="inbox-sender">Meridian Policy Lab</span>
+                <span class="inbox-subject">Re: Your application: next steps and interview times</span>
+                <span class="inbox-label urgent">Urgent</span>
+                <span class="inbox-time">14:32</span>
+            </div>
+            <div class="inbox-row unread">
+                <span class="inbox-dot"></span>
+                <span class="inbox-sender">Frontier Economics</span>
+                <span class="inbox-subject">Thanks for reaching out, let's set up a call</span>
+                <span class="inbox-label to-reply">To Reply</span>
+                <span class="inbox-time">11:08</span>
+            </div>
+            <div class="inbox-row">
+                <span class="inbox-dot"></span>
+                <span class="inbox-sender">Northbridge Foundation</span>
+                <span class="inbox-subject">Sentrivo follow-up: Research role enquiry</span>
+                <span class="inbox-label action">Actionables</span>
+                <span class="inbox-time">09:14</span>
+            </div>
+            <div class="inbox-row">
+                <span class="inbox-dot"></span>
+                <span class="inbox-sender">LSE Careers</span>
+                <span class="inbox-subject">Summer internship deadlines · this week</span>
+                <span class="inbox-label info">Info</span>
+                <span class="inbox-time">Mon</span>
+            </div>
+            <div class="inbox-row">
+                <span class="inbox-dot"></span>
+                <span class="inbox-sender">Atlas Behavioural Group</span>
+                <span class="inbox-subject">Could you send us a writing sample?</span>
+                <span class="inbox-label to-reply">To Reply</span>
+                <span class="inbox-time">Mon</span>
+            </div>
+            
+            
+            
         </div>
-        <h4>A network that follows up for you</h4>
-        <p>Never miss a follow-up with a professor, recruiter, or contact. Sentrivo writes the next email so they remember who you are.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-        </div>
-        <h4>Calendar that schedules itself</h4>
-        <p>Sentrivo spots meeting requests and event invites in your inbox, proposes times, sends the calendar invites, and keeps every commitment in one place.</p>
+    </main>
+</div>
+
       </div>
     </div>
-  </section>
+
+    <div class="feature-block reverse">
+      <div class="feature-text">
+        <span class="section-label">Summary mode</span>
+        <h3>A quick overview of <span class="accent">everything that matters.</span></h3>
+        <p>Open Summary Mode to see the day's inbox in one glance. Urgent highlights, items that need a reply, and information you should know. Each gets a one-line AI summary.</p>
+        <ul>
+          <li><strong>Total count</strong> across every category</li>
+          <li><strong>Urgent highlights</strong> surfaced first</li>
+          <li><strong>One-line summary</strong> per important thread</li>
+        </ul>
+      </div>
+      <div class="feature-img-wrap">
+        
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>New email</button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="sm-header">
+            <div>
+                <h3 class="sm-title">Summary Mode</h3>
+                <p class="sm-sub">A quick overview of your inbox</p>
+            </div>
+            <button class="sm-refresh">↻ Refresh</button>
+        </div>
+        <div class="sm-overview">
+            <div class="sm-overview-label">OVERVIEW</div>
+            <div class="sm-overview-total">
+                <span>Total emails</span>
+                <span class="sm-overview-num">15</span>
+            </div>
+            <div class="sm-overview-grid">
+                <div><strong>Urgent</strong></div><div class="sm-num red">2</div>
+                <div>Actionable</div><div class="sm-num">2</div>
+                <div>Info</div><div class="sm-num">11</div>
+                <div>To Reply</div><div class="sm-num">2</div>
+                <div>Junk</div><div class="sm-num">0</div>
+                <div>Other</div><div class="sm-num amber">0</div>
+            </div>
+        </div>
+        <div class="sm-section">
+            <div class="sm-section-head">URGENT HIGHLIGHTS <span class="sm-section-count red">2</span></div>
+            <div class="sm-card">
+                <div class="sm-card-title">Re: Your application: next steps</div>
+                <div class="sm-card-from">From Meridian Policy Lab &lt;contact@meridianlab.org&gt;</div>
+                <div class="sm-card-summary">
+                    <span class="sm-summary-label">SUMMARY</span>
+                    Meridian wants to schedule an interview for the research analyst role next week and asks you to send two preferred time slots before Friday.
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
+
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-text">
+        <span class="section-label">Reply mode</span>
+        <h3>Analyses your inbox and drafts every reply. <span class="accent">One click from sent.</span></h3>
+        <p>Tell Sentrivo what to say, or let it draft from context. Every reply sits in a queue marked Ready or Needs review. Scroll, edit, send.</p>
+        <ul>
+          <li><strong>Drafts every reply</strong> in your "To Reply" queue</li>
+          <li><strong>"Ready" vs "Needs review"</strong> at a glance</li>
+          <li><strong>Modify with a sentence</strong>: "make it shorter", "add Tuesday 2–4pm"</li>
+        </ul>
+      </div>
+      <div class="feature-img-wrap">
+        
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>New email</button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="rm-header">
+            <h3 class="rm-title">Reply Mode</h3>
+            <p class="rm-sub">Scroll and send drafts fast. Edit or ask AI to adjust when needed.</p>
+            <div class="rm-stats">
+                <span>Queue: <strong class="rm-green">4</strong></span>
+                <span>Needs review: <strong class="rm-amber">2</strong></span>
+            </div>
+        </div>
+
+        <!-- Card 1: Fully expanded, Ready -->
+        <div class="rm-card">
+            <div class="rm-card-head">
+                <div>
+                    <span class="rm-card-title">Re: Your application: next steps</span>
+                    <span class="rm-status ready">Ready</span>
+                </div>
+                <div class="rm-card-actions">
+                    <button class="rm-send">Send</button>
+                    <button class="rm-discard">Discard</button>
+                </div>
+            </div>
+            <div class="rm-card-from">Meridian Policy Lab &lt;contact@meridianlab.org&gt;</div>
+            <div class="rm-show-orig">▾ Show original email</div>
+            <div class="rm-draft-label">DRAFT REPLY</div>
+            <div class="rm-draft-body">
+                <p>Dear Dr. Holloway,</p>
+                <p>Thank you for the time slots. Tuesday 1 July at 14:00 BST works on my end, happy to confirm.</p>
+                <p>Best,<br/>Sebastian</p>
+            </div>
+            <div class="rm-ai-row">
+                <input class="rm-ai-input" placeholder='Ask AI: "make it shorter", "more formal", "add availability"…' />
+                <button class="rm-modify">Modify</button>
+                <button class="rm-generate">Generate</button>
+                <button class="rm-regenerate">Regenerate</button>
+            </div>
+            <div class="rm-tip">Tip: You can edit directly, or use "Modify" to change tone/length without starting over.</div>
+        </div>
+
+        <!-- Card 2: Needs review -->
+        <div class="rm-card needs-review">
+            <div class="rm-card-head">
+                <div>
+                    <span class="rm-card-title">Writing sample request</span>
+                    <span class="rm-status review">Needs review</span>
+                </div>
+                <div class="rm-card-actions">
+                    <button class="rm-send">Send</button>
+                    <button class="rm-discard">Discard</button>
+                </div>
+            </div>
+            <div class="rm-card-from">Atlas Behavioural Group &lt;hello@atlasbg.co.uk&gt;</div>
+            <div class="rm-show-orig">▾ Show original email</div>
+            <div class="rm-draft-label">DRAFT REPLY</div>
+            <div class="rm-draft-body short">
+                <p>Hi,</p>
+                <p>Thank you for considering my application. Attached is a 4-page extract from my undergraduate dissertation on the gender life-satisfaction gap, which I think speaks most directly to Atlas's behavioural welfare work…</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SECTION 4: 24/7 ASSISTANT =================== -->
+<section class="section" id="assistant">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-label">An AI assistant working 24/7</div>
+      <h2 class="section-title">Keeps your professional life <span class="accent">running in the background.</span></h2>
+      <p class="section-sub">Sentrivo doesn't only help with basic email. It quietly manages your network, your projects, and your calendar, so nothing falls through the cracks.</p>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-text">
+        <span class="section-label">Network</span>
+        <h3>Never forget to <span class="accent">keep in touch.</span></h3>
+        <p>Sentrivo tracks every contact you've spoken to (professors, recruiters, mentors, peers) and flags the ones who need a follow-up before the relationship cools.</p>
+        <ul>
+          <li><strong>Auto-detected contacts</strong> from your email history</li>
+          <li><strong>"Needs follow-up" badge</strong> when a thread goes quiet</li>
+          <li><strong>Sentrivo drafts the next email</strong> so they remember who you are</li>
+        </ul>
+      </div>
+      <div class="feature-img-wrap">
+        
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>New email</button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="nw-header">
+            <div>
+                <h3 class="nw-title">Network</h3>
+                <p class="nw-sub">5 contacts</p>
+            </div>
+            <button class="nw-add">+ Add Contact</button>
+        </div>
+        <div class="nw-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input placeholder="Search contacts…" />
+        </div>
+        <div class="nw-filters">
+            <span class="nw-pill active">All</span>
+            <span class="nw-pill">Needs follow-up <span class="nw-bdg">5</span></span>
+            <span class="nw-pill">Investors</span>
+            <span class="nw-pill">Recruiters</span>
+            <span class="nw-pill">Mentors</span>
+            <span class="nw-pill">Other</span>
+        </div>
+        <div class="nw-grid">
+            <div class="nw-card">
+                <div class="nw-card-top">
+                    <div class="nw-avatar">MH</div>
+                    <div>
+                        <div class="nw-name">Marcus Holloway <span class="nw-dot"></span></div>
+                        <div class="nw-role">Professor · Welfare Economics Lab</div>
+                    </div>
+                </div>
+                <div class="nw-email">m.holloway@welab.org</div>
+                <span class="nw-tag">mentor</span>
+                <div class="nw-last">Last contact: 26 Apr 2026</div>
+            </div>
+            <div class="nw-card">
+                <div class="nw-card-top">
+                    <div class="nw-avatar">AB</div>
+                    <div>
+                        <div class="nw-name">Alice Beckett <span class="nw-dot"></span></div>
+                        <div class="nw-role">Policy Officer · Bright Network</div>
+                    </div>
+                </div>
+                <div class="nw-email">a.beckett@brightnet.uk</div>
+                <span class="nw-tag">recruiter</span>
+                <div class="nw-last">Never contacted</div>
+            </div>
+            <div class="nw-card">
+                <div class="nw-card-top">
+                    <div class="nw-avatar">HW</div>
+                    <div>
+                        <div class="nw-name">Hannah Whitmore <span class="nw-dot"></span></div>
+                        <div class="nw-role">Director · Centre for Welfare Studies</div>
+                    </div>
+                </div>
+                <div class="nw-email">h.whitmore@cws.org</div>
+                <div class="nw-last">Last contact: 12 Apr 2026</div>
+            </div>
+            <div class="nw-card">
+                <div class="nw-card-top">
+                    <div class="nw-avatar">DA</div>
+                    <div>
+                        <div class="nw-name">Daniel Ash <span class="nw-dot"></span></div>
+                        <div class="nw-role">Researcher · Northbridge Foundation</div>
+                    </div>
+                </div>
+                <div class="nw-email">d.ash@northbridge.org</div>
+                <div class="nw-last">Never contacted</div>
+            </div>
+        </div>
+    </main>
+</div>
+
+      </div>
+    </div>
+
+    <div class="feature-block reverse">
+      <div class="feature-text">
+        <span class="section-label">Projects</span>
+        <h3>Every project's emails <span class="accent">in one place.</span></h3>
+        <p>Bundle related emails (a research collaboration, an event you're organising, a job you're applying to) into a single project. Sentrivo knows the people, the context, and what's next. It briefs you before every meeting.</p>
+        <ul>
+          <li><strong>Group emails</strong> by project, automatically</li>
+          <li><strong>People & event details</strong> extracted for you</li>
+          <li><strong>Ask the AI</strong> about any project. It knows the full thread</li>
+        </ul>
+      </div>
+      <div class="feature-img-wrap">
+        
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>New email</button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="pj-header">
+            <div>
+                <h3 class="pj-title">Projects</h3>
+                <p class="pj-sub">3 active</p>
+            </div>
+            <button class="pj-add">+ New project</button>
+        </div>
+        <div class="pj-grid">
+            <div class="pj-card active">
+                <div class="pj-card-top">
+                    <span class="pj-card-title">Welfare Forum 2026</span>
+                    <span class="pj-status">Active</span>
+                </div>
+                <p class="pj-card-desc">Co-organising the LSE Welfare Forum on 14–16 Sept 2026. Keynote outreach, panel coordination, attendee logistics.</p>
+                <div class="pj-card-meta">12 emails · updated 2d ago</div>
+            </div>
+            <div class="pj-card">
+                <div class="pj-card-top">
+                    <span class="pj-card-title">Speculative outreach · Summer</span>
+                    <span class="pj-status">Active</span>
+                </div>
+                <p class="pj-card-desc">Tracking all 20 speculative applications for the summer research push: Meridian, Northbridge, Atlas, Verity, Westwood.</p>
+                <div class="pj-card-meta">8 emails · updated 5h ago</div>
+            </div>
+            <div class="pj-card">
+                <div class="pj-card-top">
+                    <span class="pj-card-title">Adaptive Preferences · Thesis</span>
+                    <span class="pj-status">Active</span>
+                </div>
+                <p class="pj-card-desc">Final-year dissertation on the gender life-satisfaction gap. Supervisor exchanges, data requests, draft feedback.</p>
+                <div class="pj-card-meta">6 emails · updated yesterday</div>
+            </div>
+        </div>
+    </main>
+</div>
+
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-text">
+        <span class="section-label">Deadlines</span>
+        <h3>Never miss a deadline. <span class="accent">Detected automatically.</span></h3>
+        <p>Sentrivo reads your inbox for dates and commitments: assignment cutoffs, scholarship deadlines, application due dates. Everything stays in one tracker.</p>
+        <ul>
+          <li><strong>Auto-detected</strong> from incoming email</li>
+          <li><strong>Overdue, today, upcoming</strong> at a glance</li>
+          <li><strong>Application & assignment</strong> separated</li>
+        </ul>
+      </div>
+      <div class="feature-img-wrap">
+        
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>New email</button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="dl-header">
+            <h3 class="dl-title">Deadlines &amp; applications</h3>
+            <p class="dl-sub">AI-detected and manually added deadlines from your emails</p>
+        </div>
+        <div class="dl-counters">
+            <div class="dl-counter"><span class="dl-num red">0</span><span class="dl-label">Overdue</span></div>
+            <div class="dl-counter"><span class="dl-num amber">1</span><span class="dl-label">Due today</span></div>
+            <div class="dl-counter"><span class="dl-num green">4</span><span class="dl-label">Upcoming</span></div>
+        </div>
+        <div class="dl-filters">
+            <span class="dl-pill active">All</span>
+            <span class="dl-pill">Applications</span>
+            <span class="dl-pill">Assignments</span>
+            <button class="dl-add">+ Add deadline</button>
+        </div>
+        <div class="dl-section-label">UPCOMING</div>
+        <div class="dl-item">
+            <div class="dl-check"></div>
+            <div class="dl-content">
+                <div class="dl-item-title">Meridian Policy Lab · interview slots</div>
+                <div class="dl-item-date">28 June 2026</div>
+                <span class="dl-tag amber">Today</span>
+                <span class="dl-tag purple">Application</span>
+            </div>
+            <span class="dl-dismiss">Dismiss</span>
+        </div>
+        <div class="dl-item">
+            <div class="dl-check"></div>
+            <div class="dl-content">
+                <div class="dl-item-title">Atlas writing sample</div>
+                <div class="dl-item-date">2 July 2026</div>
+                <span class="dl-tag purple">Application</span>
+            </div>
+            <span class="dl-dismiss">Dismiss</span>
+        </div>
+        
+        
+    </main>
+</div>
+
+      </div>
+    </div>
+
+    <div class="feature-block reverse">
+      <div class="feature-text">
+        <span class="section-label">Calendar</span>
+        <h3>Your calendar <span class="accent">manages itself.</span></h3>
+        <p>Sentrivo spots meeting requests in your inbox, proposes times, sends the calendar invites. Your Google Calendar lives inside the app so everything's in one place.</p>
+        <ul>
+          <li><strong>Google Calendar</strong> embedded in Sentrivo</li>
+          <li><strong>Meeting requests</strong> become invites automatically</li>
+          <li><strong>Deadlines surface</strong> in your week view</li>
+        </ul>
+      </div>
+      <div class="feature-img-wrap">
+        
+<div class="app-frame">
+    <aside class="app-sb"><div class="app-sb-head"><span class="app-sb-logo">Sentrivo</span><span style="opacity:0.4">‹</span></div><button class="app-sb-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>New email</button><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>AI Assistant</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Inbox<span class="app-sb-badge ">8</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Sent</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Summary Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>Reply Mode</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Deadlines<span class="app-sb-badge ">5</span></div><div class="app-sb-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>Calendar</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Network<span class="app-sb-badge ">5</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Projects<span class="app-sb-badge amber">3</span></div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></svg>Mass Email</div><div class="app-sb-item "><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Applications</div></aside>
+    <main class="app-main">
+        <div class="cal-header">
+            <div>
+                <h3 class="cal-title">Calendar</h3>
+                <p class="cal-sub">Your Google Calendar, embedded in Sentrivo.</p>
+            </div>
+            <button class="cal-open">Open in Google Calendar ↗</button>
+        </div>
+        <div class="cal-toolbar">
+            <button class="cal-today-btn">Aujourd'hui</button>
+            <button class="cal-nav">‹</button>
+            <button class="cal-nav">›</button>
+            <span class="cal-month">Juin 2026 ▾</span>
+            <span class="cal-week">Semaine ▾</span>
+        </div>
+        <div class="cal-grid">
+            <div class="cal-day-col cal-time-col">
+                <div class="cal-day-head"></div>
+                <div class="cal-time-row">2 PM</div>
+                <div class="cal-time-row">3 PM</div>
+                <div class="cal-time-row">4 PM</div>
+                <div class="cal-time-row">5 PM</div>
+                <div class="cal-time-row">6 PM</div>
+                <div class="cal-time-row">7 PM</div>
+                <div class="cal-time-row">8 PM</div>
+                <div class="cal-time-row">9 PM</div>
+                <div class="cal-time-row">10 PM</div>
+            </div>
+            <div class="cal-day-col">
+                <div class="cal-day-head">
+                    <div class="cal-day-name">DIM.</div>
+                    <div class="cal-day-num ">21</div>
+                </div>
+                <div class="cal-day-body"><div class="cal-event gray" style="top:0px"><div class="cal-event-title">Lunch</div><div class="cal-event-time">1:30–2:30pm</div></div><div class="cal-event purple" style="top:210px"><div class="cal-event-title">EC2C4 study</div><div class="cal-event-time">8:30–10pm</div></div></div>
+            </div>
+            <div class="cal-day-col">
+                <div class="cal-day-head">
+                    <div class="cal-day-name">LUN.</div>
+                    <div class="cal-day-num ">22</div>
+                </div>
+                <div class="cal-day-body"><div class="cal-event gray" style="top:0px"><div class="cal-event-title">Lunch</div><div class="cal-event-time">1:30–2:30pm</div></div><div class="cal-event purple" style="top:210px"><div class="cal-event-title">MA103 study</div><div class="cal-event-time">8:30–10pm</div></div></div>
+            </div>
+            <div class="cal-day-col">
+                <div class="cal-day-head">
+                    <div class="cal-day-name">MAR.</div>
+                    <div class="cal-day-num ">23</div>
+                </div>
+                <div class="cal-day-body"><div class="cal-event orange" style="top:0px"><div class="cal-event-title">Welfare Forum prep</div><div class="cal-event-time">1:30–2:30pm</div></div><div class="cal-event purple" style="top:210px"><div class="cal-event-title">EC2C4 study</div><div class="cal-event-time">8:30–10pm</div></div></div>
+            </div>
+            <div class="cal-day-col">
+                <div class="cal-day-head">
+                    <div class="cal-day-name">MER.</div>
+                    <div class="cal-day-num today-num">24</div>
+                </div>
+                <div class="cal-day-body"><div class="cal-event gray" style="top:0px"><div class="cal-event-title">Lunch</div><div class="cal-event-time">1:30–2:30pm</div></div><div class="cal-event purple" style="top:210px"><div class="cal-event-title">MA103 study</div><div class="cal-event-time">8:30–10pm</div></div></div>
+            </div>
+            <div class="cal-day-col">
+                <div class="cal-day-head">
+                    <div class="cal-day-name">JEU.</div>
+                    <div class="cal-day-num ">25</div>
+                </div>
+                <div class="cal-day-body"><div class="cal-event gray" style="top:0px"><div class="cal-event-title">Lunch</div><div class="cal-event-time">1:30–2:30pm</div></div><div class="cal-event orange" style="top:90px"><div class="cal-event-title">LSE Welfare Forum</div><div class="cal-event-time">5–6pm</div></div><div class="cal-event purple" style="top:210px"><div class="cal-event-title">EC2C4 study</div><div class="cal-event-time">8:30–10pm</div></div></div>
+            </div>
+            <div class="cal-day-col">
+                <div class="cal-day-head">
+                    <div class="cal-day-name">VEN.</div>
+                    <div class="cal-day-num ">26</div>
+                </div>
+                <div class="cal-day-body"><div class="cal-event orange" style="top:0px"><div class="cal-event-title">Coffee w/ Meridian</div><div class="cal-event-time">1:30–2:30pm</div></div><div class="cal-event purple" style="top:210px"><div class="cal-event-title">MA103 study</div><div class="cal-event-time">8:30–10pm</div></div></div>
+            </div>
+            <div class="cal-day-col">
+                <div class="cal-day-head">
+                    <div class="cal-day-name">SAM.</div>
+                    <div class="cal-day-num ">27</div>
+                </div>
+                <div class="cal-day-body"><div class="cal-event gray" style="top:0px"><div class="cal-event-title">Lunch</div><div class="cal-event-time">1:30–2:30pm</div></div></div>
+            </div>
+        </div>
+    </main>
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOUNDER =================== -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-photo">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAGQAZADASIAAhEBAxEB/8QAHQAAAAcBAQEAAAAAAAAAAAAAAAECAwQFBgcICf/EAD8QAAEDAwMCBAQEBAQGAgMBAAEAAgMEBRESITEGQRMiUWEHMnGBFEKRoRUjscEIUtHhJDNDcvDxFmIXRJJz/8QAGwEAAgMBAQEAAAAAAAAAAAAAAAIBAwQFBgf/xAApEQACAgIDAAICAgICAwAAAAAAAQIRAwQSITEFQRMiBlEyYRQVI0KB/9oADAMBAAIRAxEAPwCmKJBBaisGcI2nfKSSiz2QBMhqNPlI2SnU7Hs1jG6iA4HZORzuaedvRBKESQOY443TYbnlT/FikG7d0bW0+c4CAohRtdng/oVIZBK8Z3UnxqdjCAAmnVec+H+yCUG2Frd3kEhPeJC1uQP7pqGnlnOXHA9Snn0wZkNxv6JSwaNUz5Q3BPfKU1uoalEfDplyeVPo2649LtvZQyE+xoHDgMbKY5rnsa1oUKaZsVSGuHl7ZUhtQQA5p+gQN4NyQiLdx3TT9L2khOSl0h1FMkaTwpFY3C7RNj3V9E/VGDnbCz0jiHcqzopi5oaTxukkKSKmoEIOeUuleZIw4d1SXeqeJWtDTjPZWdG+RtKMAYPfCqXpJP7osnKj63mTbdPj5RnlMAeSlIDhBRZKFN9UDwk5QSjIB4SUZKSeFBNBpJ+U5QBzyicMhAEZzGufuCnGwtbuMowMJ1vCUhpejzJDjB7BE52rcpIwgeEKK9LZ5ZTSTYg8oIIJisU3kIHlDsEfZFEBJKUkphWBJPzJSS7lBAERKJBABHhFulIdkwoy7jumnQiTlqfPKChgZ9JQOx3QWkUCGQiKLON0AKRZ8yQJCX77BKyPVACw8gpXiFNIsoAddJslxSMbyQFGQQMT/wCIFrmtadgrSEtlh16gT6LOKVS1z6d4ByWBDQ8ZUOVLpG1O7XYB9EsVXhNGk4KenljmiEgP7KsnlGrA/ogG+ydO5tRFqGAc5ykwa+HHhRIZ8DBxhOOqQB5Xb8ICydJkNyNx7KK6bBxnhJFWDFpLt/uoT5C5xwSgVsmOkY7ghTKSUNdzhUge4FS6ab+ZglK0LZdOp4ZsF+nI33TrA2NulvCgtlOPmITjZj65VVUySYzAOM4HupAcMDccKA2X1KcE/A52UsCYhqUE1ZaN8AJIrc8EKpsujFsn6gfzIDChCqb2ITjKn3CiyVFkpE4jjITPjbcpJn37JbBoeJwkk7bprxQRuUA8FRZNDoISgm++UvspIoUCMpSbB3Si5MhQzyiQQTEBt+ZKwcpA5TmR6oFE4KI8pYOUuOLxDj0UpWAyAewzukv9wp0gjhjwcKunmbnDVMlSFu/AiQAiacndMGUA8hOxTDWOEseyfB8ROIzoOElzSNsfsrii8KZuDg7KHXxCOby8bp6Fsr3AponGU5I7A5UcuGeUjHSKVw3JSUEFsKwb90EeEWFDAToGcoHlKRHlQASCCCAAggggAgcoyMtKSNijJQA6J3CPR2wmTg8lBFglBNhcIZPZHpKGEEBAlDRnlGEoIARpITkAxKMpJ5RxuxKFDAtQfJkcpLWu1ZyhHu3A5S86RknH1VTGoWCUl8mmNxzvhI8QE7FR6iXDHDnPooHiu0UlZfzTz6HAYUdvUcfIIVPfY3fi8kbFVDGFvJ/ZcDY2Jwm0fQ/jPjMGfBGTRtouog92kOyrGnuTZCN1z6LMbsgq2oKpxdgkqh7k69N8fgtdvw3kdRrwA/b6pfm5D1mo5ZA0Frynvxc7W/OSq1vzQ0/4xrvwvfEcx3zElOCd+2SP1VA2rkODlCS4ObyVavkpmZ/xfEaVtSW4ynP4hENnPCw9T1BLE04JKpJ73VSSFwe7HsVbD5CX2ZMn8Yh9M6uKuJzdngpYlDxnIXKqa91ziGte5ba0VM8sTfEJ3Hdb9fZeR0cD5P4mOrG77NEHYGMo9QKhiXISxKQOVuPOksEYSs7KM2UY5ShKDwU1EMkDhTaYeHDq5Vcx4OxVmwtFCTnsVMRStrKgl51OwAcYVZJUsLsB+6oup+oG28PGQMElZeh6sjqajS94G+FdDVllViSyqLNxPWCJhdnOOyqRfZfxOkNdjKs6QUVXTscZWZI33Uaoit8dSGgAkd8KzHrU6YssiZremqr8SPMTxx+ilXkhk2c7Yyqbp1+iow3GlSep6vw4dQ327qrMlCx8fbID5i5xa3dKipqqTcNcFU264MfUjWRzwV0C2VFI+EeVucLg5N530jqQ1bVnPMowkhGvRHMDyESCLKgA8pKCCkAZRZCI8oJQFIIDhBABYSScFLPCbO6AFAjlHqHZIHGEYAzlACiUA0774wk6sH0SomvlJxznABOEWADzykkgDJT0b4Y2uEwweBjBUOoID/I4Ob6jskc0iaHg4E5zslRAvl8gJxvsmqZkkj8NY4g7jA2P3U6eQW9jNJaM+Z22ceyR5ENGNkiedtFS+LIQDjOeFg751fTU7tUgMruwLyGj6BT7tfW1pdTMzI8jAa1ZGotAc7xZmjDfNh6zSm7L4xQ9B8QKWN7o59cbT6EYC0tu6jpq+IeDOHjGefdczudVbYJDJURU7Tw1jGgk+5OFX/8AyCKFpNO0w47tG6hSaG6R1K7Stm87hgqpOQMLKUnV0gIEzi7Jx59leUtxpqsN0PxqB2cuXuYXJ8kez/j/AMnDHH8U2TgfZP0khbOM8ZUdgDow4OBH1TkORKD7rlNNWmezhNSSlE0sL/5YTmrIUanJdAHISzNiYSVnqzfaq2OvmDAcuGyqayv82A4/qmKuvL8tYCPuq1x1PyTjOyuhD7ZjyZl4hcsr3u3cnIaWSoeGRtJ9+yft9BJWVDY2jbO+y3Fus8NO1pMYB77Lbiw21fhxd3ejji+PpWWawtja2SVu/wBFqo42sYGtGkj0ShE2IYHb2QHOcr0OPDGEf1Pmu7t5M825sUSRsCjHCShnCtMQpLaU2TgZRtcmFHRKQVLfVEUOBnYFQRunD5qctREho5R16ZXF7wM59FziGulZKdLnA/Rd4vdgFfCWtaCfosO74fP/ABBPhkDvtyuprbUccaZlyY+TKS0dT18RDWuLuwWvtwrbg5s0jn7nhOWzomCn0l0YJB4xlbe3WeOJjQGaWjthRm21L/FERw/2TunoTAwF+QQO6i9Snxo3sG+xCtHFkDCI9j6ZVLWkykk757LnzlyXZpguPhgnXCW21zg4EjK0VB1ZhrfMQQMKFdLWypJdo3+ir6azu1EaXYXB3NSSdwOvr51VSZqgdkMoEIl6M5IEEEEABBBBQwCIOUMI0WVABoiUMoyAgBOpJJ2yjI2KAB0oATyjaNv7Zwjle2ngdI9pceAG8uKbOQGvlGou+WMb5+qSU0hlFsUJqZr8STMDv8pcFErrnT04cI35cNzjfSq+43C22+OSrqHxeKwHTFgHJHY+6xdXeZZqcz1MjYvFOtrDsAFmllf0aI40vS4vnV3gYMUz2uGfl23WXf1zd4n5jqy4jbc8j323VDW1M9XLJPI5kEWMAZyXf7KpIa6oL3uyGt/dVJtjOjpVs+IF2ie17pNTG7iMnyn3Sb/8Ram40xbJHFE4nJDNt1yw3Wop36iC5juzdsKNWXTxC0k7dnd1PBi2kdd6bro56GSrk8Qnc6+NOPRVN+v7wXsjqW4PvlZKDqIQWoRGUlgH/LY7HKp6u5OqSXY0MycBqFAVyJNTVGSoc8v1k9/7pEUgc4ElwP8Am7qpdJuDkn1ynWVbWHdxH0T8RLst2iR7NpmnByGuUqlr5aKXL2yBoHOchVcNQyV+MjCmnDWgTZcw7YStFkZNO0aui6hnjp25iM0Z3yw7j7LSUN1o6sRM/E+FK4ZMcmAfouZQ1D6dxMMmAe3ZWUM81Y3LBiVg2IGD9vdY82rCXZ3tL5rNhSTfR1qCsbHS5J3HcKuqqt0riBj6ZWdst4fV29tNK0MkYcYHJ+uVf01HLMdOnb+65T1JKVI9ri+Zx5sPNsjkgYOcknCsrdbJqqQEggfRW9usBc4OmYMD1WjpqSKABrWt29Fv19Bt3M4HyP8AIYxThhGbbbGUsQJYNW24V00g7gDZR28Y4TzNgfddX8MaqjyP/Oy83O/RwnVyiCDcl2OUtsL3uw0KxKjNKTk7GzvsjaxxPCnxUgAy84SJXxx5xj7qbFIpidwkaS07p1s2px3GE4Wa2ZARYowMlKLiWgYREaXYKLO6lALjGXebhPhkGPlGVF1IB2BgJ1IVomAQtG4H1wkPqGsbso2rAyVVXSsMFK4txlQ2CRaySmQZyo7mk8j7rP2u5yzylh4zjdaLOWDKUBgwNI4CNsEbfyBPbIbeqH2SisQQQWhkAQREoZUWAaLKGUSgA8okEEAFlDUUXdFnfdAB6jx6pJ1hriABgZyTnb/zKJxw0piSpEbHPBw5m7WnuUsnSGStlfLXuqLtJEzJZTMDcuOwcRyVV189XNA5lNUMie8afF3c6Pffb1xke2UQq44ZZCHlr5JNUj+cj6KBWXy30NNL4Ya0k5y4eYlYJTcvDXGKRX1Vv8OFviTufG3DvEncMyH1IO6zN2qqJ0+GSul9gcj7Ji69R1lXN4rnua07AeyydfX1E8paJHYB+iWMG/QnNLwu5KqKSQlw0nbAPdQ5MuY5riWhxyMd1TNdKd9RJ7ZOVYQ1GIHBxBOM4KtUaKXIhVpbE9xJ7Ywd1VkskcGxE7/lx39VNrj4hLoyMEcJFHBhplI3BwGj1TC+mm6csFtqaU1EwdPOMaYuGg+6nVvTsNITLW1MUDTuIxufpss1RXSSgqDiYsaOQ38x9FY1N4fcWu8Glc093yO1EqtoZDL2UOvRFG922+Rgpk0lLJG4iNwd23TYDgx2XcjsiYJmkaGnhOmTQ2+k8LzQvJ9lOguBe1sD+/BITZdOw6hHkpDGxzxkkljghkC5JWNc4SAsPIIVjYrkyC6slbiUMPDt8+yqa5zmwAOGctx9FHtpLJw5vOeygE6Z0erpqGG1RX221gjqicvpZBv33H9fsVuOm7l+LpBLEyKU4BczOHA4XI2TxuzGXaWtzq/t+6senep32a4ta52Y3nS/Ow9voq1GnZessq42d2pbnG54ZKDA8nbxBgKxYeHgtdnu3cfZZuz3OkudKPMyZjwAC8h2D9/ur+N7WNbBENom40tHZaIyszyVE1hzjlPN42TEbw5gcAfoU8CQRhPYiJFKxznn2VkyJsbPEJ/UqNSADB9eUdVOQ3SHe3CkkRV1ms4B49FWzPc75clKkcC4YG6s6CnilcPEAGfVZs2ZQM2XOsfpSxyPD8HIHuFd0emSLcqzNjpZ2EtP0Va2mfSVhjB8voow5VPwbHljk8IlSzTJ7cpguGcKXWDz4UMjutRaGgDhFlAHZABuPl3Co7zTy1MOmIHJV0SSEQYO4BQRRSWS2up48yfNnurnBPKdGwwNkkgYQQNuOnGO6SXnPKEg2SWgnhAELKGUkoDdX+gGSkpSInHZQwBlDKLOUEAHlDKJBAASHFo5cAlZPuo9Sxhi1PBOdtlDdE0N1NayEthDXullOIxp49SfRYy79QxCqfCJWBjcgO51uHofZKu1/NM+q8KRpBP4YSOOXNY0efA4xnbK51da2OrlkL5vDYNmNbvjKx5J2aYJJWSq/qSTV4VJh7wcB5PyqNorZ3kzuJBGpzydnKrt7YTUYjw95OA0nc/ZWFTVuflrsZYMAFVE8ipuchjl0jzHsqtzSCXOPmKl1OX1JcTnLsJueNww0AkkfdWxK5IgPlkBwHEJymc/PiSggEYwU/HRZcDMW4G+PX6puozJIGt2a3YAcKRaIpYHSac4H+6n07o4pANeQRworoS1uQmow/xxpGSoZMUSZqfMplccNc7OFYRCaWIRQ+WJvcbKLUh7IWNcDnndKjrGwwCL5nHhgUIlekgsgDSRuc8nZJ/FQx7DBI9N1Dle55LSTj0ymdIA38qlIEywdcCXfy8D7ImzzOkBMflPsobZooW51Fx9yjNxneMRtI+gypaJbLCtAfSB2MHCgUJLA5xG7d8KXTyOl/lzubuNgUKuD8NTl2NnOSsj0fikBLpQdTn4GSlzQHxA93ykZCYo2E0x086ts+ytpAyopGgButn5Rt90rQyHLF1HXWSoMsJMsbd5I3HYj2/Zdx6U6hob9b2TwSkOOA5mcOBx39l5+DQ1wkYODxzlWNmvFXYLvBXxNeKd8gEwacDB9VMX2DPTTTlnlwANtk606n47BQaCoZU0MU0T3aHtDgNWdj7qfoyA4HT3JCuTKmqJzH6I9tio88hJJJTziHRgjuFFl7hOhSI+obHUDJ2U9lyGWsj2A9O6p6yndM7UwjKdpI3wkahuAsWfA5s521rvJLo0P8YMBGXHhOsqG1LhM37kKi8Dx3kP+oz2VxS04pqTBecY9Vswa+OEP9lmrrvH6Rqt3nUUuT1Q7U9MbKTaJJ2QblKQQAEYKI8ID5coAUidwiyUFNCjTwXDCW1oDeEpBQBUHhAIzyB2wgtAAQx7I2o1DATj2STynEkjJUAJQStCYncWvDR3QA4NJBGcnhU3UF6prNRiaUF8h8sUTDkvd9Fbh7WxuGRt3XOnVX8ZvlbfXGOeGmzS0bPyNP5nf9yoyzpUXQjbsxDnVlzqny1MY8JhdK8B2GtJPCpqmhqKypk0sMUY21EcrR1dwkkkqIoy1jBgARt05VQ6SrjnydTQBxnZZEXPsKCn/h9HiBgM0nLztgeyDoRI9z5HAbc53Kh1Zlc8Oln54b6pyKTS7HGB37JkhGRXtpWS5LtTs4xlPB7DPpaMZ2yfTCgVLsMkcP8AMcKfSx6nxs9Wjk+ydCsiVJIeWjHumdIazJaclSSw/in4/K5XFts5qKlry3IdzgJJ5FHtlkMbm6RSU9BVV7xFDGTvgkcBX8fSj6NjXyM1Sv2wF0rpzpuCKPzRjB82fdaiLpyCSWOSaIvaDnOFz8u330dTDoKuzgtT09ViJxkiIcOyzk9uqGzZIcAvTl26Xp6une2OIB2PKubV1hjbBIDF52Oxjupw7d+kZtGvDlraRmjDnO1d90ZgGkDdXNwoG0tRLljRjfB5Kr/CweAFvjO1Zy5Y+LpkV1O1rC4RZ+6ju8VrwNIbkbhqsWPLXNEuMbp7wY5aZwdzy1OhGiuhd5RI127Tg4Ks5ZW1dG6Bw87d2+6gCIhz2Dlw9PRKcJBIx+k8YQ0CQ/SzCJvhS7NJ3KnN8rjgkDfHuoDjE6Ql/l259EbKxsADC7UwnhQ0MmSmNdvNGcEHOPVP0tB/GZ46BlQIQ54dJqONu6Vbo4XlxDvI48enuolQHUNz8Rr8YcMP+vCXwLO7Wa6t6VZRUFymMlrkAjhqnDDojwGuHv2+hW+jw8AtOoEZDhwVzHp+e0dY9Iw0lW5gcAPFjccOJadiF0Oj8GljjpY5dTWNDRk5OPdWxYkl0WsUZbFuUxJ86kscC0AJmQYdurEVkctGc4S2s32RgEuAwpUVOdIe7gIoA6WAl2t2wTlVNhugHZE+cRs0sURxc/8A9qSbCKbSnJKCAIIIIACHbCCCCLDHKNJRjOUxAaCMcoEKGBTDhBENJbuQjV4Cm7ZS/wAqQ3lLIUMBB2O6U1oISXtJxhKaS3AKgAy0BhPKhSN8+TlTnPGkDZRJhtwgDO9W1rqDo+uljJbIGFjXjsTt/dYht7prZ0zFbKSmjdM+LzjGcD1+q0HxGke3pV1PGD/MlYHEdslc6by6eoBkdjS2MbDHqsWd9mnH4Jlma3McLPM7d2N8qNITM1zGt05wNI7n3CttMzKBrp4oodROGRtGQPqVV1Eoiz4DNIIOXOG6qXY5XzRCB5Mrw8jk+iZinMkckxOx2CFR4k0jmsbhmcl57ppzo4WCJvI324ViRUxBjDm+G7OknJUujeZLq0D5GnSPThQmvOl0jjgYwpluGlviHYYzk7DCkkk0tOZrsYW4Pmyd+y6z0tZIWw+NK3BI5K510fTGs6jmcRkAAHPGcrv3T1vZGzwXxtLcA7jZcvey10dr4/DceTJFp6fdpEjx5fmAP9FraSjglgAcNONt07Twt8BvAaBwpbIQd24A9PVc1uzqFTV0VMGvAdk44byVzfqCglF1ErKUs8p1ZGzvfC7A+KMYLoh9VnL/AEhlw6KMOIHpvv8A+k0HTFkrOF3eyU9fK41EzWhoyCdsf6Ln11ipaRz9Epe0bZP9l1O92+prmy1Jc1tKHFkQad53Dn7Bck6kieL66hjIeQc+vfhdXXlZydyCS8IEcsNTE7Di36pllTLEfDzjClNts1PyDg+yTHRudUanAgfRbYyRzJQaQpj3YbKSWkjvsnxVNOAeR39EmqjDLeHEAPk4aeyiw0rpMudluRsQmsS2SpyXNLi1v1xuo8MIkafLzuNlJNIYoA50mwz/AOfum6CRoOgDBB8udlPpHo/DJ4TQ07Y4Ux76aphMchOvHOPsoEjJGEhw752COPJw4tznb0StEm46KpY6aJplqGsl30HONPrlbSx3mVlbLI+QSGM4xnn3XJaKqfEcBz8+i0lDc3xFrA4gkgayffdC6Y3p6DpZhLRRytIOpodsluka4+b9FX2iZk1ngkYCG6ABkc7cp10pLhxueVamUS6ZYNdG3HCU6fLSGnbsoQbJgEg/VOM3A9Uydi2K3O5CSeUr7oMY6R2ApCxOM9kh/l9N/VS3RCKPLsD3VZPL59igmx7V7hLYcuCgeLlSIX5OP1QBKLduEkjAT7Rqam3+V2OECiBylNSB8xSxypsAFESjJA7pOQpApRxkYwlZGNyFArrtT0ULi97c4+qxbusXG8BocPC/Rb8OrPIrRVPKo9HRGuBIOU7kbb/sqq3XGKsp2ljhnCngklZ5wcXTHUrHiRjlIPKLO6NIMJPKbkPblOHlMvI3yf2QBkusKZtZa6mCR2gNa14cfUZXOHGCmgadOZNO+62XxDuL4be1jRqycAk7A/RcvkmkliGZPMOd1jyK5GmHSJdVdI4ycBz39sHYKrlqJaqdrDkZPy5UeTEIzqIdxvuhSTRioY5zcvB+bKXiDlYuqeA/wo8jA9e6jtaHEyOcSP6pxzRLWO17N9AnhGHEEgHsB6III2h0gaMhsfoQpssrYqMhjc7YwP8Az2SXFsbQDhMFstRUxws/M4bZQ5V2NFW6Oi/Dqk0QS1z27veBuOwC7bY3+IA4YIwFzvomzOgoWMe0YAz25wun2ij8N5DPQLg7Mucmem1YcYI0VKXaNBG6soNmjGPuo1LSklpORtknKs4KbzlxdhqzLo00NGMudhzVWdRMEHTkzoY9U0uIo8dyTj/Uq9e7QQdBOduFTdURSG1sfpeGRyxvOPQHdPFCS8Od9T0kVtt02iMObSU+locNi52x+/JXAjafD67ME+QSw7u9V6M6t0z1ZjBe6OeoY46dwWgb/wDpcq+J1m/h/UH8UpAWFuHYHphb8Lrow7ELVmXrLc2NvzArP1MsOXRsIw04JA7+it6y9QVNpdOJG62sOWk43Kx0cj5JQS7gZd7lbMUWvTmbU4+RJsrxLUhrvlaEsMBxk4aq41el4OfN6LWfwjxuj4q2F2vy6nkdj6LRJ0jHGNmeq5g6PYENGADzlQRrY8EA89lKqoZY3F2k+4KihpBDmZ35ymRDtE2Ooa8kOaSeE/CWeNjG3uocJIeSd/spMc4HmAO522QyESiwRvy13PKuLd/MniAeBuDuqph4kcB90UdTUCqa/wAVoj/y4KVjJ0eibHXRMs0YfVNe5jNwzfA9/dWdoeK+6eG3Lm53JXI7B1JFTwGlwGiQAffhdX6XqYKMeI53mcc91Xmm1ExbU3CNo6HLaaRlu1OwHALLTMEUpa3gHAU2rucsnyPyD7lVzpBJsTlyr1sjupBp4cuSDnXQee2ApVMMDW7ZQxsSDypRdppyc8LpJF1EO73KOCB2XBY2p6hj8wacnlQup7w51a6EOI9lmXVDdOTyujg1YuNyMObO1KomiPU2JA0A+4ytRZ7i2rhzjJ/ouYM0PmDgeCuh9KUBMAeXHPYJsuCPH9ULiyycuzX051NznZFO3DhsiaxzJA3unageUErmV9G5EVIc8NHPKMnfITbml3PZQAsO1DKNJYMDCUpsDIV1jZWvzI8Y+i5t1JbW265aYyTv2+y6+TlZa9WF9xrxJjIznuutpbXCX7PoozQtdA6Qpy2ga95OTgrWtAAxlVtroBQ0wYBgYU/f1WXPkU5toeEaQsnBSS4oiUWQqGWCs+qbeMgj1Rk7pLiR9+EAc065pHTPYx7w2IvdsT3XLqguo3CPS9zOxcMLtXUYiqL3Sse4uaxztTNvTlc56ogp/wASQ3SGcDGyxzf7Gqv1MTJOZZPOSR6JcMcjpg5rQAPzHspAgiLw/SRg905JK1gPZvbCWxKFN0sLsDVnYuPZMyVIBOkk+yjGd75CG7NxuEGNJfkgIJHA4khzjk+y1HRtvjqLs2rqANLSQ0ZWXI84AIOf2WotNxZRxs8NjnvAwQAT+iqyu40X4F+1nf7I6hgp2ODsZxnZa6zVFKRqL27nbK85mv6mkhBpaaqa0nIwwnCDeo+tqF5LfxTMf5mFc14E/s7EdqS8R6zimj8MkOGn25ypjKqJkR3ySNl5Xt/xT6ypS1szDMz3advZdK6c+Iz7gGMrGiJ57kYx7LPPFx8NWLNz9OsurXiYARgj6pVe5tVaJKc4wWnLew+io6K4CYhxcC3sVMmlBieYnB22+FVGZe4pnJ7vUS227ugkkJa3eM54wofUk1vvNmM0rh5mkn29Mq66op46+eSbwjloxuueXWz1kxdSRyGNp3HIDgtEMi+ynJCl0cnvVDDT3CUQS/yjy1U75mxs8OMduSuiz9A1Ukhc6U+uSVRXnoiqoWeLTkytHIXSx54Pqzh5tadt0ZJgLpMnOQNhwru13uej/kPkcYeC3hp9NlVkeDPiRhYW8tIwlGRhcAGaQTytPUkYu4s0s9VRVjQdmuKrHxNY8FhBHCjUcLp5GhjueFcPtU1PbnVR1uDe2NknJRdWMlKXdEQUsbo/M4jbskxQtjfhp1Y35yoFRW5mMeojB/8AP6o2zOlwxuQexbyVYKkXYnh8EtJaTjGAozGYfqxj2VYyOeKpAdqY477hXlvbBPKwTTtHrq/2UekMtenrfV3C8wx00D3gOGp2+GjPcruVDQvacNf8uG4C57ZL9ZLFBJGyVskkjQAGnAJ9Fpuk+pf43dp4RjLRrd6NHomik3TEyQjJdm4ga5rdDice6f8ACa0ZB2TYwBgZz6FLDs7KyWGDdlmLPLFFwj4wwQPVOl4NOW75TKejwTghWr+zO22ZCu6dZU1Zkccj6KG/pGB4wB+63UsQxx+ij+FvwVYssl9lbxxbsxsPRsTJQ4HvzlaOjpX2+MCI8K0ZCSNs/RSY6TIyW/qrMexKL7D8SEwl8jBI/OUmoeCcdk89zY24/ZQ5HaiqckuTsdKuhokAoshE4+nqiB23VYDjTyj7JDSMlLQBWCB4aS5uxGybLdJ8wRW++CsiLXscO4ynnnUcjhW/fRXjlzVjex9Uk7JRGERUlgk+qTlB+rsktDicYQAtNvDXbOBP3wncAbZSHDdAHPesW1VFdoK+ON3gP8kkkXb7Lnl5qW1N6nmc4OZkaA3bH1Xc7hT0UkTnXBuacbv3xsuCX4w/jquSjY6KPUQzVuseVUzVB2irZJG5pLdhndR53CUnSPK3gptjn+DoBwSf1Ux3hxUZaWjJ7pRSDECSXDcnbCktZgH8uAoZdiIub2PqrW30pqNJcDgkZSylxVj448nSLvpXpw3KsYZovKe57rtlg6VtNFHG6SmZt7clZbp6g/CQxSMa3GBsVK6j6hloqZofP4UA+YR8u9lyM2VzlSO7r4o41bOlx3ixUJFMHRucPyRN1H9kqtliqoPEisM0zTsC9oGP1XILVfL3e5hQWPwqBjgf+InHmO3YrH1996ko7vNT3CorqmSN5GTO5uMHkYzt/ophrN9ti5Nnh4jqd4lhpJ/51jqIM/mLAW/smKY0lSGyQNad8jTss30lH1Dc7VcbjUX17PCcGxU1W7U15Iz3/qr+1QvuOqenpvAqIX6ZIwctJ9QfRV5cfD7NGHJzXlHUumszRNjDxgDC3lJa2indoGcjhYTpKPQWOkzlx3C6nR+FowM8BYvs130c6vNnaJpWSRaWYyThYG4xRwF0AY572nDT3XbOpaISUzi3OSOVgq2zzy2id1HEw1RyG6jwT3QpdkNnJqpwbKfx9YYdQ8sMQy8rO3e9WO21D6OtoK4ygA6ZXBhyfbddRtnSN0stx/FyvpJJnfM+ob4p+24x3UXqT4aR9X34XW4VDI6hzAw/hIxGDjvjdbsTxruRg2IZZf4nArgLJcqk+HS1FG7ncah90u29GVtzlAts8NQM76X4LfsvSXT3wIsEdL/xkj3vzgFz+3otlbfgn0dQVjKiCm0StOoOjdjJ/VXS3ElUDItRv/M598Kvg5R28i5XVgmqHt2jc0Fu4K1PxG6BtzOiq6OkoIoiIS9uhuCMLq1o6YgoGt/DueWDYAlOdW2dtVYZoQ3OuItwsqyylK2zU8UYxpI+cdwtkjL2KRmol5aAB3J2x+uF0C4dB0VF03SSU9NWx1jcCaR7CGhxH9lMttvt9t+KkRu8Dnx0s5Lm450kY/8APZdmlth6m6ZqrjVXIxUMMgn0FuC2NvzOOPbZbs2Z0kjLr68e3I8t9T09Tarq2hq3AztjaXYI2yM8Klc6qADo2HS7cbK56prf451VXXOFhcyaQtjcO4Gw/bBXaOkukbRUdHW+WejiklMQLi5mcFb8a/VWcvNXN14cPtNrvFxq2xwMcwHyl2rfdeh+hOl4Om7K0NBdPMA6VxPzKxpOn7TQvzFQQtd6sGFdMa1kYa0bYx9FfFUUt9DjHHYEkn1JSwclNN5wnG8qwrFoiTnZKxsgcAKQHGVAHzBSGGF3cBVxwTlLDgOMIAsBLDGcnBSZK1uDoVe4knlGCSN8ZQTY4+QvcXeqadnCG6PtuoYesZJxyUWQkyPx6JvxUtktElo3wnONkmmIc7BH0T0zC13CkUyNEwMA291ZNcQMZ2UOFpbjI7KWO+OVcgSpUhWpA8pJCNAAzjbCTyjxugQglCDyiJx2CM8oYQQyPUU8dXTSQTDVG8YIXJequkPwT6iWmqHGMZIY9uHb/suwb5VPc7fHUwPZ4IIIzjOf6qrJCyyDo80zfyJ9OxxznslMZJUR5blzgOArHqGzT0V6qqctLjG52ceyqaaplpZA5mMg5AIysxY19jcbHufjbn5Tyul9N2jxaCF2nkjY9lgfxLTUCUtxnkHuV1jouojqaCm1AscDuFl2pNI2acU5Wb2msc34SNse2wTzOiaWvmYblA6QNOfZbWxUYniZ5A7SBgYWxitDHRgOjyPdcVyl6jvRiqMBBYrJSxBjKeNuBzjhV1TbLOyoOiGN2f8AMwOP6rqUlho3Rj/hmZPJwq+XpuD/AKVPG1x9RlLHKx1CP9GEZHSOhLPwkTWj1jAynqS3B2JaelbGzO7gMFy2Dem2NdqqZAd9mY2IR10cUQbHC3AG3Gymc2xowrwiWyjLZ42gEAHGVvaeMMhHIOFl6BodKx/BzwtaG5p2EjyjukodBVlMJoB3yMbrO1Vlc4ufDkH0C10TPEj8xwfRB1NpyQPfdCX9CNnNqqzyOIE8LiPUFMs6aYXh8VXUR47NculmCFzdMjAQoklDBE3LAPsptkpMztvtJiDS+rkdj35Wqt1NE0Ahpz2yo8cTcfL74V1QxtAbhvPZLGLsHHom07MMxgY9lFvcRNEcNOG4KtqUMc35MY5Ki3E/yXgkDAPPCu8Rkl6eP+qbM6L4w3iKCjdPO5zZoImgnxMg5b9e/wBl1my2eK3/AAO6gt1ZodK+11Ek7hyDoLgM+xWmtlpZF1Ndb1U0tKaeGRjvHIPi5DflA4AOTkrPfEmtd018COrL1UxMidW076elgb28Q4/1VvJymkiOKhjk2eJum4211fBSPcDqcM57jG5Xou0uit1ogp4XjQG9ivPnQ7JIuooPJq204xx9ffddwbrbSxxBxDWjA3XUz5vxeGf4v4+O1cpeGso5myuOCD3UwNcNsLF0t5ZR1zYXb6sLbQ1VMaZri7GR6qv/ALGMKUzPufHccjWPwJuzt+U4E2ZGveSOOycB2XUxyU4qSOLKLi6Y43cIPaQMpAfgcBImqA1pJ7BWChOfh2Ckh2d87rO1N8aK3wg7vyU5FdcnGATnGyqeQbiaAHunYwCOVAhmL2ggBTIiTgeqdSsglRw6znJATU+GNLc7eqmZbDDseVUVtSyOPxCd1MnSBK3QzIHngZ7bImQyOd8qkWqtpZj/ADC3jG6fqblRslDIwCB35XHz77g6SOhi1VNXY3TtcyUZHBCn1Dg5owAoLahkzwWqTI7ygLdq5nlhbMmfGoSpMz+nT7o2ga8oO4SR6reUjjsZ2RJLnkHclNS1UUUet7gAoboF2PE4KIlRIrjTzbB+DlPeINiH7FQpDUO47oJyNge3IKIswmFGTkHZNvYD5CBj90+WoiAeVDHOTdT9KSOqaurbERE5xdrJy53dZCHoi43WyvulEG/y34LHbFdzu1Eyoonta7Dg07442Vd8Pay0VXWM/SL2teKwEtIPD2jOwWDZuMW4mvWqclGRgYfhB1RS0cUt0t3hs8MTZa/VkYBGy2FvtEdNXwGCEsaWNO4/VdrbSOhuT7RXGV2IdMc5GxwMY/RZKmtbGuwW50EtH6rizzym6Z28evHH2jfdHW4y0sbyw743yuistrGwjy7/AFWT6QljioY48Ywt0KlugkFoGP3VcUmi9N3RTvga0nAyoU7W6NuQrGpmbl3Bz6qDLpY0ucRuqZxSZqgv7Kd2oPJc7kqquLB4gfz/AGVvM0PecnbKpbhIZZGwQHJxk4S0PVDlJJiVpbyeVqYnl9K2Iu0gdlmKGmkirIhJsDgk4wtvV09M57PwZJGgeU+uE9FbdMiRVEjHaQ7I9wpT66GJg8YtbnZOQ2ibUHyuDQPQp652qiqaaOIuHiN3znCFFohtNleZmyAljwE34uxDsFRK61yW2nFQyUOj9MqsqK6aLzEEt7KtuiyKL+IEjOQW+il0dwxUsiawjfkrO0d8a+MNyC7/ACq2grYWPB0EFx3xwrIyQSXRrIahp2I/dQrtIGx6w4Y7hQo6hzX6y7y4US5VniMwH7BpyOVLlfRkcaDoKKGupJ2SAtinm1P0HGSMf7Ln/wDiip4ofgH+GibpZ+KjGrG53W9sF7tkNG6lmqAJmSEP1EAjPC5d/iF6mtl+6TpekKGZk9S+oZUS6DnQxuefrsr9PHOeRJIzbMksbTZ5o6HtXhvFZK0/NsCF0Vzi5mpgyD2xwotkspbAxpaWtaBgEey0rKCJsQwPsu1PQcpXMph8tHVxfjxGCqhLJdo2kOHmytvSwzOijBfwOFVVFsf/ABNsjWYA7n6rRUkUg0g5XH29Oc8qUV0JDeTi5y9ZZwtxA0c7cp0HCJnljDcY9kC7deixQUIKJxMs+Umw0xUN1MTmv6JLnZTlZirra6nxfFi9corXTVDpm+K12Od1r3wscN2gpbKeJgGGNCq/GNYinY5kanwODZGOdwmAMbZ29E40eXhPQo9UzmRuBwqWvbJOPCA+6tnZcE14Y8bU4ZPqmBdGRdQ1tJUYYH7+isqeineA6RrgfUrThsDiCdOwS3RwuA8MBZpamOTuiIZ8sXSfRXUtMWO1EcKRI8l2BspL8NbwAobjkq9QjBVEaU3J2ypcdkh7tDCQUs4xyqe+3L8FRuLPm7K1uiUh2uucNNG5xk3HCyFd1I2YnL8NzgKnut+8SJ5qHEDtg4WKrrpLM4iE4aDjOVnlOx/OzoxvkELGyMd9cFXFD1PT1LdGsMIXLKSoLoBrcXH0yjNXLGMtOlv6JbGOuM6oMErWl7HjuMrR0dyp6+mEjJGj1C4FBemR51uJPPKtbV1bLHPpbI4MJ7JlkaIcEdwLmOHkcCkd1j7BffxNQ1hkyT6rX62n8ytjKxaoQ9odnIznlc96Znhov8VlmeQ2KJlQGYIwHOczH9cLopA0nylYHrrpmoqJouo7S8x1lK5rnYO+3ce4VWaPKLLMU+Mj05emvlpnRxQMfMBkOOzmnn9Fg6UyR3GammDWujd52j33Cwtp+O9wgskdNdLTUSVzW6S9mMPI2+31T3SHU9xvPU9U+50zo5KgeIC7fjfC87k1ZxtnoMexGSSOw2+r/CsAacN9BwrV16kdJGxhIadjg8LGvlfGM6s7ZwEzJXVr3RGnma0Zw4H0wVnUqNcV2b78a1+xwT7pmorGtbjUs1HcnMpvOfPjc+qr6u7SNGGFzpHHYeqqlKzUjRurA44GTuqxlwbQ17zLGcHByRkJ20Uc1R53l2SM7qxntTTCQSHA8gjKeCYjyLwy18+Jlqgn/D+Ph8ewY1hyP0Uyz9esqGNMdRqDh22VRc+iqKad00DPDeOZGHBP2Wcf0zcKKsbJSSyyE9sYz+idh0ztVN1MZIHOfMH9/nWWvvWF4FaYrPBHO4bHUSQqWzUVwe0MmgcCdjqctxbbJFDE2TQPE+nKj/6FxTGLbVX+52yL+MRsY4HJawqdVUsj6Y6mg+ys4qU6Wl7HA8ZUiSIu06hgFJKNg8hy25fjbTXiqga58PJ0/lV7Zr5+PgJZg45d3B91dV1FB4b2lrTv3CyUFAbd1WYoGnwJmax2AKpl+o0Z8ujoUFQZqUEcYwotSC6Ityf/AApukcGRhpODhCslEVP4pdgMGo542VkHbRly/Z4q+IVxu9V8ZuoRbqus0RVRYI4pCBsOPorvo3qKhfUtoa2nkhrCDq8Q5J/XuqJ1zjg+IN5uOprxUVUji53cau36I6Dwrh1uyrp2lzYmEvfjj3yvVav/AI0mjzWebk3Z3Kngja0va35vMMjthP6RwQm6Qh1Ixw2y0bHkbJ4rW5cu2YvBp8cbjktbn6JbAAdkk5ylNJUfdk30P87oJLcoyggJwCT3SiCkOyEAHt6IxykN5ShygBfAShnSiRtQA8xuWoxES5KZsNglayDxlMAplJ3JGPVLZG1pwk+O4N3cf1TL5j2QQw6h4DtOSop5S/M52SlaRhRRBlbhc4KFjnzuxpHC5L1H1W6subxHIRGNh7pHUnVUt2nmeHAMJIAWPewPZrkfklZ5Ts0VROra/wARhYBsqk6w7U0nc5UhktP4mDg+ieBgkztjBUARY6mZgJHHunZKuZ8Wlwwma2qhZs0g49FE/Gh52GyBRRdICSM4TsdS6MAk9kyZmiMnb6ZUbxtZQBrbP1JJROaW5/Vby19XulZrmcuMNJByCriiq3bM1EdtwpXRKO/2O7OucZkGcK5fEyWNzXAEHnIysp0LExlhDu5Wr77chWp2gowt+sVdT1n4ihwYSc+G04IPqqiy3+utnU1FLVxTGMzNjc9w2Accc/ddFuIDqPsHbkLnVzBbIBgFhdq29crNmgmqNGFtM769wdCwnO4yPoU7DEx0ec42VH05cWXPpmjqQ8vOgN39tt1dQvDJMtHIwvNZY8W0elxu0mKLXZdl2QPZMUdPH+KfUSFoyRgOP1U9rGvd5s4Kr7jTTSRimj21E+ZUx7Zfy6N1apIH0zAw5GOysXCnZFmWVoAGTkrzR1x1F8QukIjPbtL6NjgNYBJA+3ZT+h7jf+r6SCrqL1/Le8xzNacaDyP6rcsf62Z3JKVM7pNU2mNxLqiMA74ymRc7G0Z/EM29lR2b4Z3SvraqCe9keG0CNwbnt3Wg6f8Ag8+rppP4teKjxmPLD4YGw90nHkWfmxR9Y3/FrOwF7JwTzhvKSOrKSD/lsBHvyVo+m/g7QxXOcXaqqKqFjsNbnRqH1Wspvh70xbuqHVFPQNEYiGmKQ68H1T8BJbeK/wBezmMXXGQ98FKZmsGpwDdWlZS9fHjp2xlrLiybxHdtDl1Dqe5dM9NWu8tp2QvnfJodBCPOcjledbh0RV/EHrsXS4wsgoIzpp6YDBx2/ZEYL7GjOU10jonTnXTOtYJKuhglbCDtrbgrRtphNVwTEhro2kEFOWrpiisdqioqaJjGsaOApkEWlx5WLNV9Dp0hTJMzljcYA5VH1zcmWnoW51j3YEdM87fRaAt8MEg+6478beoI47A20GfRHO8aznkD/VWa0eU0jNsy4wbPKEUk1dO4tz5nE6idgM7krqPQlPFK1lJTwGR7Xappj/1v8oHsqm0PtVEaitNPAII2gN1b5cRyP0Vt8OZZZ+r53jHhOaSNPGCV6eCPNTOwU7SIGl3zEb/6Jx3CUyPAwOPRLETpNmjP2V90uzLJ0rIp5Rt5Tz6Z7D52kfVEIH41b/phIskX9layJ+BtxpCNA7DlDsrC0CaenHKVQ26StfhrcD1VWbNHFHlNjwg5ukQAPRKHK1Q6ajjpTI8ZOFnJ4fBqiwbrNqb2PYb4FmXA8fohGNiiQXQKBwuPASdTu5ST7os49EwC9Wdt8IIgco0AKZ8yJ78lFnCamlDI9R9VDdEUeUZmPZHqecDnfZQH1ILdIxn1CsqhomZoc7AVVUQxwuyx4IOyzF4THgEEpMtWR8hG6jucSNkgMLjkoFug3Ze7LsbpbAG8EIFoRtYmIsS8F5SSNHdPFwaN8BNvcwjsUAhyJ37qxtskMldG1xwNW5KpCXDgqZQQSzVrGxOOTwB3UfZJ6U6YbCyzReEWnbscq6PCoulqd1N09CJT59OMFXryNPKe+i1Rb6RHqSx8RY8AjGCTwuddQW6pop5KigkbJEPOGP2P2yujkNPcEFQKyz0FZkVEWtvscFUyabL1jcfSo+FvVGv8TZZvEbKD4jWvGM+oH6rqsUweAWkfZciZ0hRUF3bdLc6SGVjtWx5HcLcWu7nW1smN1yN3B3yR1NTNa4s2sEmSBnKmuhY/S52/phVFHUAvbtstBAGPgbn7LktdnSvoYmttHVxOinjZIx+xDm6t/os234fWmG5CqoWvonBwk/kO0teRuBha9uMnA45SwQNTXacYzuteOdISldsh0F46usN5krKSWCsa8BpjnG2BxhWtt+InV1Aagvs9NIZ5S/AkLQzbtlVVRVeBlzNvbsoZvs7Tjw2E/RPzNMcWGfqNLH8S+uHV884tdGyNwaGE5Jb9fVRLj1D1jf6hs8tUaeTGNUXkAHYKlF/mLCGxNB74CcpbnVVJ0B7wewaFDki6ODDDxD9H02w1TqmtmfUVchBc57skrWW2y00JDzGAfRqh2yNwiGpoz6u5Wjp8aSfRJLIqKc2T/wBV4RakgPDQN8JBiAjDyNu6lmIPmLiFHrJGwwkHCyvtmYpLxWso6F7z2HqAvHHxM6qn6j65lhp3+JBA4MBadj9+F6vrqWa/yzULHvZA1jnyvG+MAn+37rxvX0jYepatkTdGiV2e+ogkLqfHY0nZzN7I6pEWKwXuqla1sDo4nOwwE5L8g4AAXa+h+kXWa3MlqMeK4DIG2P8AQqH0HS2+ooRM4CSdp2zw1b5vlxgY3wfRd7HG1ZxZtroNuS7DdydlPopI4JgZiMZ7nCjRPjaCSQT2Ch1IkkdkasexWfayNLii/H8a9nG3ZPvV1pmvAjAPfbdQ4Lm2WIAj7KEaV0hy8nnulshDDsMJNfXl6ziQ0p4p034S3EOORwgCMdkjGUDsugujchxmkvGfXutjYo4ooA4c4WH8TD8BWcl8/hNuMoOdhsvKfOZJzksUDp6cVFcmay6XHRG5jBgeqxM0niVLpM7FIpOqG3eN2G4SXfMr/gdd407E3Z8haCS0gJWV6Q54R3CIt3SkEwAaMIyMhEiKAD4Ch1TTM0M39dlJduEcTRqJdhQ1ZDPG0tXM84Dj9lHe6R3zEn7pzwnSP0t5OyspOn6qGkZUubhp7/7LNyUTRxb8JvSdhjvNwjilcWtJAz6LRdadAzdMwMqoneJC8cnturT4V2ioqKt0gjOkHOTtwundZUcV56QnoS3Mkbct232XOybLjlo6+DUhPA79PMjmj0RsYnaimfS1DoXggtON0gZad10ovkrRxZRcXTGJW+T1THspbhlqbEXdSQNiNxHH6K6sBMN2gcI9QB32VdE0OOFpumTBDXsMuCCfRQx4q2dtoqtv8LjcABhvCW2aV5BySFSNrWNgY5uAD7qdT18ckekOBK5m7tOK4wPa/AfERm/yZC08YgFGJs7ZUAuOMgpTZSMFciG1kj9nrs3w+tlX+JY+VzeAUyY/DIfHyCowqHAjdNTXDwhnVv7rZHe5rjI89tfxvh+2Jmqt1wf5WynS/GR7/da20XRsgaxxHssja6dl26SZURZEzHuAPuolPdZrfV+FP5XDAyeCqJwUnaOO1LG3GX0ddbEJWam49vdI/DF+QVTWHqCOWJrXyjJ22WqpKiN5zsR3Wemh1KyhqLbKexPthNNsFVIQfBwD3K1xqIAzOkZHqihuLDOWnyt7YTDxbMrH0hVSPD/EIHcYVxR2IwNGHAlvsr8VUIaAJDkjOcoRVdO4kB7clFjtug6Sj8NoGynxwhrHYcmDWQYJDwCBuk/j42wF2tvtulaK2x2aSOJhc52AFlbvcH1FSKemGpx29ghc7m+pk/DxZ1k427KTa7a2N3iSDU93JO+EJUVyZZ2K1x0ltcwE+JKCHuHvt/deOuo+njSdcXWF0Eweah7hqbjyk8r3BRM8gwAPTI/ZYifoin6xoOrqRlNquFlqm1ME4bhz43s1FhPfY/ZbdSTt0YNmK6bPNnR8brfUuiDnaXAH2xsuiMkDx5TlFV2KmoWNc2PDyBnbjbhRqbyPMZOcFd3WbcLOTtRUZdEoncZKWJA4YKaPOUBnsrp41LtiYdmeJNJjpwTsixnlEHYG6UrF0jO3btgSHpRcEhxCCCsrpXwkuadvZBk4udKIHOyO6cq4fFaR7qvioJop/EifpPpnlczc0nmlyh6aMWfiqZb2+0xUDHaH87qQCe4TUJk04ed/qnsK/T1pYI/t6LlycwwlIgMI1uKQI28okY5QAaHZEUSACxukOzlOJLgOUAee6f4b3Bs34h7XaQVqKnpWer6fdFC1xlYBt6Ldxv8A5ZYWgDlTunI83stdGCw847rDuYuEeSNnx8u+EyN8MunZrRZjFVR4c7fhWdytIgnqJHAljmkYW0iiawjS0DHoEi4UUNXS6JAQuBLI5S5HoMSUFxPIPVFvmF7qJIoSWB54HCyznOLy3v6YXp++dJW6Pxjoa4O7hYii+GVPcbqRTxFz3b4wulr7aqvs521o3LkmceioZ5h5YXO+yli1VLY94HfoV6z6Y+BVFTQtqLrJFGzGSCVq3dK/CmxtH4+WiJHOtwK3QU5syvDCK7fZ4f8A4bUNd5aeR3s1pS6VkjLlHE4OjcTnDhhe05uqvgnQnGmhdjbZgXO+tKv4QXxhq7WYIqkcaAAnljaiyMMY/lXZzqjpp5qNobvgcnOETJZqZ2BgEI6a5RxGSKFw0Z5CalkbI8+i4eWNPs+jasv1Tg+kW1NddWGyP4PorSKdjmjBzlZEOAG2ykQVkkewcsU8V+HWw7LXUjTyVDWtO53VVNIZCQcHPGfomRUmQA5yjGXEc/T1SRhRdPLz8Ok/Dp+rp6sg15cybOk9gQpt4tLJ2l5bk5zkDdM/Dax17OmKzqKSLTQT1H4eJx5e5oy4gegzha11MyRh75WhXE8Lv8XnlxOZx/xK2Ta4nOdGCdu4WltnWUkOI53lriO6nzWtrpHDRlRn9KwVLHBsZB9Qh9+mJNotm9WRv38Tb1SR1NE2QuDmnPcFY2v6ZrqWRwgmeWhVQp7lHJoc7JH1ScIlqnI6OeqHEBrZR5t9jwn2dQaR8zjn0WCttvrZp/M5+5/RbC39NOkc0zSSH6KKiieTZcs6gcc43GOFI/iVTVN0sbgH1T9JYaemaHCPXn1UgUjWuADMfRI2iLsO2UuH6nHU8985WvoaY7HGwVNbqctcHEZI4C01MNOkE5UCyLCBjGMLnHDQCSfRa74Z2IQUV0vksAL7tUl+Dvqia0Mbn9DssvZaObqK7ttlGHNpoxqqpwNg3/Ln1Owx7rslLSw0VHFS0zNEUTQxob/lHH3XX+OwO+TOXvZlXFHk74v9MDpvrqSlAH4arBnpX4x3Opv1zhcvMemqJAPvkd16g/xKUkP/AONaK66GGopa9oY8jcNc12R+oB+y86V1OHNbPEMOIw79P6LvxxqukceU232Vp4Qaj5RcJRQ0eSiyggAJLilJDygBs5KAG/CJzggxwKAHm8pweuU00jPISxndAC9Q4whkJCPKAFZCMEZScjCGcDKYBZISchFqzshlABkjCQ4guzujJ2SSO6hkMpBHh2Va2VzYq0E8+pVYx7JAHMdkc57KRTyCGoa53A32S5UpwaLsTcJpnQQ8eFq1KJUVoa075+6pKbqCKaV9PnGO+eVGuFZhxwTgdwvKZYODaPSwkpK0MXSZtS7SSAM9yo9R8QbD0HaXOja2avePKFherepm0EJZHIBJ233C5HWV1TW1hqJpHPcTy4rp6GCv2kYN/ZVcIm96m+M/WXUEj2MuJpqc8MiGDj6rCT3OvrJS+qrJ5XHclzyVDAIOdygQT2wuucZyb9HdZHLtX1KU2TBJAAz6KP4Z9UoNx3KCLLOnr3wuGCSByMq+pLvBI0Nc7BOyybQE8x+njZZsutHL34dbS+Wza3S7RtWyseMtIIS89wsxRVrmkanbAq5hrYnN05GVzculKD6PV6nz2HL1PplzTu24UrJELi0+bBA9jwP3VdTTMJwCP1Ww6Fs/8e64ttIWa4WTxvk//oYHv2WSOCbmk0dnJvYo4ZTT+j0Je6Sk6a6O6Y6Tgb4bRbm1IwPncQC8n33VPBHgDGw4x/59VqP8QkZsld0zfmtxTQVZo5nDhrHswP3CzVCfFia/OdQHHrgZU7MXGVHjMeX8icxZpxzgH7JTGBmTj7AKYIiW7BNPj3ws9jsrKqnZIwh4ySqs2WOaUFrAPsrmpaWvI5SaQ5qSSNs7JGWRBS2eOINxFgjdX1JSMbjy+6VTAOwcDhWTGNDQQOyShghENAyBgJrwBnIClHLWbYP1SBNHG0uOccElSkK3Q9C3Q3JPvhWdptl06mrf4faWlsYOJqnGWxjv905010nX9W1AkOqmtoOHykbyD/6/Xfddts9mobLa46Khp2wxtA2A5PqfVdLV0+b5SOftbaiuMfRHT1horBZo7fRMOkHLpMZL393E91b5AOfXBwkjIaBnOOEZcA3URxuu5GKiqRxpScnbOF/4lrq1nTFnsTXfzKqqM5bnlrQRnHuXfZcMY/VEGuAw4kafZaH4v9TN6j+MU7YXmSnoG/hGAHbI3cf1OPss4zz4wMDkFdDDGo9mabpldW05glL2jyE8eiijB3V5IwVFO+MnzdlSmJ8Mjg8HAOxKqyQpkp2JKCBOeECcFVWMBNTODGl7uAMpzPsole7NI9vqFMUr7IfhUT3ymjqNGoD7p+mu1NIQA7P3XOry2rjuheNRbk8fVO2p1fLUNc3UB7rb+ODjZl5yUqOrRva8AjBCeVdQaxSs18qa1ywyXZrHEEnUEeVICS45xhKB2RIwVIBnhECjO6CUAIicIE4RHdAHH+iuq3SaaOseTjYE9l0cHUxpa7UOQQuBWCpDbkyUgZBGQNshdfju8VLQMEcgcNO2Tx7KnC3dI0ZVast6h8VMwyl+jHJysrfuuIoo3QU2XvG2Sqe9XySpLmibA34WPqZwZDk5PqVOTVxzdy9Gx7M4KkMXOtqK+pdLO4/RVykSOBOSclR3Edk1JKkZ3Nt2wIicBAOyMojupoUGSjyiQQAoOSw5NIfRAyH2PLTsn2TuaQS5QgTlOg5H7qOyPsu6e4OYQc7E8rt3wzqf4TXdM1kzNElbcYpTq7sDsNH0Of27Lg9koKi736ktNM0ufUSNYC0ElrTySB2xldxlqYoutLXSwOHhUVTTUzPQaHtH9ycqyME+2iz886430evPjP0vP1n8F73bKFoNY2Iywg8lzDqH3XnT4cdQfxG0R0lV/Lqohpe0nhwyCD+h/ZexY9P4lzCGmNziMO3yvJnxh6FrPhl8TD1XamuNiuUviDbaCQkamu9M8j6Fcbew8v2Ono5qfFm3iaQ0HHbumZI8PLhymrDcobtao6iFww4A4zx6qwmiw3I/VcZqmdSmU9S3UNxumqeNokyrCSMFu+MqPo0uzsoGRMheG4J9FPbVNDASNsKoLmNiy53ATNELje7qy1WSlkrKl22hgOGe7j2CaMXLpDOUUrbLOe5tDixm57Dkn6Dut/0b8Oay5uiunUcZhhLtUdN3Pu729lpOh/hbRdPwsrr0GVtyPIIzHCfRvv7robAAutr6VdyOTs7t/rATR0sNJTsggjETGDDWsGAPsFJGw2/dJG6UunGNLo5bbbsPPssf8TOq4ukfh5X3OVwa/QY4d+XnYLYEgYIPdeUv8RfWDLr1ZTdOUszn01F55ccOkKuxx5MR9HJqHxZql9RLI+SSRxleSdySc7/r/RW/iPxnjb7KqoC0A+bBAx9VNdP4ZLZOCMh3bPouil0Zn2yXC5niFpOCBkKRLRirHh6gNvm7Ktim8srtI3ZqBP3wrOlmBaWuHl05B9Nh/dLONkopqmkmpH6Jm/R3YhRz6bq+bcMaqeo0zNzgse3P3QlscNVCZbbINY/6Tjx9Cs08X9FlmeJwo1Q0yN/0UyogmpnllRE6Nw5BCa0tVateklO+zxTP1vZq+qlU1rp6f5YgCFO44KVyE3JitDbGaQAOyUPL6JYAAQIGFDGCDvYIEotgiyosBTTk4ShskDlKBQ2ArKIkhBAjPCgBJcUWooOGAk53QB5do3up69j2ny5zla2ruErKFkjXEh37LIweYtA7LTQRfi7UYcnIGQcLGm07NfsaKaornSP+YqI6XJzlNTamTOY7scJovWq7M1D7pCRymSSUkuRakEULyQENRSdWyGUBQvUi1e6QizkYQQL1+6VrCb2HsnqGkqrhXx0dFTST1Mh0sijBcXE7Db6o9JsTk+2c44yth0b8Pr71e6Sop2fhbZCf51wn8sbe+lp/M5bjpj4R26zsiu3xAqASGeI21Qnc7beIew4XUukKZ3VVUKuejbRdOW92inoYm6GSuG/3Gcbq2Mf7Buhzp/oexfDzoipuVDmoraqMsbUSNBdjG5B5b22GFyuqmfFdaeohf521Mb88+bWD3XU/iRfTJpoYXhrWtGrQMAe36YXJ9Jkq6VmDh07Nz/3Dn9lY+l0RHtn0YpXiVrXEDcDKkXOy2zqCwz2W90cdXQ1LCHxPbn7g8gj1ChUR8ob3BwdloKcZ0+ywtX6Xptdo8ndQdC3X4P8AVIaZJazp2rk00lURnwv/AKP9Pr6LTRzsrKVskZbgjK9IXKzW6+WeW2XSliqaWduh8cgyD/v7rg/UPw1u3R8r6uxyyXC0ZJMR/wCbE3+42XI29Np8onX1dxSSjMzNR5XEkBVNXUuiAw0EHnJU+oroDGC9uHHYg5yT6LZ9CfC2t6kmiu96ElLa2u1Nh/PNj0PpnKw49ec3VGyeeGNXZkukOkuoeurqaekiNNb4z/xFZIPIwejfUr0j0r0fZ+kLUKW2QYkO8tS8Ze8+55+3CuKC20NroI6Ogpo4IIhhjWDAH+qkOacg5Oy7evqxxqzi7G1LI/8AQjbAxx2xwlADZDH6oLZRlFcI8okh5DQSTgYUpAUXW3UdN0t0ZXXqpkaGwRnAJwXE8AfcheFK2unu18qLpVPc6WZ5leScg6jt+2y7v/iP6snqZKXpSkkbhv8APqcHb2B/RcFihAcQI8NBwM9s9ls14UrZRORZU3lZl7c4BOf6JybAb4Z3O2Cf6pEZLYGjbsce3b9ET9426jlzDgk849FqKhiKQa3xknDgWgnt6KdT1MjYHNMmdgM/dVJdpe8h2DuR7Y/9p6GXDNLnDByTn9Ur7JTJddVfh7jG4YJeNzge+ymw1L4y2WLfPPsqO5zsjkhly3S14ZvwS4bf0TlHX6ZNPzfulJTNi2WmuFN4NXGNtg48g/VU1fYKmkYZIP5sQGct7fVLpq6P6glWsFfpkO5PY+6rnCxrMfghwD8jIyNkvA2wtXV0FDcQXNBp5udTflPuVQVtqrKGYiZmWYyHx+YKmUaAhoFKwAhgHCRsYaOcokt4AJTR3OEtk0GHbpYO6bbgbclLapsgVknhOiJwjyRuihjLnghSp3hseO6GBAeeyZJwUt7h3OO+6aHnfkObj2VbyRXrLIYZz8R5epTiePfZaW31AgnGo+U7LMU+SBjkcKzZKSwOccOO/wBFSXR6E36l/D3Ivbsx/mAVM47/AGV9VO/F0DmO+ZnBO5VCQ4O3GFbB2VTVBZKGSiJ3RZKcQcBKUOE2OOUNfp9FACzyk5O6kW+gr7vdYrfbKKasqpTpZTxM1PcfYLvHRfwUt1ihbeev3xVFU0ao7SHeVvu8jl3srIwsVnN+ifhZ1L1mRWRRNttpacy3CryGtb6MH5z6duF2OhpOlfh3a5KLpuJk1bI3E1xmAMzz30n8rfYKd1J1c91KyjpgIaaLZkcbcANGw2Gw+y57WVMk8r5XOyCVYoIC1ZNWdT9Sw0c1WWRzP8ziScDv/TC7NPW0Vis0NvgIZFBENIG2kdgfUk8rgVpZWm8wT0WsSRnUHei3FyurppHgyOe52Cc742ThVlTe619fXS1Ej9RJ2GOAq+j8Nt2t75QPCZVROeDxgPGycqn5a5zsAcKHJL4TIpnDMbHtc8+jQQSfthD8JXp9BrdVQxUbqyqqYoIGtLnTTPDWtHqSVxbr/wDxg9H9OXE9NdCUp6ovznGBhY7TTNefV43d349Pdca+KvUXxC+LFnjg6ZkqaLpHADBE8sdVuG2pxH5duPVcIt1nqenetoZrJT1YuED3RNZMBnxMHUWgcDBWOKt0XeI6p1j8ePj11DeKWS53aa10dY0PgpLYfCaGE43I3PHddi+CvUl1jMdbVdYz1Z1HxG1tQ52CMBzWhx3PGy8z9P19U2/wSVd1dRNjfpkqHxeI5jcnOGnkqbbLXdb9fhb7TXmaV0jzCJJfCLtzu0dj3V7wf34EZf0e5Lr1t0U5s1M2xUgqW/8A7L6WPZ5/NgjlZm6/FHqSy9P1N0s3UE7mUzdbnXBjBFgbaQ079l5Oj626vtz5acXKQubmJ4cGykEbckeyYvkvUVb0KJLhNXyRVNSIvxNS3McYAJw3HJPGD6Kp6v45L/ZMc3K7PSHRv+N2rrb8LZ1B0ca6IN1TV1tfpDMckNdyF3vo7/EL8JOtIgLZ1dRU1RnS+mr3iF7XdwSdsjfjZfNCklttvZGxsWWE5eeDjvv9VLv90m6ikp7lJa6GmhjibTsbTMY3gfmwBvgjKuetxdCc4tWfW6KSnqads9PIyaGQamyRO1Nd9CCl6QQfZfL34bXz4rUT3RfD3qK9/iI5A0UkT3Phx3LtWWtC9X9E/ED4+0lIz/5bRWW54/KyMxvx9RgKiSp0NXR6SIOOVSdQ3aK02WprZ3hrI2F23ssjB8WhFG1l46ZuFO93LqdwkGVgfjH8Q6e4dNw2u2CWE1J1yCZuhwb3UwXJoWXSOJ9UXiS/dVVd0lfrknkLyHb6W54+mBwqhmkvILTiPY452RlxNSHFgc75fTnb+6cazU4hoBy7JIPC6aVKjI+x/cQhudmkHPc9ggctaAQS5wId7HP+iacQYwC7Ge/vghFM8vfKAc4dqH3z/opAjlzZXnI2DhnHuQMfsmYx5s4cW4Bx65Cdax7iS0OHHH/cUpkbvCJdkebv/wBwUUBAvrW/wRpdn/mRuAIzwXDP7qriqayIt0EuAaAWlxPZXF2Grp5/mxhoP6FU9M5zoWyD5jgnHolomy2o7r4ZaJ43N9+2VpKKvikJ8HS/HvwscCA/zOy0cBOsnMHmY7Qc5Izj2/spGTOhU1WzUA8NJ9jwrSKpxEY3sY6M/lcMgrnlJdJI3MEjQcbFzd8LQUN1jqCWtfrPdK4phZa1fT1NWMMlvcIZB/0SMBZ2eiqaSodFURua5vY7Z9x6rSQVR0eZ4H3Vn4cFZTiKpAkDvl1fMFTPGhkznr278qfTUtO6MF5GVLvVgqqNpqqOMzU/IDTkj6rISXmVji1mrnGMcFcL5WebHSxnQ0YY5N8y8qoYo35Zj9VHbyquCaplnLpC4NPYqzbjAz6LRoynLGvyelO0oqb4+FjRAaCdlFrpPM4bjCk0RBjOFU3Zxa5xGVtM6M7dbwYJ9GrAHunKC6F0QcX7FUF6glme5zOVX25ly8QswS32XF29fLOVxPV/G7etDElL05TTnEo9ip07HCl8o2ac7KsY8NqHDt2VxC5j7cc7DGCPqugecTGop26cuAOrsCq+pYfHdnYDYI4SY5jCfynk90dTgu2TQ9ImiITv9EO/I259ETjg84+qs7B05fOqLo23WK2TV1SdhFG3IAPdxOwH1VyRS2VucD6DK23Qnws6n69qvEoYG0lrjP8APuVSMRsHsPzk+i6t0r/h+ttlnp7h11cmV0rcPNtpHfywfR7+/bYLedQdVx0tA212iCOlpIhoiggAaxo9cBWxxi2VnT9m6R+GdsdTWCN1RcC3TUXOcZlkI5DR2Gc7Kju1+qKycvcCSq2qrppi5z3nJGVXCR0k4D5NI9lcugsZqJJJpC97tzthPMtrnxl9S9sce2MclPtmp4BiBjWn/PyVElqnuJJxyiiLJ7poKWFsNJpwN8jkn3QNRqIc45JVa2QukBKdL8OB91AyH6kZhGpu53yCodWf+Ge1w1NIxj7FTpyDACVGqBilcMb6cgHZSiH6ekvhxZ4m/ArpxpYPPTE79vO5cn+PvR9Jb6qy9Wtp5oWan0tRJAcFztOWEn/+l37oin8L4JdLtIxigYf13Vd8Wen4738ErvGaVlTNBD+KjY7bLmeb9e6wKVTNSVo8a0dJTDpmasqqSr/ESPDaapH/ACy4eZ2e5Pup9Hc6KlsNTA+yw1FRO0NjqpnEmHfOW/X+yimnr47BRVFbUQyQSavCijfnSW85b2Pv91o6SsrKb4XXKmF0tHgyTRkUkjA+od6ljsZGMj9F0Ev1TKY9NmdttCLlc4qGOohgkne1jHSnSMk/mP8AdP3YXOkkl6cr6x3hU05DmeJqja7jWCOdlKtd3p7ZbKqKSwUlYamF0IlqAcMydnNI4cFFtLLjLWGnt8YmqJR4OC3Vs7Lc4PpknbhP3JttdIhpJJfbLrof4J33ryiFxpZo4aPWWtnmYXh2DyB6L0T0T/hf6PswjqLqya8V4AJE50QM9cM7991034c2ik6c6FtNmpoREykp2RgYB3A3/fK3UT2sccY+gWKeWTZKikuiBY+kLRZLa2kt9HBTRN/LAzS1XIo4GR6WRMwpEJ/lkn0Tcz9/CAyc+mVS3Y7ZR1dtgqZyRFhjN3E+y8vdc3pl66yraiH/AJcTvCZnjA22XpD4n39nSnw1q3xPa2rqGeDH2JcdtvXC8kSHBcA0tdn5ged91t1ofZRll2GXADGjzJEZDH4Jy0ggH0SXOc55bvnGzkBp1jVsPT3WspJEup38xuTkBw2zuSP9E46OM04YG4y0gjPdpUbUGMaXHDRkfQ/2SnyAQtf4h0nIyD7IAXGIvDd3+/vn+6BLGtLQ7BzxjnzZz9FX1FfS0zZPxMrYAx2SXHAB0j/QrPT9eWxkrYqCOprJR8/hN8p2x8xUNgaa4NjfbJIC/OY3bHnjKoLZ/MtrC3choGUzSVd7ueC7wqSEgZAGpx7c/QhXFJboKemZEwuIZkZzz7o9AYZrEYDwT9kl4IfkAgf6qYIQSHZO+fzJLmEua0g47n90UTZEzKJM91LZM8AO+XCY7gnUM7keiWHeXSPVQFlnR3adj2M1texuedlfUfUtOw5nkdE0bbjI+yyDHEMbxjn5fupUcxwASBkYOyhqyDpdLd4JYxIyVvhuHz5z+qg3LpO1Xd/4ml0QVHLnflf9VhY3iMgRvMJ7OYQFZUl5uMWNZ8WM7AZwUk8Sku0NGbXgqss9VapPCqISwH5XchyjaR7rVUXUNNV0xhqmMe07GOUbj6Jiv6fZKDUWs+U7mFxyfqFQ8VeDJ36UdLII36T3SLnTtfGXgH7JpzZIZi2RjmOBwQdlIMwdAWnBVdE2Z19C2SUBw5UqntTQfK3CmaGlxcQn2vDQAAppBbPJbvK9rjwDv7bK0p8SUDmAjJGyqpAS0hWdCcwjHosZpIDNf44ZBzndO1TQJD5t99uEpzTHWkkbgndb7oDoWDq3qMT3N5bZ6TD6nGxkPLWD3J5T403KiZ/4ld0Z8L7x1a2O41MzLfZwNTqp3zyNHPht7r0DY5rH0n0/Ha+m6KGjp2jzT4zJMe5ceRvn9VlrrdZDdJ6SjIhpmtbBFBENLI2DsP3/AFTE07ooQ3xCB2aFuiqMzL+59RTyNc1rjvnPssvNVPkcXyOJTck+XbklRnuy7cnfjZP6Amd4MZdk59FXQuea0glwaGlWEgBj25UGMD8U4HPylL4BIcCWtQLcDOEUOAcYJARucS0jHKlihNzjISm5Lh6ZRBpDMHui1FjmgfdQMTnyDSACPVNVUg/CPe8AARnfsNuUbQZMY3JH0Sa5uLXITxoIJU/QfZ7K6XpXw/BrpiN4IIt0JOfUtBV4aNlw6Zq6J7Q4TQviIIznU0j+qRbqbwfhrZIdONFBAMH/APzCkWybw9QPAPfjn/Zcxv8AY1x8PAMVPRtucdlnjkhFNUSxzSxNMhcA89vQDsiu1HQ090mitlea2jaQGVDo/DL9ucHcLZX6i6gt3x06vpulKGR08FZMC6GPW5sbt3fbdY6ipKqtrYaelo5KmSR2nwY8hzyTx9c9l2MLUVyfhnmrpF9YaiuZ0ZfLdFWWV1G6ASPgrR/NLgf+medWOyuvgZazc/jLRwucfJTyzFpZkEADn05/dZ3qG3Wy23CnpreyvinbGG1kNazDoZQeB6jG+eF2f/DhaxT/ABAfNNDTSSOopJI5WSBzmZcGlpHZVSlxi5L7Gpt0/o9J26hEUDdxkAf0U6BrjUb7D1TxBZ2OD6jdMPmMZAa3JPA7lYmhizfVNjhw0tJ9k/boXSETyDngZUaitskrxPU5230EpHWF4g6b6RrKxzmtdHEQ0f8A2xsiKsiT+jz98dOpmXnrBlogm/4eiByAdi/3+65FIcZ1k78qdcqqSvuU9XM53iSvMj9Rycn0UB4LTqecbeXIyCV04KomVuwsBrDuS48EdkuMNLt/1KZHkcdO4d6p1pDOCHe6dsigy/S4tI2O3GypLxDcTDFFbZAyJzg6Rx3I+iu2lr3AHgjZKkhDYS0jIPuoRBiHWKKWYyVcj6iTZzjJk7752/ROU9nYJx5BpzgYbpGO60VTSb+LHvvvvhIjLAcHAJ5BPdFAHFCIWtawZABG30CkMyG5HHogf5YILgPsjaA1oLyBumSAAILcFjiUkMcW5BBHYnunSGkNGDkd/VNBzW9j9EUQMlp1nYZQEe++AndYdw3CWD5c6EtBZH06WgDzH2CGHAHn7p3UfFxo3CN7znBYiiRtuovAxt3UtrneGQMDbuVGaXb+VOh5LQSNu+VAEpriG4cxu55B3VhR3StpCCyQuj7t+noqkyYe0BS4ZWO+YZA29lLQGi10F7h1SNEc/wCV4GCfY/6qir7fU0EumVo0H5XDulNniY9sjHhnfBdgf7K2guMNbAYK6MOHGSFTOF+DJma14PISw7UE5cKCWiqD5g+Fx8j9sJqPODnvus7jXQx//9k=" alt="Sebastian Higuera, Sentrivo founder.">
+    </div>
+    <div>
+      <span class="section-label">Built by a student</span>
+      <blockquote class="founder-quote">
+        "I'm an LSE student. I refused to spend my evenings on admin: replying to emails, chasing deadlines, writing cover letters one by one. <em>I wanted an assistant that just handled it.</em> So I built one."
+      </blockquote>
+      <div class="founder-credit">
+        <strong>Sebastian Higuera Milenov</strong> · LSE undergraduate · Sentrivo founder
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- =================== PRIVACY =================== -->
 <section class="section" id="privacy">
-  <div class="section-head-center">
-    <span class="section-eyebrow">Privacy & control</span>
-    <h2 class="section-title">Connecting Gmail requires trust. <em>Here's exactly how it works.</em></h2>
-  </div>
-  <div class="privacy-grid">
-    <div class="privacy-card">
-      <div class="privacy-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div>
-        <h4>Google OAuth connection</h4>
-        <p>We use Google's official OAuth flow. Your password is never shared with us.</p>
-      </div>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Privacy & control</div>
+      <h2 class="section-title">Connecting Gmail requires trust. <span class="accent">Here's exactly how it works.</span></h2>
     </div>
-    <div class="privacy-card">
-      <div class="privacy-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
-      <div>
-        <h4>Read-only by default</h4>
-        <p>Sentrivo reads your emails to organise them. It never writes or sends without your action.</p>
-      </div>
-    </div>
-    <div class="privacy-card">
-      <div class="privacy-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </div>
-      <div>
-        <h4>Nothing is sent without your approval</h4>
-        <p>Every application draft is yours to review, edit, and approve before it leaves your inbox.</p>
-      </div>
-    </div>
-    <div class="privacy-card">
-      <div class="privacy-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      </div>
-      <div>
-        <h4>Revoke access anytime</h4>
-        <p>Disconnect Sentrivo from your Google account in seconds from Google's security settings.</p>
-      </div>
+    <div class="privacy-grid">
+      <div class="privacy-item"><span class="pnum">01</span><h4>Google OAuth</h4><p>Sentrivo uses Google's official OAuth flow. Your password is never shared.</p></div>
+      <div class="privacy-item"><span class="pnum">02</span><h4>Read-only by default</h4><p>We read your inbox to organise it. We never write or send without your action.</p></div>
+      <div class="privacy-item"><span class="pnum">03</span><h4>Nothing sends automatically</h4><p>Every email is yours to review, edit, and approve before it leaves your inbox.</p></div>
+      <div class="privacy-item"><span class="pnum">04</span><h4>Revoke anytime</h4><p>Disconnect Sentrivo in seconds from Google's security settings.</p></div>
     </div>
   </div>
 </section>
 
 <!-- =================== FAQ =================== -->
-<section class="section-narrow" id="faq">
-  <div class="section-head-center">
-    <span class="section-eyebrow">FAQ</span>
-    <h2 class="section-title">Frequently asked <em>questions.</em></h2>
-  </div>
-  <div class="faq">
-    <div class="faq-item">
-      <button class="faq-q">
-        How does Sentrivo find organisations to apply to?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a">You describe what you're looking for in one sentence. Sentrivo searches across publicly available organisation data, scores each match on how well it fits your background and stated interests, and surfaces the orgs most open to speculative outreach: typically smaller research organisations, think tanks, and labs where a tailored email actually gets read.</div>
+<section class="section" id="faq" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head center" style="margin-bottom: 3rem;">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Frequently asked.</h2>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Are the cover letters actually personalised, or just templates?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a">Genuinely personalised. Each letter pulls from your CV, references specific things about that organisation's work, and connects your experience to their mission. Every draft is validated against checks for org-specific detail, tone, and length before it's marked ready, and you review everything before anything sends.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Is it safe to connect my Gmail?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a">Yes. We use Google's official OAuth2 protocol, the same standard used by Notion, Calendly, and Zoom. Your password is never shared with us, and you can revoke access in seconds from your Google account security settings.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Will Sentrivo send emails without asking?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a">Never. Sentrivo drafts everything in a queue for you to review. Applications, replies, and follow-ups all wait for your explicit click. You're always in control.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        When do I get access?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a">We're rolling out in batches to waitlist members. Join the waitlist and you'll be among the first students to get early access, free of charge.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Is Sentrivo free?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a">Yes. Sentrivo is completely free during its beta. Access is currently waitlist-only while we roll out in batches to students, so join the waitlist to get in.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">
-        Does it work with Outlook?
-        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="faq-a">Right now Sentrivo works with Gmail, including university Google Workspace accounts. Outlook support is on the roadmap.</div>
+    <div class="faq-wrapper">
+      <div class="faq-item"><button class="faq-q">How does Sentrivo find organisations to apply to?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">You describe what you're looking for in one sentence. Sentrivo searches publicly available organisation data, scores each match against your background, and surfaces orgs most open to speculative outreach.</div></div>
+      <div class="faq-item"><button class="faq-q">Are the cover letters actually personalised?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Yes. Each letter pulls from your CV, references specific things about each organisation's work, and connects your experience to their mission. Every draft is validated before it's marked ready.</div></div>
+      <div class="faq-item"><button class="faq-q">Is it safe to connect my Gmail?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Yes. We use Google's OAuth2 protocol, the same standard as Notion, Calendly, and Zoom. Your password is never shared. Revoke access in seconds.</div></div>
+      <div class="faq-item"><button class="faq-q">Will Sentrivo send emails without asking?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Never. Everything queues for review. Every send is yours.</div></div>
+      <div class="faq-item"><button class="faq-q">Is Sentrivo free?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Yes. Free during beta. Access is waitlist-only.</div></div>
+      <div class="faq-item"><button class="faq-q">Does it work with Outlook?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Not yet. Gmail and Google Workspace only. Outlook is on the roadmap.</div></div>
     </div>
   </div>
 </section>
 
-<!-- =================== WAITLIST (Tally · UNCHANGED) =================== -->
+<!-- =================== WAITLIST =================== -->
 <section class="waitlist-section" id="waitlist">
   <div class="waitlist-inner">
-    <h2>Join the <em>waitlist.</em></h2>
-    <p>Be among the first students to get access.</p>
-    <div class="tally-wrap">
-      <iframe data-tally-src="https://tally.so/embed/LZ5PKv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="Sentrivo Waiting List"></iframe>
-      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    <div class="waitlist-copy">
+      <h2>Join the waitlist.<span class="accent">Be one of the first students in.</span></h2>
+      <p>Sentrivo is free during beta and rolling out in batches. Drop your email and we'll be in touch when your slot opens.</p>
+    </div>
+    <div>
+      <span class="waitlist-label">Sign up · Free</span>
+      <div class="tally-wrap">
+        <iframe data-tally-src="https://tally.so/embed/LZ5PKv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="Sentrivo Waiting List"></iframe>
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =================== FOOTER =================== -->
 <footer>
-  <span class="footer-logo">Sentrivo</span>
-  <div>© 2026 Sentrivo. Built for students, by students.</div>
-  <div class="footer-links">
-    <a href="#">Privacy policy</a>
-    <a href="#">Terms of use</a>
+  <div class="footer-inner">
+    <span class="footer-logo">Sentrivo</span>
+    <span>© 2026 Sentrivo · Built for students, by students.</span>
+    <div class="footer-links">
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of use</a>
+    </div>
   </div>
 </footer>
 
 <script>
-  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
